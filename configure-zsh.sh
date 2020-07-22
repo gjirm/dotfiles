@@ -1,10 +1,15 @@
 #!/bin/bash
 
+if [[ $EUID -e 0 ]]; then
+   echo "This script must NOT be run as root" 
+   exit 1
+fi
+
 sudo apt install zsh
 sudo apt install autojump
 
 # Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # plugin zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -12,7 +17,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 mkdir -p "$HOME/.zsh"
-wget https://github.com/ChrisTitusTech/zsh/raw/master/.zsh/aliasrc -O ~/.zsh/aliasrc
+wget https://raw.githubusercontent.com/ChrisTitusTech/zsh/master/aliasrc -O ~/.zsh/aliasrc
 echo "source $HOME/.zsh/aliasrc" >> ~/.zshrc
 
 sed -i.bak 's/^plugins=.*/plugins=\(git zsh-autosuggestions zsh-syntax-highlighting autojump\)/g' ~/.zshrc
