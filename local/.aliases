@@ -1,0 +1,19 @@
+alias l="ls -l"
+alias ll="ls -laF"
+alias ld="ls -ld */"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+
+gitpush() {
+    git add .
+    git commit -m "$*"
+    git pull
+    git push
+}
+
+alias gpush=gitpush
+alias gpull=git pull
