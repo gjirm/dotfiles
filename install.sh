@@ -6,7 +6,8 @@ LBLUE="\e[1;34m"
 LRED="\e[1;31m"
 WHITE="\e[0m"
 
-if [[ $EUID -e 0 ]]; then
+if [[ $EUID -eq 0 ]]
+then
    echo "This script must NOT be run as root" 
    exit 1
 fi
@@ -34,7 +35,7 @@ case $SYSTEM_CASE in
     ;;
 esac
 
-sudo apt install curl wget git zsh autojump 
+sudo apt install curl wget git zsh autojump -y
 
 echo -e "${LGREEN}--> Installing oh-my-zsh ...${WHITE}"
 # Install oh-my-zsh
