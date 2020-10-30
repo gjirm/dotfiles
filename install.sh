@@ -68,6 +68,11 @@ mkdir $HOME/.backup
 [[ -f $HOME/.zshrc ]] && mv $HOME/.zshrc $HOME/.backup/.zshrc
 
 echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
+
+# Micro editor settings
+mkdir -p $HOME/.config/micro
+ln -s $SYSTEM_TYPE/.config/micro/settings.json $HOME/.config/micro/settings.
+
 ln -s $SYSTEM_TYPE/.aliases $HOME/.aliases
 ln -s $SYSTEM_TYPE/.env $HOME/.env
 ln -s $SYSTEM_TYPE/.gitconfig $HOME/.gitconfig
@@ -75,10 +80,11 @@ ln -s $SYSTEM_TYPE/.p10k.zsh $HOME/.p10k.zsh
 ln -s $SYSTEM_TYPE/.tmux.conf $HOME/.tmux.conf
 ln -s $SYSTEM_TYPE/.zshrc $HOME/.zshrc
 
-
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
-chsh -s /usr/bin/zsh
 
-echo -e "${LGREEN}--> Installing basic apps/tools ...${WHITE}"
-source install-tools.sh
+sudo chsh -s /usr/bin/zsh $USER
+
+echo -e "${LGREEN}--> Finished <--${WHITE}"
+#echo -e "${LGREEN}--> Installing basic apps/tools ...${WHITE}"
+#source install-tools.sh
 

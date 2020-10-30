@@ -23,11 +23,11 @@ LBLUE="\e[1;34m"
 LRED="\e[1;31m"
 WHITE="\e[0m"
 
-# if [ $EUID -ne 0 ]
-# then
-#    echo -e "${LYELLOW}--! This script needs to be run as root!${WHITE}" 
-#    exit 1
-# fi
+if [ $EUID -ne 0 ]
+then
+   echo -e "${LYELLOW}--! This script needs to be run as root!${WHITE}" 
+   exit 1
+fi
 
 app_exists () {
   if [ -f $1 ]
@@ -68,9 +68,9 @@ echo -e "${LGREEN}--> Downloading $microfile...${WHITE}"
 mkdir micro-tmp
 curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*linux64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C ./micro-tmp
 cmd_check "Micro download" $?
-sudo mv "micro-tmp/micro" /usr/local/bin/micro
-sudo rm -rf "micro-tmp/"
-sudo chmod +x /usr/local/bin/micro
+mv "micro-tmp/micro" /usr/local/bin/micro
+rm -rf "micro-tmp/"
+chmod +x /usr/local/bin/micro
 /usr/local/bin/micro --version
 install_check "Micro" $?
 
@@ -79,10 +79,10 @@ echo -e "${LGREEN}--> Installing Go...${WHITE}"
 git clone https://github.com/udhos/update-golang
 cmd_check "Git clone" $?
 cd update-golang
-sudo ./update-golang.sh
+./update-golang.sh
 cmd_check "Golang install" $?
 cd ..
-sudo rm -rf update-golang
+rm -rf update-golang
 
 # WebWormhole
 echo -e "${LGREEN}--> Installing WebWormhole...${WHITE}"
@@ -90,13 +90,13 @@ app_exists "/usr/local/bin/ww"
 git clone https://github.com/saljam/webwormhole
 cmd_check "Go clone" $?
 cd webwormhole
-sudo /usr/local/go/bin/go mod download
+/usr/local/go/bin/go mod download
 cmd_check "Go mod download" $?
-sudo /usr/local/go/bin/go build -o /usr/local/bin/ww ./cmd/ww
+/usr/local/go/bin/go build -o /usr/local/bin/ww ./cmd/ww
 cmd_check "WebWormhole build" $?
-sudo chmod +x /usr/local/bin/ww
+chmod +x /usr/local/bin/ww
 cd ..
-sudo rm -rf webwormhole
+rm -rf webwormhole
 
 /usr/local/bin/ww
 
@@ -111,9 +111,9 @@ fi
 # Minio-client
 echo -e "${LGREEN}--> Installing minio-client...${WHITE}"
 app_exists "/usr/local/bin/mc"
-sudo curl -s https://dl.min.io/client/mc/release/linux-amd64/mc -o /usr/local/bin/mc
+curl -s https://dl.min.io/client/mc/release/linux-amd64/mc -o /usr/local/bin/mc
 cmd_check "Minio-client download" $?
-sudo chmod +x /usr/local/bin/mc
+chmod +x /usr/local/bin/mc
 
 # Setup S2 Minio-Client config
 # if [ ! -f /etc/minio/client/config.json ]; then
@@ -165,10 +165,10 @@ install_check "Minio-client" $?
 # AzCopy
 echo -e "${LGREEN}--> Installing azcopy v10...${WHITE}"
 app_exists "/usr/local/bin/azcopy"
-sudo wget -q -O - https://aka.ms/downloadazcopy-v10-linux | tar -xzf - --strip-components=1 -C /usr/local/bin
+wget -q -O - https://aka.ms/downloadazcopy-v10-linux | tar -xzf - --strip-components=1 -C /usr/local/bin
 cmd_check "AzCopy download" $?
-sudo chmod +x /usr/local/bin/azcopy
-sudo chown root:root /usr/local/bin/azcopy
+chmod +x /usr/local/bin/azcopy
+chown root:root /usr/local/bin/azcopy
 /usr/local/bin/azcopy --version
 install_check "AzCopy" $?
 
@@ -177,12 +177,12 @@ echo -e "${LGREEN}--> Installing age encryption...${WHITE}"
 app_exists "/usr/local/bin/age"
 agefile=$(basename $(curl -s https://api.github.com/repos/FiloSottile/age/releases | grep "browser_download_url.*linux-amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
 echo -e "${LGREEN}--> Downloading $agefile...${WHITE}"
-sudo curl -s https://api.github.com/repos/FiloSottile/age/releases | grep "browser_download_url.*linux-amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C /usr/local/bin
+curl -s https://api.github.com/repos/FiloSottile/age/releases | grep "browser_download_url.*linux-amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C /usr/local/bin
 cmd_check "Age download" $?
-sudo chmod +x /usr/local/bin/age
-sudo chown root:root /usr/local/bin/age
-sudo chmod +x /usr/local/bin/age-keygen
-sudo chown root:root /usr/local/bin/age-keygen
+chmod +x /usr/local/bin/age
+chown root:root /usr/local/bin/age
+chmod +x /usr/local/bin/age-keygen
+chown root:root /usr/local/bin/age-keygen
 
 /usr/local/bin/age -h
 
@@ -199,27 +199,27 @@ echo -e "${LGREEN}--> Installing restic backup...${WHITE}"
 app_exists "/usr/local/bin/restic"
 curl -s https://api.github.com/repos/restic/restic/releases | grep "browser_download_url.*linux_amd64.bz2" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | bzip2 -df > /usr/local/bin/restic
 cmd_check "Restic download" $?
-sudo chmod +x /usr/local/bin/restic
-sudo chown root:root /usr/local/bin/restic
+chmod +x /usr/local/bin/restic
+chown root:root /usr/local/bin/restic
 /usr/local/bin/restic version
 install_check "Restic" $?
 
 # ctop
 echo -e "${LGREEN}--> Installing ctop utility...${WHITE}"
 app_exists "/usr/local/bin/ctop"
-sudo curl -s https://api.github.com/repos/bcicen/ctop/releases | grep "browser_download_url.*linux-amd64" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O /usr/local/bin/ctop -i -
+curl -s https://api.github.com/repos/bcicen/ctop/releases | grep "browser_download_url.*linux-amd64" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O /usr/local/bin/ctop -i -
 cmd_check "Ctop download" $?
-sudo chmod +x /usr/local/bin/ctop
-sudo chown root:root /usr/local/bin/ctop
+chmod +x /usr/local/bin/ctop
+chown root:root /usr/local/bin/ctop
 /usr/local/bin/ctop -v
 install_check "Ctop" $?
 
 # step cli: https://github.com/smallstep/cli
 echo -e "${LGREEN}--> Installing Step CLI utility...${WHITE}"
 app_exists "/usr/local/bin/step"
-sudo curl -s https://api.github.com/repos/smallstep/cli/releases | grep "browser_download_url.*linux.*amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=2 -C /usr/local/bin
+curl -s https://api.github.com/repos/smallstep/cli/releases | grep "browser_download_url.*linux.*amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=2 -C /usr/local/bin
 cmd_check "Step CLI download" $?
-sudo chmod +x /usr/local/bin/step
-sudo chown root:root /usr/local/bin/step
+chmod +x /usr/local/bin/step
+chown root:root /usr/local/bin/step
 /usr/local/bin/step version
 install_check "Step" $?
