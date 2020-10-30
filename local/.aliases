@@ -7,6 +7,13 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias tmux="tmux -u"
+
+mcd () {
+    mkdir -p $1
+    cd $1
+}
+
 # Git
 gitpush() {
     git add .
@@ -14,8 +21,6 @@ gitpush() {
     git pull
     git push
 }
-
-alias gpush=gitpush
 
 alias g='git'
 alias gcl='git clone'
@@ -27,6 +32,7 @@ alias gg='git status'
 alias ggg='git status -s'
 alias gpull='git pull'
 alias gp='git push'
+alias gpush='git push'
 alias push='git push'
 alias gpp='git pull && git push'
 alias gpo='git push origin'
