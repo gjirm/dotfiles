@@ -72,7 +72,7 @@ echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 
 # Micro editor settings
 mkdir -p $HOME/.config/micro
-ln -s $SYSTEM_TYPE/.config/micro/settings.json $HOME/.config/micro/settings.
+ln -s $SYSTEM_TYPE/.config/micro/settings.json $HOME/.config/micro/settings.json
 
 ln -s $SYSTEM_TYPE/.aliases $HOME/.aliases
 ln -s $SYSTEM_TYPE/.env $HOME/.env
