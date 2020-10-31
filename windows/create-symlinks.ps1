@@ -1,5 +1,7 @@
 #Requires -RunAsAdministrator
 
+Write-Host "--> Creating profile symlinks <--" -ForegroundColor Green
+
 if ( -not $systemProfile) {
   $systemProfile = Read-Host -Prompt "--> Enter the system profile type - personal"
 }
@@ -14,6 +16,8 @@ switch ($systemProfile) {
     }
 }
 
+Write-Host "--> PowerShell symlinks ..." -ForegroundColor Green
+
 if ( -not (Test-Path "${env:USERPROFILE}\Documents\PowerShell")) { 
   New-Item -Path "${env:USERPROFILE}\Documents\PowerShell" -ItemType Directory
 }
@@ -26,16 +30,20 @@ New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\Microsoft.PowerShell_pro
 
 # Powershell Core aliases
 if (Test-Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1") {
-  Rename-Item -Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1" -NewName "aliases.ps1_backup"
+  Rename-Item -Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1" -NewName "aliases.ps1_backup" -Force
 }
 New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1" -ItemType SymbolicLink -Value "${profilePath}\powershell\aliases.ps1"
 
 # Windows Terminal profile
 # Install microsoft-windows-terminal, Always delete and place a new one
+Write-Host "--> Windows Terminal symlinks ..." -ForegroundColor Green
 $terminalFolder = Get-ChildItem "${env:USERPROFILE}\AppData\Local\Packages" -filter "Microsoft.WindowsTerminal_*" -Directory | ForEach-Object { $_.fullname }
 if ($terminalFolder) {
   if (Test-Path "$terminalFolder\LocalState\settings.json") {
-    Remove-Item "$terminalFolder\LocalState\settings.json" -Force
+    #Remove-Item "$terminalFolder\LocalState\settings.json" -Force
+    Rename-Item -Path "$terminalFolder\LocalState\settings.json" -NewName "settings.json_backup" -Force
   }
   New-Item -Path "$terminalFolder\LocalState\settings.json" -ItemType SymbolicLink -Value "${profilePath}\windows_terminal\settinga.json"
 }
+
+Read-Host -Prompt "Press Enter to exit" 

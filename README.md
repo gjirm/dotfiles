@@ -33,22 +33,11 @@ There are 3 types of environments dot files - local, server, wsl.
 2. Open another PowerShell windows as admin and clone dotfiles repo
 
     ```powershell
-    git clone https://github.com/gjirm/dotfiles.git ~/.dotfiles
+    git clone https://github.com/gjirm/dotfiles.git $env:userprofile\.dotfiles
     ```
 
-3. Enter `.dotfiles` dir and run
+3. Enter `~\.dotfiles\windows` dir and run
 
     ```shell
     .\bootstrap.bat
     ```
-
-
-
-
-
-```
-```
-```
-```
-```
-```
