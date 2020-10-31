@@ -12,21 +12,21 @@ then
    exit 1
 fi
 
-echo -e "${LBLUE}Enter the system type - local / server / wsl ${WHITE}"
+echo -e "${LBLUE}Enter the system profile - personal / server / wsl ${WHITE}"
 read SYSTEM_CASE
 
 case $SYSTEM_CASE in
 
-  local)
-    SYSTEM_TYPE=$HOME/.dotfiles/local
+  personal)
+    SYSTEM_PROFILE=$HOME/.dotfiles/linux/personal
     ;;
 
   server)
-    SYSTEM_TYPE=$HOME/.dotfiles/server
+    SYSTEM_PROFILE=$HOME/.dotfiles/linux/server
     ;;
 
   wsl)
-    SYSTEM_TYPE=$HOME/.dotfiles/wsl
+    SYSTEM_PROFILE=$HOME/.dotfiles/linux/wsl
     ;;
 
   *)
@@ -73,13 +73,13 @@ echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 # Micro editor settings
 [[ -d $HOME/.config/micro ]] || mkdir -p $HOME/.config/micro
 
-ln -s $SYSTEM_TYPE/.config/micro/settings.json $HOME/.config/micro/settings.json
-ln -s $SYSTEM_TYPE/.aliases $HOME/.aliases
-ln -s $SYSTEM_TYPE/.env $HOME/.env
-ln -s $SYSTEM_TYPE/.gitconfig $HOME/.gitconfig
-ln -s $SYSTEM_TYPE/.p10k.zsh $HOME/.p10k.zsh
-ln -s $SYSTEM_TYPE/.tmux.conf $HOME/.tmux.conf
-ln -s $SYSTEM_TYPE/.zshrc $HOME/.zshrc
+ln -s $SYSTEM_PROFILE/.config/micro/settings.json $HOME/.config/micro/settings.json
+ln -s $SYSTEM_PROFILE/.aliases $HOME/.aliases
+ln -s $SYSTEM_PROFILE/.env $HOME/.env
+ln -s $SYSTEM_PROFILE/.gitconfig $HOME/.gitconfig
+ln -s $SYSTEM_PROFILE/.p10k.zsh $HOME/.p10k.zsh
+ln -s $SYSTEM_PROFILE/.tmux.conf $HOME/.tmux.conf
+ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zshrc
 
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 
