@@ -43,7 +43,13 @@ if ($terminalFolder) {
     #Remove-Item "$terminalFolder\LocalState\settings.json" -Force
     Rename-Item -Path "$terminalFolder\LocalState\settings.json" -NewName "settings.json_backup" -Force
   }
-  New-Item -Path "$terminalFolder\LocalState\settings.json" -ItemType SymbolicLink -Value "${profilePath}\windows_terminal\settinga.json"
+  New-Item -Path "$terminalFolder\LocalState\settings.json" -ItemType SymbolicLink -Value "${profilePath}\windows_terminal\settings.json"
 }
+
+Write-Host "--> Git symlinks ..." -ForegroundColor Green
+if (Test-Path "${env:USERPROFILE}\.gitconfig") {
+  Rename-Item -Path "${env:USERPROFILE}\.gitconfig" -NewName ".gitconfig_backup" -Force
+}
+New-Item -Path "${env:USERPROFILE}\.gitconfig" -ItemType SymbolicLink -Value "${profilePath}\git\.gitconfig"
 
 Read-Host -Prompt "Press Enter to exit" 
