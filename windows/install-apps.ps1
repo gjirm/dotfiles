@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 function ChocoInstall {
   choco upgrade -y --not-broken --approved-only $args
 }
@@ -75,11 +77,34 @@ ChocoInstall --not-broken --approved-only awscli
 #ChocoInstall --not-broken --approved-only duck
 choco install minio-client
 
-::::::::::::::::::
-# Other Tools  ::
-::::::::::::::::::
+# Other Tools 
 #ChocoInstall openssh
 #ChocoInstall gnuwin32-sed.install
 #ChocoInstall rsync
 #ChocoInstall powershell
 #ChocoInstall marktext
+
+Write-Host "--> Setting up Update Task..." -ForegroundColor Green
+
+# See if choco.exe is available. If not, stop execution
+$chocoCmd = Get-Command -Name 'choco' -ErrorAction SilentlyContinue -WarningAction SilentlyContinue | Select-Object -ExpandProperty Source
+if ($null -eq $chocoCmd) { 
+    break
+}
+
+# Setting up PS cmdlets for Scheduled Tasks
+mofcomp C:\Windows\System32\wbem\SchedProv.mof
+
+# Settings for the scheduled task
+$taskAction = New-ScheduledTaskAction $chocoCmd -Argument 'upgrade all -y'
+$taskTrigger = @()
+$taskTrigger += New-ScheduledTaskTrigger -Weekly -At 9am -DaysOfWeek Wednesday -WeeksInterval 1 
+$taskTrigger += New-ScheduledTaskTrigger -Weekly -At 4pm -DaysOfWeek Wednesday -WeeksInterval 1
+$taskUserPrincipal = New-ScheduledTaskPrincipal -UserId 'SYSTEM' -RunLevel Highest
+$taskSettings = New-ScheduledTaskSettingsSet -Compatibility Win8 -AllowStartIfOnBatteries -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 12)
+
+# Set up the task, and register it
+$task = New-ScheduledTask -Action $taskAction -Principal $taskUserPrincipal -Trigger $taskTrigger -Settings $taskSettings
+Register-ScheduledTask -TaskName 'ChocolateyUpgradeAllTask' -InputObject $task -Force
+
+Write-Host "--> Done <--" -ForegroundColor Green
