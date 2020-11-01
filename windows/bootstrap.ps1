@@ -28,6 +28,7 @@ ChocoInstall git
 ChocoInstall powershell-core
 ChocoInstall microsoft-windows-terminal
 ChocoInstall cascadiafonts
+ChocoInstall fzf
 
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
@@ -65,6 +66,9 @@ Write-Host "--> Installing Get-ChildItemColor in PowerShell Core ..." -Foregroun
 
 Write-Host "--> Installing PSReadLine in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck"
+
+Write-Host "--> Installing PSFzf in PowerShell Core ..." -ForegroundColor Green
+& "$pwshExe" -nologo -noprofile -command "Install-Module -Name PSFzf -Force"
 
 Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name WslInterop -Force"

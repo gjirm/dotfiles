@@ -83,6 +83,7 @@ choco install minio-client
 #ChocoInstall rsync
 #ChocoInstall powershell
 #ChocoInstall marktext
+ChocoInstall fzf
 
 Write-Host "--> Setting up Update Task..." -ForegroundColor Green
 

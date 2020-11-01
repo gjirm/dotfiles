@@ -37,7 +37,8 @@
                 "name": "PowerShell",
                 "colorScheme": "Tango Dark",
                 "fontFace" : "Cascadia Mono PL",
-                "source": "Windows.Terminal.PowershellCore"
+                "source": "Windows.Terminal.PowershellCore",
+                "commandline": "-nologo"
             },
             {
                 "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
