@@ -1,5 +1,7 @@
 #Requires -RunAsAdministrator
 
+$timeStamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
+
 Write-Host "--> Creating profile symlinks <--" -ForegroundColor Green
 
 if ( -not $systemProfile) {
@@ -8,7 +10,7 @@ if ( -not $systemProfile) {
 
 switch ($systemProfile) {
     "personal" {
-        $profilePath = (Get-Item ".").FullName + "\personal"
+        $profilePath = "$PSScriptRoot\personal"
     }
     default {
         Write-Host "--! Profile not recognized! Exiting..." -ForegroundColor Yellow
@@ -24,13 +26,13 @@ if ( -not (Test-Path "${env:USERPROFILE}\Documents\PowerShell")) {
 
 # PowerShell Core profile
 if (Test-Path "${env:USERPROFILE}\Documents\PowerShell\Microsoft.PowerShell_profile.ps1") {
-  Rename-Item -Path "${env:USERPROFILE}\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -NewName "Microsoft.PowerShell_profile.ps1_backup"
+  Rename-Item -Path "${env:USERPROFILE}\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -NewName "Microsoft.PowerShell_profile.ps1_backup_${timeStamp}"
 }
 New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\Microsoft.PowerShell_profile.ps1" -ItemType SymbolicLink -Value "${profilePath}\powershell\profile.ps1"
 
 # Powershell Core aliases
 if (Test-Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1") {
-  Rename-Item -Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1" -NewName "aliases.ps1_backup" -Force
+  Rename-Item -Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1" -NewName "aliases.ps1_backup_${timeStamp}" -Force
 }
 New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1" -ItemType SymbolicLink -Value "${profilePath}\powershell\aliases.ps1"
 
@@ -41,7 +43,7 @@ $terminalFolder = Get-ChildItem "${env:USERPROFILE}\AppData\Local\Packages" -fil
 if ($terminalFolder) {
   if (Test-Path "$terminalFolder\LocalState\settings.json") {
     #Remove-Item "$terminalFolder\LocalState\settings.json" -Force
-    Rename-Item -Path "$terminalFolder\LocalState\settings.json" -NewName "settings.json_backup" -Force
+    Rename-Item -Path "$terminalFolder\LocalState\settings.json" -NewName "settings.json_backup_${timeStamp}" -Force
   }
   New-Item -Path "$terminalFolder\LocalState\settings.json" -ItemType SymbolicLink -Value "${profilePath}\windows_terminal\settings.json"
 }
@@ -49,7 +51,7 @@ if ($terminalFolder) {
 # Gitconfig
 Write-Host "--> Git symlinks ..." -ForegroundColor Green
 if (Test-Path "${env:USERPROFILE}\.gitconfig") {
-  Rename-Item -Path "${env:USERPROFILE}\.gitconfig" -NewName ".gitconfig_backup" -Force
+  Rename-Item -Path "${env:USERPROFILE}\.gitconfig" -NewName ".gitconfig_backup_${timeStamp}" -Force
 }
 New-Item -Path "${env:USERPROFILE}\.gitconfig" -ItemType SymbolicLink -Value "${profilePath}\git\.gitconfig"
 
