@@ -17,6 +17,10 @@ Set-Theme Paradox
 # Start-SshAgent
 # $env:ConEmuANSI = $True # hack for normal powershell
 
+if (-not $env:HOME) {
+    $env:HOME = "$($env:HOMEDRIVE)$($env:HOMEPATH)"
+}
+
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 # Autocompletion for arrow keys
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward

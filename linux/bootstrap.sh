@@ -53,33 +53,7 @@ echo -e "${LGREEN}--> Installing powerlevel10K prompt ...${WHITE}"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 #sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k/powerlevel10k"/g' ~/.zshrc
 
-echo -e "${LGREEN}--> Backup original dot files to ${HOME}/.backup/ ${WHITE}"
-mkdir $HOME/.backup
-
-[[ -f $HOME/.aliases ]] && mv $HOME/.aliases $HOME/.backup/.aliases
-
-[[ -f $HOME/.env ]] && mv $HOME/.env $HOME/.backup/.env
-
-[[ -f $HOME/.gitconfig ]] && mv $HOME/.gitconfig $HOME/.backup/.gitconfig
-
-[[ -f $HOME/.p10k.zsh ]] && mv $HOME/.p10k.zsh $HOME/.backup/.p10k.zsh
-
-[[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $HOME/.backup/.tmux.conf
-
-[[ -f $HOME/.zshrc ]] && mv $HOME/.zshrc $HOME/.backup/.zshrc
-
-echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
-
-# Micro editor settings
-[[ -d $HOME/.config/micro ]] || mkdir -p $HOME/.config/micro
-
-ln -s $SYSTEM_PROFILE/.config/micro/settings.json $HOME/.config/micro/settings.json
-ln -s $SYSTEM_PROFILE/.aliases $HOME/.aliases
-ln -s $SYSTEM_PROFILE/.env $HOME/.env
-ln -s $SYSTEM_PROFILE/.gitconfig $HOME/.gitconfig
-ln -s $SYSTEM_PROFILE/.p10k.zsh $HOME/.p10k.zsh
-ln -s $SYSTEM_PROFILE/.tmux.conf $HOME/.tmux.conf
-ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zshrc
+source ./create-symlinks.sh
 
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 
