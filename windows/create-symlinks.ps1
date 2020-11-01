@@ -46,10 +46,16 @@ if ($terminalFolder) {
   New-Item -Path "$terminalFolder\LocalState\settings.json" -ItemType SymbolicLink -Value "${profilePath}\windows_terminal\settings.json"
 }
 
+# Gitconfig
 Write-Host "--> Git symlinks ..." -ForegroundColor Green
 if (Test-Path "${env:USERPROFILE}\.gitconfig") {
   Rename-Item -Path "${env:USERPROFILE}\.gitconfig" -NewName ".gitconfig_backup" -Force
 }
 New-Item -Path "${env:USERPROFILE}\.gitconfig" -ItemType SymbolicLink -Value "${profilePath}\git\.gitconfig"
+
+# Create profile file for local override settings 
+if ( -not (Test-Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1")) {
+  New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1" -ItemType "file" -Value ""
+}
 
 Read-Host -Prompt "Press Enter to exit" 

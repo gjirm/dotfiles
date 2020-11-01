@@ -66,9 +66,11 @@ Write-Host "--> Installing Get-ChildItemColor in PowerShell Core ..." -Foregroun
 Write-Host "--> Installing PSReadLine in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck"
 
+Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor Green
+& "$pwshExe" -nologo -noprofile -command "Install-Module -Name WslInterop -Force"
 
 . ".\create-symlinks.ps1"
 #. ".\install-apps.ps1"
-Read-Host -Prompt "Press Enter to exit" 
+
 
 
