@@ -10,7 +10,7 @@ $systemProfile = Read-Host -Prompt "--> Enter the system profile type - personal
 
 switch ($systemProfile) {
     "personal" {
-        $profilePath = (Get-Item ".").FullName + "\personal"
+        $profilePath = "$PSScriptRoot\personal"
     }
     default {
         Write-Host "--! Profile not recognized! Exiting..." -ForegroundColor Yellow
