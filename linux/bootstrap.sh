@@ -64,11 +64,10 @@ then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-source ./create-symlinks.sh
-
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
-
 sudo chsh -s /usr/bin/zsh $USER
+
+source ./create-symlinks.sh
 
 #echo -e "${LGREEN}--> Installing basic apps/tools ...${WHITE}"
 #source install-tools.sh

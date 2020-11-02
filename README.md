@@ -10,9 +10,10 @@ There are 3 types of environments dot files - local, server, wsl.
 
     ```shell
     git clone https://github.com/gjirm/dotfiles.git ~/.dotfiles
+    cd ~/.dotfiles/linux
+    chmod +x ./bootstrap.sh
     ```
-
-2. Run ``./install.sh``
+2. Run ``./bootstrap.sh``
 
 ### Included scripts
 
