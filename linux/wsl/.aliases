@@ -1,6 +1,7 @@
 alias l="ls -lhF"
 alias ll="ls -lahF"
 alias ld="ls -lhd */"
+alias lld="ls --color=always -lahF | grep --color=never '/$'"
 
 alias ..="cd .."
 alias ...="cd ../.."
