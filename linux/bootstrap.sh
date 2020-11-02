@@ -35,7 +35,8 @@ case $SYSTEM_CASE in
     ;;
 esac
 
-sudo apt install curl wget git zsh autojump -y
+sudo apt install curl wget git file build-essential zsh autojump -y
+#sudo apt instal fd-find
 
 echo -e "${LGREEN}--> Installing oh-my-zsh ...${WHITE}"
 # Install oh-my-zsh
@@ -53,13 +54,21 @@ echo -e "${LGREEN}--> Installing powerlevel10K prompt ...${WHITE}"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 #sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k/powerlevel10k"/g' ~/.zshrc
 
+echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all --no-fish
+
+if [[ "$SYSTEM_CASE" != "server" ]]
+then
+  echo -e "${LGREEN}--> Installing Linuxbrew ...${WHITE}"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
 source ./create-symlinks.sh
 
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 
 sudo chsh -s /usr/bin/zsh $USER
 
-echo -e "${LGREEN}--> Finished <--${WHITE}"
 #echo -e "${LGREEN}--> Installing basic apps/tools ...${WHITE}"
 #source install-tools.sh
-

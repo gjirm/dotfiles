@@ -114,7 +114,7 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.env
 source $HOME/.aliases
-source $HOME/.zshrc_local 
+source $HOME/.zshrc_local
 
 #eval $(/mnt/d/git/keybase/work/apps/weasel-pageant-1.4/weasel-pageant -r)
 #export SSH_AUTH_SOCK=/mnt/d/git/keybase/work/apps/wsl-ssh-agent/ssh-agent.sock

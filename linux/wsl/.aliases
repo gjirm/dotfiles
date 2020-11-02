@@ -1,0 +1,46 @@
+alias l="ls -lF"
+alias ll="ls -laF"
+alias ld="ls -ld */"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias tmux="tmux -u"
+
+mcd () {
+    mkdir -p $1
+    cd $1
+}
+
+# Git
+gitpush () {
+    git add .
+    git commit -m "$*"
+    git pull
+    git push
+}
+
+alias g='git'
+alias gcl='git clone'
+alias ga='git add'
+alias gaa='git add .'
+alias gs='git status'
+alias gss='git status -s'
+alias gg='git status'
+alias ggg='git status -s'
+alias gpull='git pull'
+alias gp='git push'
+alias gpush='git push'
+alias push='git push'
+alias gpp='git pull && git push'
+alias gpo='git push origin'
+alias gd='git diff'
+alias gdd='git diff --cached'
+alias gdw='git diff --color-words'
+alias gdt='git difftool'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gcom='git commit -m'
+

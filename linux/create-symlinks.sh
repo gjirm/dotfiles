@@ -14,7 +14,7 @@ fi
 
 if [ -z ${SYSTEM_PROFILE+x} ]
 then
-    echo -e "${LBLUE}Two -Enter the system profile - personal / server / wsl ${WHITE}"
+    echo -e "${LBLUE}Enter the system profile - personal / server / wsl ${WHITE}"
     read SYSTEM_CASE
 
     case $SYSTEM_CASE in
@@ -56,6 +56,7 @@ echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 
 # Micro editor settings
 [[ -d $HOME/.config/micro ]] || mkdir -p $HOME/.config/micro
+[[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local 
 
 ln -s $SYSTEM_PROFILE/.config/micro/settings.json $HOME/.config/micro/settings.json
 ln -s $SYSTEM_PROFILE/.aliases $HOME/.aliases

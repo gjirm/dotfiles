@@ -28,6 +28,7 @@ ChocoInstall git
 ChocoInstall powershell-core
 ChocoInstall microsoft-windows-terminal
 ChocoInstall cascadiafonts
+ChocoInstall fd
 ChocoInstall fzf
 
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force

@@ -114,10 +114,14 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.env
 source $HOME/.aliases
+source $HOME/.zshrc_local 
 
-
+#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 #eval $(/mnt/d/git/keybase/work/apps/weasel-pageant-1.4/weasel-pageant -r)
 #export SSH_AUTH_SOCK=/mnt/d/git/keybase/work/apps/wsl-ssh-agent/ssh-agent.sock
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add fzf config
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

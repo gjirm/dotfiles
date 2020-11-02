@@ -41,11 +41,11 @@ function gitpush {
 }
 
 function elevateProcess {
-  & Start-Process PowerShell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command ${args}" -Verb RunAs
+  & Start-Process pwsh.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command ""${args}""" -Verb RunAs
 }
 Set-Alias -Name sudo -Value elevateProcess
 
 function Set-Hosts {
-  notepad "$($env:SystemRoot)\system32\drivers\etc\hosts"
+  sudo notepad "$($env:SystemRoot)\system32\drivers\etc\hosts"
 }
 Set-Alias -Name hosts -Value Set-Hosts
