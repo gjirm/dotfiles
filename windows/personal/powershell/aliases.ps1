@@ -24,6 +24,7 @@ function ... { cd .. ; cd .. }
 function .... { cd .. ; cd .. ; cd .. }
 function ..... { cd .. ; cd .. ; cd .. ; cd .. }
 function home { cd $env:USERPROFILE }
+function med { micro $(fd -HI -t f $args . | fzf) }
 
 function which($name) {
   Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
