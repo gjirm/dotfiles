@@ -1,5 +1,8 @@
 #Requires -RunAsAdministrator
 
+# Imports
+. ".\utils\functions.ps1"
+
 function ChocoInstall {
   choco upgrade -y --not-broken --approved-only $args
 }
@@ -75,6 +78,13 @@ Write-Host "--> Installing PSFzf in PowerShell Core ..." -ForegroundColor Green
 
 Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name WslInterop -Force"
+
+# Delugia Nerd Font (Cascadia Code + Nerd Fonts)
+# https://github.com/adam7/delugia-code
+Write-Host "--> Delugia Nerd Font (Cascadia Code + Nerd Fonts) ..." -ForegroundColor Green
+InstallFromGithub -repo "adam7/delugia-code" -filenamePattern "Delugia.Nerd.Font.Complete.ttf" -installPath "$PSScriptRoot"
+
+.\Delugia.Nerd.Font.Complete.ttf
 
 . ".\create-symlinks.ps1"
 #. ".\install-apps.ps1"

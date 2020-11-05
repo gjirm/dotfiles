@@ -47,6 +47,18 @@ function touch($file) {
   "" | Out-File $file -Encoding ASCII
 }
 
+function fed { micro $(fd -HI -t f $args . | fzf) }
+function fss {
+    if ($args) {
+        $cmd = $(fd -t f -e ps1 $args D:\git\keybase\work\ssh | fzf)
+        & $cmd
+    } else {
+        $cmd = $(fd -t f -e ps1 . D:\git\keybase\work\ssh | fzf)
+        & $cmd
+    }
+}
+
+# Sudo
 function elevateProcess {
   & Start-Process pwsh.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command ""${args}""" -Verb RunAs
 }
