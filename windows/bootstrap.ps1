@@ -24,12 +24,14 @@ if( -not (test-path "C:\ProgramData\chocolatey\choco.exe") ) {
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
 
+Write-Host "--> Installing apps..." -ForegroundColor Green
 ChocoInstall git
 ChocoInstall powershell-core
 ChocoInstall microsoft-windows-terminal
 ChocoInstall cascadiafonts
 ChocoInstall fd
 ChocoInstall fzf
+ChocoInstall micro
 
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted

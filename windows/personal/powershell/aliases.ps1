@@ -33,6 +33,7 @@ function ... { cd .. ; cd .. }
 function .... { cd .. ; cd .. ; cd .. }
 function ..... { cd .. ; cd .. ; cd .. ; cd .. }
 function home { cd $env:USERPROFILE }
+function med { micro $(fd -HI -t f $args . | fzf) }
 
 # Terraform
 function tf { terraform $args }
