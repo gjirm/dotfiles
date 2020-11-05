@@ -1,4 +1,5 @@
 
+# Git
 function g { git $args }
 function gcl { git clone $args }
 function gs { git status }
@@ -15,29 +16,34 @@ function push { git push $args }
 Set-Alias -Name gpull -Value pull
 Set-Alias -Name gpush -Value push
 
+function gitpush {
+  git add -A
+  git commit -m "$args"
+  git pull
+  git push
+}
+
 Set-Alias l Get-ChildItemColor -Option AllScope
 Set-Alias ll Get-ChildItemColor -Option AllScope
 Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
+# Directory
 function .. { cd .. }
 function ... { cd .. ; cd .. }
 function .... { cd .. ; cd .. ; cd .. }
 function ..... { cd .. ; cd .. ; cd .. ; cd .. }
 function home { cd $env:USERPROFILE }
 
+# Terraform
+function tf { terraform $args }
+
+#Others
 function which($name) {
   Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
 }
 
 function touch($file) {
   "" | Out-File $file -Encoding ASCII
-}
-
-function gitpush {
-    git add .
-    git commit -m "$*"
-    git pull
-    git push
 }
 
 function elevateProcess {
