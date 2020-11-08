@@ -33,6 +33,11 @@ function ... { cd .. ; cd .. }
 function .... { cd .. ; cd .. ; cd .. }
 function ..... { cd .. ; cd .. ; cd .. ; cd .. }
 function home { cd $env:USERPROFILE }
+Function cdssh {Set-Location -Path "$env:MY_SSH_PATH"}
+Function cdgit {Set-Location -Path "$env:MY_GIT_PATH"}
+Function cdwork {Set-Location -Path "$env:MY_WORK_PATH"}
+
+# Text editor
 function med { micro $(fd -HI -t f $args . | fzf) }
 
 # Terraform
@@ -50,13 +55,15 @@ function touch($file) {
 function fed { micro $(fd -HI -t f $args . | fzf) }
 function fss {
     if ($args) {
-        $cmd = $(fd -t f -e ps1 $args D:\git\keybase\work\ssh | fzf)
+        $cmd = $(fd -t f -e ps1 $args "$env:MY_SSH_PATH" | fzf)
         & $cmd
     } else {
-        $cmd = $(fd -t f -e ps1 . D:\git\keybase\work\ssh | fzf)
+        $cmd = $(fd -t f -e ps1 . "$env:MY_SSH_PATH" | fzf)
         & $cmd
     }
 }
+
+
 
 # Sudo
 function elevateProcess {

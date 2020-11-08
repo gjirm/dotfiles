@@ -61,4 +61,20 @@ if ( -not (Test-Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1"
   New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1" -ItemType "file" -Value ""
 }
 
+# Set ENV variables for MY common paths
+$setSshEnv = Read-Host -Prompt "--> Set ENV variable with path to folder with SSH profiles (MY_SSH_PATH)"
+if ($setSshEnv) {
+  [Environment]::SetEnvironmentVariable("MY_SSH_PATH", "$setSshEnv","user")
+}
+
+$setWorkEnv = Read-Host -Prompt "--> Set ENV variable with path to folder with WORK files (MY_WORK_PATH)"
+if ($setWorkEnv) {
+  [Environment]::SetEnvironmentVariable("MY_WORK_PATH", "$setWorkEnv","user")
+}
+
+$setGitEnv = Read-Host -Prompt "--> Set ENV variable with path to the GIT root folder (MY_GIT_PATH)"
+if ($setGitEnv) {
+  [Environment]::SetEnvironmentVariable("MY_GIT_PATH", "$setGitEnv","user")
+}
+
 Read-Host -Prompt "Press Enter to exit" 

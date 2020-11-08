@@ -13,6 +13,7 @@ There are 3 types of environments dot files - local, server, wsl.
     cd ~/.dotfiles/linux
     chmod +x ./bootstrap.sh
     ```
+
 2. Run ``./bootstrap.sh``
 
 ### Included scripts
