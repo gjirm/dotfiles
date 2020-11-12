@@ -12,7 +12,7 @@ then
    exit 1
 fi
 
-if [ -z ${SYSTEM_PROFILE+x} ]
+if [[ -z "$SYSTEM_PROFILE" ]]
 then
     echo -e "${LBLUE}Enter the system profile - personal / server / wsl ${WHITE}"
     read SYSTEM_CASE
@@ -66,4 +66,4 @@ ln -s $SYSTEM_PROFILE/.p10k.zsh $HOME/.p10k.zsh
 ln -s $SYSTEM_PROFILE/.tmux.conf $HOME/.tmux.conf
 ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zshrc
 
-echo -e "${LGREEN}--> Finished <--${WHITE}"
+echo -e "${LGREEN}--> Setting symlinks finished <--${WHITE}"

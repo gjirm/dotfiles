@@ -37,8 +37,11 @@ Function cdssh {Set-Location -Path "$env:MY_SSH_PATH"}
 Function cdgit {Set-Location -Path "$env:MY_GIT_PATH"}
 Function cdwork {Set-Location -Path "$env:MY_WORK_PATH"}
 
+function mcd { New-Item $args[0] -ItemType Directory; Set-Location -Path $args[0] }
+
 # Text editor
-function med { micro $(fd -HI -t f $args . | fzf) }
+function fed { micro $(fd -HI -t f $args . | fzf) }
+function fco { code $(fd -HI -t f $args . | fzf) }
 
 # Terraform
 function tf { terraform $args }
@@ -52,7 +55,6 @@ function touch($file) {
   "" | Out-File $file -Encoding ASCII
 }
 
-function fed { micro $(fd -HI -t f $args . | fzf) }
 function fss {
     if ($args) {
         $cmd = $(fd -t f -e ps1 $args "$env:MY_SSH_PATH" | fzf)
@@ -63,7 +65,9 @@ function fss {
     }
 }
 
-
+function fdc { 
+  & "C:\Program Files\Double Commander\doublecmd.exe" -c -t $(fd -HI -t d $args . | fzf) 
+}
 
 # Sudo
 function elevateProcess {

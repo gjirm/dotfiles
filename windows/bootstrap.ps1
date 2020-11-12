@@ -10,6 +10,7 @@ function ChocoInstall {
 Write-Host "--> Bootstraping Windows profile <--" -ForegroundColor Green
 
 $systemProfile = Read-Host -Prompt "--> Enter the system profile type - personal"
+$systemProfile = $systemProfile.ToLower()
 
 switch ($systemProfile) {
     "personal" {
@@ -86,7 +87,13 @@ InstallFromGithub -repo "adam7/delugia-code" -filenamePattern "Delugia.Nerd.Font
 
 .\Delugia.Nerd.Font.Complete.ttf
 
+# Create my symlinks
 . ".\create-symlinks.ps1"
+
+# Setup my ENV variables
+if ( $systemProfile -eq "personal") {
+  . ".\create-my-user-env.ps1"
+}
 #. ".\install-apps.ps1"
 
 
