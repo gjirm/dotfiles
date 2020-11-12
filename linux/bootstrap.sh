@@ -62,6 +62,10 @@ if [[ "$SYSTEM_CASE" != "server" ]]
 then
   echo -e "${LGREEN}--> Installing Linuxbrew ...${WHITE}"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+  brew install fd
 fi
 
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
@@ -69,7 +73,6 @@ sudo chsh -s /usr/bin/zsh $USER
 
 source ./create-symlinks.sh
 source ./create-my-env-vars.sh
-
 
 #echo -e "${LGREEN}--> Installing basic apps/tools ...${WHITE}"
 #source install-tools.sh
