@@ -66,7 +66,19 @@ function fss {
 }
 
 function fdc { 
-  & "C:\Program Files\Double Commander\doublecmd.exe" -c -t $(fd -HI -t d $args . | fzf) 
+  if ($args) {
+    & "C:\Program Files\Double Commander\doublecmd.exe" -c -t $(fd -HI -t d $args . | fzf) 
+  } else {
+      & "C:\Program Files\Double Commander\doublecmd.exe" -c -t . 
+  }
+}
+
+function fex { 
+  if ($args) {
+    & explorer $(fd -HI -t d $args . | fzf) 
+  } else {
+    & explorer .
+  }
 }
 
 # Sudo
