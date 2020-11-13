@@ -10,7 +10,7 @@ alias .....="cd ../../../.."
 alias tmux="tmux -u"
 
 function fcd() {
-    cd $(fd -HI -t f $@ . | fzf)
+    cd $(fd -HI -t d $@ . | fzf)
 }
 
 function mcd () {
