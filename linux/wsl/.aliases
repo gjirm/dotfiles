@@ -10,13 +10,28 @@ alias .....="cd ../../../.."
 
 alias tmux="tmux -u"
 
-mcd () {
+function mcd () {
     mkdir -p $1
     cd $1
 }
 
+# Editor
+function fed() { 
+    micro $(fd -HI -t f $@ . | fzf) 
+}
+
+# SSH 
+function fss() {
+    if [[ "$#" != 0 ]]; 
+    then
+        sh $(fd -t f -e ps1 $@ "$MY_SSH_PATH" | fzf)
+    else
+        sh $(fd -t f -e ps1 . "$MY_SSH_PATH" | fzf)
+    fi
+}
+
 # Git
-gitpush () {
+function gitpush () {
     git add .
     git commit -m "$*"
     git pull
@@ -32,6 +47,7 @@ alias gss='git status -s'
 alias gg='git status'
 alias ggg='git status -s'
 alias gpull='git pull'
+alias pull='git pull'
 alias gp='git push'
 alias gpush='git push'
 alias push='git push'
@@ -44,7 +60,13 @@ alias gdt='git difftool'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gcom='git commit -m'
+alias grest='git restore'
 
 alias cdssh='cd $MY_SSH_PATH'
-alias cdworkh='cd $MY_WORK_PATH'
+alias cdwork='cd $MY_WORK_PATH'
 alias cdgit='cd $MY_WORK_PATH'
+
+# systemctl
+###########
+alias sc='sudo systemctl'
+alias scst='sudo systemctl status'
