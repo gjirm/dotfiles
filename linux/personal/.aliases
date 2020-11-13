@@ -9,6 +9,12 @@ alias .....="cd ../../../.."
 
 alias tmux="tmux -u"
 
+function update_dotfiles () {
+    echo -e "\e[1;32m--> Updating $HOME/.dotfiles ...\e[0m"
+    git -C $HOME/.dotfiles restore .
+    git -C $HOME/.dotfiles pull  
+}
+
 function fcd() {
     cd $(fd -HI -t d $@ . | fzf)
 }

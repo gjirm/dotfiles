@@ -1,3 +1,9 @@
+# Update .dotfiles
+function update_dotfiles {
+  Write-Host "--> Updating $env:userprofile\.dotfiles..." -ForegroundColor Green
+  git -C "$env:userprofile\.dotfiles" restore .
+  git -C "$env:userprofile\.dotfiles" pull  
+}
 
 # Git
 function g { git $args }
