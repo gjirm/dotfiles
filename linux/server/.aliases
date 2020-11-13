@@ -9,6 +9,10 @@ alias .....="cd ../../../.."
 
 alias tmux="tmux -u"
 
+function fcd() {
+    cd $(fd -HI -t f $@ . | fzf)
+}
+
 function mcd () {
     mkdir -p $1
     cd $1

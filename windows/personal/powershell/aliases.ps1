@@ -37,6 +37,8 @@ Function cdssh {Set-Location -Path "$env:MY_SSH_PATH"}
 Function cdgit {Set-Location -Path "$env:MY_GIT_PATH"}
 Function cdwork {Set-Location -Path "$env:MY_WORK_PATH"}
 
+function fcd { Set-Location -Path $(fd -HI -t d $args . | fzf) }
+
 function mcd { New-Item $args[0] -ItemType Directory; Set-Location -Path $args[0] }
 
 # Text editor
