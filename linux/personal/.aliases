@@ -1,3 +1,5 @@
+alias cls='clear'
+
 alias l="ls -lF"
 alias ll="ls -laF"
 alias ld="ls -ld */"
