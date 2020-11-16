@@ -48,8 +48,8 @@ function fcd { Set-Location -Path $(fd -HI -t d $args . | fzf) }
 function mcd { New-Item $args[0] -ItemType Directory; Set-Location -Path $args[0] }
 
 # Text editor
-function fed { micro $(fd -HI -t f $args . | fzf) }
-function fco { code $(fd -HI -t f $args . | fzf) }
+function fed { micro $(fd -HI -t f -t l $args . | fzf) }
+function fco { code $(fd -HI -t f -t l $args . | fzf) }
 
 # Terraform
 function tf { terraform $args }
