@@ -11,7 +11,7 @@ alias .....="cd ../../../.."
 
 alias tmux="tmux -u"
 
-function update_dotfiles () {
+function update_dotfiles() {
     echo -e "\e[1;32m--> Updating $HOME/.dotfiles ...\e[0m"
     git -C $HOME/.dotfiles restore .
     git -C $HOME/.dotfiles pull  
@@ -21,7 +21,7 @@ function fcd() {
     cd $(fd -HI -t d $@ . | fzf)
 }
 
-mcd () {
+function mcd() {
     mkdir -p $1
     cd $1
 }
@@ -34,7 +34,7 @@ function fed() {
 # Git
 ##########
 
-gitpush () {
+function gitpush() {
     git add .
     git commit -m "$*"
     git pull
