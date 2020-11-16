@@ -24,6 +24,11 @@ mcd () {
     cd $1
 }
 
+# Editor
+function fed() { 
+    micro $(fd -HI -t f -t l $@ . | fzf)
+}
+
 # Git
 ##########
 

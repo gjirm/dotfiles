@@ -27,7 +27,7 @@ function mcd() {
 
 # Editor
 function fed() { 
-    micro $(fd -HI -t f $@ . | fzf) 
+    micro $(fd -HI -t f -t l $@ . | fzf)
 }
 
 # SSH 

@@ -19,18 +19,18 @@ function fcd() {
     cd $(fd -HI -t d $@ . | fzf)
 }
 
-function mcd () {
+function mcd() {
     mkdir -p $1
     cd $1
 }
 
 # Editor
 function fed() { 
-    micro $(fd -HI -t f $@ . | fzf) 
+    micro $(fd -HI -t f -t l $@ . | fzf)
 }
 
 # Git
-function gitpush () {
+function gitpush() {
     git add .
     git commit -m "$*"
     git pull
