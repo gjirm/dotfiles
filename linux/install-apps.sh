@@ -9,6 +9,7 @@
 # - restic
 # - ctop
 # - step
+# - gocryptfs
 #
 # Author: JirM
 #
@@ -223,3 +224,11 @@ chmod +x /usr/local/bin/step
 chown root:root /usr/local/bin/step
 /usr/local/bin/step version
 install_check "Step" $?
+
+# gocryptfs: https://github.com/rfjakob/gocryptfs
+echo -e "${LGREEN}--> Installing gocryptfs...${WHITE}"
+apt install fuse
+curl -s https://api.github.com/repos/rfjakob/gocryptfs/releases | grep "browser_download_url.*linux-static_amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | grep -v beta | head -n 1 | wget -q -O - -i - | tar -xzpf - -C /usr/local/bin
+cmd_check "gocryptfs download" $?
+/usr/local/bin/gocryptfs -version
+install_check "gocryptfs" $?
