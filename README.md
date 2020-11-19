@@ -2,7 +2,7 @@
 
 There are 3 types of environments dot files - local, server, wsl.
 
-## Linux
+## Linux Ubuntu  >= 16.04
 
 ### Basic usage
 
