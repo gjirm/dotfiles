@@ -51,6 +51,7 @@ mkdir $BACKUP_DIR
 [[ -f $HOME/.p10k.zsh ]] && mv $HOME/.p10k.zsh $BACKUP_DIR/.p10k.zsh
 [[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $BACKUP_DIR/.tmux.conf
 [[ -f $HOME/.zshrc ]] && mv $HOME/.zshrc $BACKUP_DIR/.zshrc
+[[ -f $HOME/.fzf.zsh ]] && mv $HOME/.fzf.zsh $BACKUP_DIR/.fzf.zsh
 
 echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 
@@ -65,5 +66,6 @@ ln -s $SYSTEM_PROFILE/.gitconfig $HOME/.gitconfig
 ln -s $SYSTEM_PROFILE/.p10k.zsh $HOME/.p10k.zsh
 ln -s $SYSTEM_PROFILE/.tmux.conf $HOME/.tmux.conf
 ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zshrc
+ln -s $SYSTEM_PROFILE/.fzf.zsh $HOME/.fzf.zsh
 
 echo -e "${LGREEN}--> Setting symlinks finished <--${WHITE}"
