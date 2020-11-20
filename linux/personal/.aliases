@@ -31,6 +31,16 @@ function fed() {
     micro $(fd -HI -t f -t l $@ . | fzf)
 }
 
+# SSH 
+function fss() {
+    if [[ "$#" != 0 ]]; 
+    then
+        sh $(fd -t f -e ps1 $@ "$MY_SSH_PATH" | fzf)
+    else
+        sh $(fd -t f -e ps1 . "$MY_SSH_PATH" | fzf)
+    fi
+}
+
 # Git
 ##########
 
