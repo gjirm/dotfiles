@@ -48,8 +48,21 @@ function fcd { Set-Location -Path $(fd -HI -t d $args . | fzf) }
 function mcd { New-Item $args[0] -ItemType Directory; Set-Location -Path $args[0] }
 
 # Text editor
-function fed { micro $(fd -HI -t f -t l $args . | fzf) }
-function fco { code $(fd -HI -t f -t l $args . | fzf) }
+# function fed { micro $(fd -HI -t f -t l $args . | fzf) }
+# function fco { code $(fd -HI -t f -t l $args . | fzf) }
+function fed { 
+  Try {
+      Get-ChildItem -Path . -Include "*$args*" -Recurse -Attributes !Directory | Invoke-Fzf | ForEach-Object { micro $_ }
+  } Catch {
+  }
+}
+
+function fco { 
+  Try {
+      Get-ChildItem -Path . -Include "*$args*" -Recurse -Attributes !Directory | Invoke-Fzf | ForEach-Object { code $_ }
+  } Catch {
+  }
+}
 
 # Terraform
 function tf { terraform $args }
@@ -63,21 +76,39 @@ function touch($file) {
   "" | Out-File $file -Encoding ASCII
 }
 
+# function fss {
+#     if ($args) {
+#         $cmd = $(fd -t f -e ps1 $args "$env:MY_SSH_PATH" | fzf)
+#         & $cmd
+#     } else {
+#         $cmd = $(fd -t f -e ps1 . "$env:MY_SSH_PATH" | fzf)
+#         & $cmd
+#     }
+# }
+
 function fss {
-    if ($args) {
-        $cmd = $(fd -t f -e ps1 $args "$env:MY_SSH_PATH" | fzf)
-        & $cmd
-    } else {
-        $cmd = $(fd -t f -e ps1 . "$env:MY_SSH_PATH" | fzf)
-        & $cmd
-    }
+  if ($args) {
+      $cmd = $(Get-ChildItem -Path "$env:MY_SSH_PATH" -Include "*$args*.ps1*" -Recurse -Attributes !Directory | Invoke-Fzf)
+      & $cmd
+  } else {
+      $cmd = $(Get-ChildItem -Path "$env:MY_SSH_PATH" -Include "*.ps1*" -Recurse -Attributes !Directory  | Invoke-Fzf)
+      & $cmd
+  }
 }
 
 function fdc { 
   if ($args) {
     & "C:\Program Files\Double Commander\doublecmd.exe" -c -t $(fd -HI -t d $args . | fzf) 
   } else {
-      & "C:\Program Files\Double Commander\doublecmd.exe" -c -t . 
+    & "C:\Program Files\Double Commander\doublecmd.exe" -c -t . 
+  }
+}
+
+function dc { 
+  if ($args) {
+    & "C:\Program Files\Double Commander\doublecmd.exe" -c -t $args
+  } else {
+    & "C:\Program Files\Double Commander\doublecmd.exe" -c -t .
   }
 }
 
