@@ -5,13 +5,18 @@ function update_dotfiles {
   git -C "$env:userprofile\.dotfiles" pull  
 }
 
-function update_work {
-  Write-Host "--> Updating $env:MY_GITWORK_PATH..." -ForegroundColor Green
+function push_work {
+  Write-Host "--> Pushing $env:MY_GITWORK_PATH..." -ForegroundColor Green
   $cDate = Get-Date -Format "yyyy-MM-dd_HHmmss_K"
   git -C "$env:MY_GITWORK_PATH" add -A
   git -C "$env:MY_GITWORK_PATH" commit -m "$cDate"
   git -C "$env:MY_GITWORK_PATH" pull
   git -C "$env:MY_GITWORK_PATH" push
+}
+
+function pull_work {
+  Write-Host "--> Pulling $env:MY_GITWORK_PATH..." -ForegroundColor Green
+  git -C "$env:MY_GITWORK_PATH" pull
 }
 
 # Git
