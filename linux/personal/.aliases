@@ -13,8 +13,9 @@ alias tmux="tmux -u"
 
 function update_dotfiles() {
     echo -e "\e[1;32m--> Updating $HOME/.dotfiles ...\e[0m"
-    git -C $HOME/.dotfiles checkout .
-    git -C $HOME/.dotfiles pull  
+    git -C $HOME/.dotfiles checkout
+    git -C $HOME/.dotfiles fetch
+    git -C $HOME/.dotfiles merge  
 }
 
 function fcd() {
@@ -77,6 +78,7 @@ alias grest='git restore'
 
 alias cdssh='cd $MY_SSH_PATH'
 alias cdwork='cd $MY_WORK_PATH'
+alias cdgitwork='cd $MY_GITWORK_PATH'
 alias cdgit='cd $MY_GIT_PATH'
 
 # systemctl
