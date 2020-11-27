@@ -5,6 +5,7 @@ function update_dotfiles {
   git -C "$env:userprofile\.dotfiles" pull  
 }
 
+# work git
 function push_work {
   Write-Host "--> Pushing $env:MY_GITWORK_PATH..." -ForegroundColor Green
   $cDate = Get-Date -Format "yyyy-MM-dd_HHmmss_K"
@@ -56,6 +57,7 @@ function home { cd $env:USERPROFILE }
 Function cdssh {Set-Location -Path "$env:MY_SSH_PATH"}
 Function cdgit {Set-Location -Path "$env:MY_GIT_PATH"}
 Function cdwork {Set-Location -Path "$env:MY_WORK_PATH"}
+Function cdgitwork {Set-Location -Path "$env:MY_GITWORK_PATH"}
 
 function fcd { Set-Location -Path $(fd -HI -t d $args . | fzf) }
 
