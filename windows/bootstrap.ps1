@@ -36,6 +36,8 @@ ChocoInstall cascadiafonts
 ChocoInstall fd
 ChocoInstall fzf
 ChocoInstall micro
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+scoop install starship
 
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted

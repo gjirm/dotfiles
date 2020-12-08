@@ -55,6 +55,13 @@ if (Test-Path "${env:USERPROFILE}\.gitconfig") {
 }
 New-Item -Path "${env:USERPROFILE}\.gitconfig" -ItemType SymbolicLink -Value "${profilePath}\git\.gitconfig"
 
+# Starship prompt config
+Write-Host "--> Starship prompt symlinks ..." -ForegroundColor Green
+if (Test-Path "${env:USERPROFILE}\.config\starship.toml") {
+  Rename-Item -Path "${env:USERPROFILE}\.config\starship.toml" -NewName "starship_backup_${timeStamp}.toml" -Force
+}
+New-Item -Path "${env:USERPROFILE}\.config\starship.toml" -ItemType SymbolicLink -Value "${profilePath}\starship\starship.toml"
+
 # Create profile file for local override of powershell settings 
 Write-Host "--> Create PowerShell Core local profile override file ${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1 ..." -ForegroundColor Green
 if ( -not (Test-Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1")) {

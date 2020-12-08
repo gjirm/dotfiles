@@ -13,7 +13,6 @@ Import-Module "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1"
 # Viz https://github.com/mikebattista/PowerShell-WSL-Interop
 Import-WslCommand "awk", "emacs", "grep", "head", "less", "man", "sed", "seq", "tail", "vim", "qrencode", "tee"
 
-
 # oh-my-posh themes
 #$DefaultUser = "$env:username"
 # Start the default settings
