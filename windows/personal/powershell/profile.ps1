@@ -1,5 +1,5 @@
 Import-Module posh-git
-Import-Module oh-my-posh
+#Import-Module oh-my-posh
 Import-Module Get-ChildItemColor
 Import-Module PSReadline
 Import-Module PSFzf
@@ -15,12 +15,12 @@ Import-WslCommand "awk", "emacs", "grep", "head", "less", "man", "sed", "seq", "
 
 
 # oh-my-posh themes
-$DefaultUser = "$env:username"
+#$DefaultUser = "$env:username"
 # Start the default settings
 #Set-Prompt
 
 # PowerShell theme:
-Set-Theme Paradox
+#Set-Theme Paradox
 #Set-Theme Pure
 
 # Start-SshAgent
@@ -42,4 +42,6 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 #Set-PsFzfOption -TabExpansion
 
-Clear-Host
+Invoke-Expression (&starship init powershell)
+
+#Clear-Host
