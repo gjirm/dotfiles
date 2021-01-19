@@ -92,6 +92,19 @@ function touch($file) {
   "" | Out-File $file -Encoding ASCII
 }
 
+function time {
+  Set-StrictMode -Off;
+
+  # see http://stackoverflow.com/a/3513669/87453
+  $cmd, $args = $args
+  $args = @($args)
+  $sw = [diagnostics.stopwatch]::startnew()
+  & $cmd @args
+  $sw.stop()
+  
+  "$($sw.elapsed)"
+}
+
 # function fss {
 #     if ($args) {
 #         $cmd = $(fd -t f -e ps1 $args "$env:MY_SSH_PATH" | fzf)
