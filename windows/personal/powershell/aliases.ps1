@@ -80,6 +80,9 @@ function fco {
   }
 }
 
+# DNS
+function rdns { Resolve-DnsName $args[0] }
+
 # Terraform
 function tf { terraform $args }
 
