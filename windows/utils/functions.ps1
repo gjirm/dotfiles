@@ -73,6 +73,22 @@ function InstallFromGithub {
     } else {
 
         Write-Host "--> Downloading $fileName to $installPath\$fileName" -ForegroundColor Green
+
+        if (Test-Path "$installPath\$fileName") {
+            $deleteExistingFile = Read-Host -Prompt "$installPath\$fileName file exists. Rewrite? [y/n]" 
+            $deleteExistingFile = $deleteExistingFile.ToLower()
+
+            switch ($deleteExistingFile) {
+                "y" {
+                    Remove-Item -Path "$installPath\$fileName" -Force
+                }
+                default {
+                    Write-Host "--! File exists. Exiting..." -ForegroundColor Yellow
+                    exit 1
+                }
+            }
+        }
+
         try {
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
             #Invoke-WebRequest -Uri $downloadUri -Out $installPath
