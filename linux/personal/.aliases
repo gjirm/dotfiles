@@ -83,7 +83,7 @@ alias cdgit='cd $MY_GIT_PATH'
 
 # terraform
 # ##########
-alias tf=terraform
+alias tf='terraform'
 
 # systemctl
 ###########
