@@ -63,6 +63,10 @@ alias gca='git commit -v -a'
 alias gcom='git commit -m'
 alias grest='git restore'
 
+# terraform
+# ##########
+alias tf='terraform'
+
 # systemctl
 ###########
 alias sc='sudo systemctl'
