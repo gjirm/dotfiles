@@ -2,7 +2,21 @@
 
 There are 3 types of environments dot files - local, server, wsl.
 
-## Linux Ubuntu  >= 16.04
+## Rspberry Pi >= 10 (buster)
+
+### Basic usage on RPi
+
+1. Clone:
+
+    ```shell
+    git clone https://github.com/gjirm/dotfiles.git ~/.dotfiles
+    cd ~/.dotfiles/linux
+    chmod +x ./bootstrap.sh
+    ```
+
+2. Run ``./bootstrap.sh``
+
+## Linux Ubuntu >= 16.04
 
 ### Basic usage
 
