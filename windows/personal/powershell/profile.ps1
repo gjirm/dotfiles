@@ -19,9 +19,12 @@ $DefaultUser = "$env:username"
 # Start the default settings
 #Set-Prompt
 
-# PowerShell theme:
-Set-Theme Paradox
+# oh-my-posh v2 PowerShell theme:
+#Set-Theme Paradox
 #Set-Theme Pure
+
+# oh-my-posh v3 PowerShell theme:
+Set-PoshPrompt -Theme "$env:USERPROFILE\.dotfiles\windows\personal\powershell\oh-my-posh-v3\themes\jirm-paradox.omp.json"
 
 # Start-SshAgent
 # $env:ConEmuANSI = $True # hack for normal powershell
