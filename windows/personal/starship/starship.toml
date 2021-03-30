@@ -28,7 +28,9 @@ scan_timeout = 100
 ssh_only = true
 
 [shell]
-disabled = true
+fish_indicator = ""
+powershell_indicator = "❯_"
+disabled = false
 
 # [[battery.display]]
 # threshold = 99
