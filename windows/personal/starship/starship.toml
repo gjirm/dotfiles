@@ -1,6 +1,7 @@
 format = """
 $shlvl\
-$shell\
+[者](fg:#00a2ed)\
+$username\
 $directory\
 $git_branch\
 $git_commit\
@@ -28,13 +29,25 @@ scan_timeout = 100
 ssh_only = true
 
 [shell]
+style = "green"
 fish_indicator = ""
-powershell_indicator = "❯_"
+powershell_indicator = "者"
 disabled = false
 
 [directory]
 truncation_length = 8
 truncation_symbol = "…/"
+
+[git_branch]
+symbol = " "
+format = " [$symbol$branch]($style) "
+
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+untracked = "?${count}"
+modified = "!${count}"
 
 # [[battery.display]]
 # threshold = 99
