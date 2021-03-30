@@ -32,6 +32,10 @@ fish_indicator = ""
 powershell_indicator = "❯_"
 disabled = false
 
+[directory]
+truncation_length = 8
+truncation_symbol = "…/"
+
 # [[battery.display]]
 # threshold = 99
 # style = "bold red"
