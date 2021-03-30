@@ -184,26 +184,36 @@ chmod +x /usr/local/bin/age
 chown root:root /usr/local/bin/age
 chmod +x /usr/local/bin/age-keygen
 chown root:root /usr/local/bin/age-keygen
+/usr/local/bin/age -version
+install_check "Age" $?
 
-/usr/local/bin/age -h
+# Rage
+echo -e "${LGREEN}--> Installing rage encryption...${WHITE}"
+app_exists "/usr/local/bin/rage"
+ragefile=$(basename $(curl -s https://api.github.com/repos/str4d/rage/releases | grep "browser_download_url.*x86_64-linux.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
+echo -e "${LGREEN}--> Downloading $ragefile...${WHITE}"
+curl -s https://api.github.com/repos/str4d/rage/releases | grep "browser_download_url.*x86_64-linux.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C /usr/local/bin
+cmd_check "Rage download" $?
+/usr/local/bin/rage --version
+install_check "Rage" $?
 
-if [ $? -eq 2 ]
-then
-  echo -e "${LGREEN}--> Age installation successfully completed!${WHITE}"
-else
-  echo -e "${LRED}--X Age installation failed. Exiting!${WHITE}"
-  exit 1
-fi
+# if [ $? -eq 0 ]
+# then
+#   echo -e "${LGREEN}--> Rage installation successfully completed!${WHITE}"
+# else
+#   echo -e "${LRED}--X Rage installation failed. Exiting!${WHITE}"
+#   exit 1
+# fi
 
 # Restic
-echo -e "${LGREEN}--> Installing restic backup...${WHITE}"
-app_exists "/usr/local/bin/restic"
-curl -s https://api.github.com/repos/restic/restic/releases | grep "browser_download_url.*linux_amd64.bz2" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | bzip2 -df > /usr/local/bin/restic
-cmd_check "Restic download" $?
-chmod +x /usr/local/bin/restic
-chown root:root /usr/local/bin/restic
-/usr/local/bin/restic version
-install_check "Restic" $?
+# echo -e "${LGREEN}--> Installing restic backup...${WHITE}"
+# app_exists "/usr/local/bin/restic"
+# curl -s https://api.github.com/repos/restic/restic/releases | grep "browser_download_url.*linux_amd64.bz2" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | bzip2 -df > /usr/local/bin/restic
+# cmd_check "Restic download" $?
+# chmod +x /usr/local/bin/restic
+# chown root:root /usr/local/bin/restic
+# /usr/local/bin/restic version
+# install_check "Restic" $?
 
 # ctop
 echo -e "${LGREEN}--> Installing ctop utility...${WHITE}"

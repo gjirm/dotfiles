@@ -41,7 +41,7 @@ ChocoInstall git
 ChocoInstall github-desktop
 ChocoInstall keybase
 #ChocoInstall dropbox
-ChocoInstall micro
+## ChocoInstall micro
 ChocoInstall powershell-core
 ChocoInstall microsoft-windows-terminal
 
@@ -49,7 +49,7 @@ ChocoInstall microsoft-windows-terminal
 #ChocoInstall mkcert
 
 # Sign tool minisign/signify https://jedisct1.github.io/minisign/
-ChocoInstall minisign
+## ChocoInstall minisign
 
 # Magic Wormhole https://github.com/warner/magic-wormhole
 # ChocoInstall vcbuildtools
@@ -75,7 +75,7 @@ ChocoInstall keepass
 #ChocoInstall --not-broken --approved-only microsoftazurestorageexplorer
 ChocoInstall --not-broken --approved-only awscli
 #ChocoInstall --not-broken --approved-only duck
-choco install minio-client
+## choco install minio-client
 
 # Other Tools 
 #ChocoInstall openssh
@@ -83,7 +83,7 @@ choco install minio-client
 #ChocoInstall rsync
 #ChocoInstall powershell
 #ChocoInstall marktext
-ChocoInstall fzf
+## ChocoInstall fzf
 
 Write-Host "--> Setting up Update Task..." -ForegroundColor Green
 

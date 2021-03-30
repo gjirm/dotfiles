@@ -76,7 +76,11 @@ alias grest='git restore'
 
 alias cdssh='cd $MY_SSH_PATH'
 alias cdwork='cd $MY_WORK_PATH'
-alias cdgit='cd $MY_WORK_PATH'
+alias cdgit='cd $MY_GIT_PATH'
+
+# terraform
+# ##########
+alias tf='terraform'
 
 # systemctl
 ###########

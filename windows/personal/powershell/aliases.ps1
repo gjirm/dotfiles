@@ -80,6 +80,9 @@ function fco {
   }
 }
 
+# DNS
+function rdns { Resolve-DnsName $args[0] }
+
 # Terraform
 function tf { terraform $args }
 
@@ -90,6 +93,19 @@ function which($name) {
 
 function touch($file) {
   "" | Out-File $file -Encoding ASCII
+}
+
+function time {
+  Set-StrictMode -Off;
+
+  # see http://stackoverflow.com/a/3513669/87453
+  $cmd, $args = $args
+  $args = @($args)
+  $sw = [diagnostics.stopwatch]::startnew()
+  & $cmd @args
+  $sw.stop()
+  
+  "$($sw.elapsed)"
 }
 
 # function fss {

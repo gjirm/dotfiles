@@ -81,6 +81,10 @@ alias cdwork='cd $MY_WORK_PATH'
 alias cdgitwork='cd $MY_GITWORK_PATH'
 alias cdgit='cd $MY_GIT_PATH'
 
+# terraform
+# ##########
+alias tf='terraform'
+
 # systemctl
 ###########
 alias sc='sudo systemctl'
