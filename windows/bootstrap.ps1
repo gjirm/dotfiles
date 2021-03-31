@@ -9,18 +9,18 @@ function ChocoInstall {
 
 Write-Host "--> Bootstraping Windows profile <--" -ForegroundColor Green
 
-$systemProfile = Read-Host -Prompt "--> Enter the system profile type - personal"
-$systemProfile = $systemProfile.ToLower()
+# $systemProfile = Read-Host -Prompt "--> Enter the system profile type - personal"
+# $systemProfile = $systemProfile.ToLower()
 
-switch ($systemProfile) {
-    "personal" {
-        $profilePath = "$PSScriptRoot\personal"
-    }
-    default {
-        Write-Host "--! Profile not recognized! Exiting..." -ForegroundColor Yellow
-        exit 1
-    }
-}
+# switch ($systemProfile) {
+#     "personal" {
+#         $profilePath = "$PSScriptRoot\personal"
+#     }
+#     default {
+#         Write-Host "--! Profile not recognized! Exiting..." -ForegroundColor Yellow
+#         exit 1
+#     }
+# }
 
 if( -not (test-path "C:\ProgramData\chocolatey\choco.exe") ) {
     Write-Host "--> Installing chocolatey..." -ForegroundColor Green
