@@ -14,21 +14,7 @@ Import-Module "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1"
 # Viz https://github.com/mikebattista/PowerShell-WSL-Interop
 Import-WslCommand "awk", "emacs", "grep", "head", "less", "man", "sed", "seq", "tail", "vim", "qrencode", "tee";
 
-#oh-my-posh themes
-#$DefaultUser = "$env:username"
-# Start the default settings
-#Set-Prompt
-
-#PowerShell theme:
-#oh-my-posh v2 PowerShell theme:
-#Set-Theme Paradox
-#Set-Theme Pure
-
-# ohmyposhv3 PowerShell theme
-#Set-PoshPrompt -Theme "$env:USERPROFILE\.dotfiles\windows\personal\powershell\oh-my-posh-v3\themes\jirm-powerline.omp.json"
-
 # Start-SshAgent
-# $env:ConEmuANSI = $True # hack for normal powershell
 
 if (-not $env:HOME) {
     $env:HOME = "$($env:HOMEDRIVE)$($env:HOMEPATH)"
@@ -47,4 +33,4 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 #Set-PsFzfOption -TabExpansion
 
 Invoke-Expression ( &starship init powershell )
-#Clear-Host
+Clear-Host
