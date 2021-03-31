@@ -91,22 +91,24 @@ function which($name) {
   Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
 }
 
-function touch($file) {
-  "" | Out-File $file -Encoding ASCII
-}
+# Replaced by https://github.com/lukesampson/psutils
+# function touch($file) {
+#   "" | Out-File $file -Encoding ASCII
+# }
 
-function time {
-  Set-StrictMode -Off;
+# Replaced by https://github.com/lukesampson/psutils
+# function time {
+#   Set-StrictMode -Off;
 
-  # see http://stackoverflow.com/a/3513669/87453
-  $cmd, $args = $args
-  $args = @($args)
-  $sw = [diagnostics.stopwatch]::startnew()
-  & $cmd @args
-  $sw.stop()
+#   # see http://stackoverflow.com/a/3513669/87453
+#   $cmd, $args = $args
+#   $args = @($args)
+#   $sw = [diagnostics.stopwatch]::startnew()
+#   & $cmd @args
+#   $sw.stop()
   
-  "$($sw.elapsed)"
-}
+#   "$($sw.elapsed)"
+# }
 
 # function fss {
 #     if ($args) {
@@ -152,11 +154,11 @@ function fex {
   }
 }
 
-# Sudo
-function elevateProcess {
-  & Start-Process pwsh.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command ""${args}""" -Verb RunAs
-}
-Set-Alias -Name sudo -Value elevateProcess
+# Sudo - replaced by https://github.com/lukesampson/psutils
+# function elevateProcess {
+#   & Start-Process pwsh.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command ""${args}""" -Verb RunAs
+# }
+# Set-Alias -Name sudo -Value elevateProcess
 
 function Set-Hosts {
   sudo notepad "$($env:SystemRoot)\system32\drivers\etc\hosts"

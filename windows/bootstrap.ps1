@@ -36,23 +36,22 @@ ChocoInstall cascadiafonts
 ChocoInstall fd
 ChocoInstall fzf
 ChocoInstall micro
+
+Write-Host "--> Installing scoop package manager (https://scoop.sh)..." -ForegroundColor Green
 Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+
+Write-Host "--> Installing starship shell-prompt (https://starship.rs)..." -ForegroundColor Green
 scoop install starship
 
+Write-Host "--> Installing psutils (https://github.com/lukesampson/psutils)..." -ForegroundColor Green
+scoop install psutils
+
+Write-Host "--> Installing PowerShell modules ..." -ForegroundColor Green
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 
 # PowerShell Modules
 # this will run under powershell 5
-if (!(Get-Module posh-git)) {
-  Write-Host "--> Installing posh-git in PowerShell 5 ..." -ForegroundColor Green
-  Install-Module posh-git -Force
-}
-
-if (!(Get-Module oh-my-posh)) {
-  Write-Host "--> Installing oh-my-posh in PowerShell 5 ..." -ForegroundColor Green
-  Install-Module oh-my-posh -Force
-}
 
 if (!(Get-Module Get-ChildItemColor)) {
   Write-Host "--> Installing Get-ChildItemColor in PowerShell 5 ..." -ForegroundColor Green
@@ -63,12 +62,6 @@ $pwshExe = (Get-Childitem -Path "C:\Program Files\PowerShell\*\pwsh.exe" -Recurs
 
 & "$pwshExe" -nologo -noprofile -command "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted"
 #& "$pwshExe" -nologo -noprofile -command "Install-Module windows-screenfetch -Force"
-
-Write-Host "--> Installing posh-git in PowerShell Core ..." -ForegroundColor Green
-& "$pwshExe" -nologo -noprofile -command "Install-Module posh-git -Force"
-
-Write-Host "--> Installing oh-my-posh in PowerShell Core ..." -ForegroundColor Green
-& "$pwshExe" -nologo -noprofile -command "Install-Module oh-my-posh -Force"
 
 Write-Host "--> Installing Get-ChildItemColor in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module Get-ChildItemColor -Force -AllowClobber"
@@ -87,7 +80,6 @@ Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor G
 Write-Host "--> Delugia Nerd Font (Cascadia Code + Nerd Fonts) ..." -ForegroundColor Green
 # InstallFromGithub -repo "adam7/delugia-code" -filenamePattern "Delugia.Nerd.Font.Complete.ttf" -installPath "$PSScriptRoot"
 # .\Delugia.Nerd.Font.Complete.ttf
-
 scoop bucket add nerd-fonts
 #scoop install sudo
 scoop install Delugia-Nerd-Font-Complete
