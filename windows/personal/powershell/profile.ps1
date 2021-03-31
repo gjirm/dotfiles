@@ -19,8 +19,12 @@ Import-WslCommand "awk", "emacs", "grep", "head", "less", "man", "sed", "seq", "
 #Set-Prompt
 
 # PowerShell theme:
+# oh-my-posh v2 PowerShell theme:
 #Set-Theme Paradox
 #Set-Theme Pure
+
+# oh-my-posh v3 PowerShell theme:
+Set-PoshPrompt -Theme "$env:USERPROFILE\.dotfiles\windows\personal\powershell\oh-my-posh-v3\themes\jirm-powerline.omp.json"
 
 # Start-SshAgent
 # $env:ConEmuANSI = $True # hack for normal powershell
