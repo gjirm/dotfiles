@@ -85,9 +85,12 @@ Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor G
 # Delugia Nerd Font (Cascadia Code + Nerd Fonts)
 # https://github.com/adam7/delugia-code
 Write-Host "--> Delugia Nerd Font (Cascadia Code + Nerd Fonts) ..." -ForegroundColor Green
-InstallFromGithub -repo "adam7/delugia-code" -filenamePattern "Delugia.Nerd.Font.Complete.ttf" -installPath "$PSScriptRoot"
+# InstallFromGithub -repo "adam7/delugia-code" -filenamePattern "Delugia.Nerd.Font.Complete.ttf" -installPath "$PSScriptRoot"
+# .\Delugia.Nerd.Font.Complete.ttf
 
-.\Delugia.Nerd.Font.Complete.ttf
+scoop bucket add nerd-fonts
+#scoop install sudo
+scoop install Delugia-Nerd-Font-Complete
 
 # Create my symlinks
 . ".\create-symlinks.ps1"
