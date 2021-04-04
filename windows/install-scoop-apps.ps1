@@ -55,6 +55,7 @@ scoop install wget
 scoop install zstd
 
 # https://github.com/taskctl/taskctl
+scoop bucket add taskctl https://github.com/taskctl/scoop-taskctl.git
 scoop install taskctl
 
 # https://key.pub

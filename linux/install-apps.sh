@@ -242,3 +242,14 @@ curl -s https://api.github.com/repos/rfjakob/gocryptfs/releases | grep "browser_
 cmd_check "gocryptfs download" $?
 /usr/local/bin/gocryptfs -version
 install_check "gocryptfs" $?
+
+# taskctl
+echo -e "${LGREEN}--> Installing taskctl...${WHITE}"
+app_exists "/usr/local/bin/taskctl"
+taskctlfile=$(basename $(curl -s https://api.github.com/repos/taskctl/taskctl/releases | grep "browser_download_url.*linux.*amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
+echo -e "${LGREEN}--> Downloading $taskctlfile...${WHITE}"
+curl -s https://api.github.com/repos/taskctl/taskctl/releases | grep "browser_download_url.*linux.*amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - taskctl -C /usr/local/bin
+cmd_check "taskctl download" $?
+chmod +x /usr/local/bin/taskctl
+/usr/local/bin/taskctl --version
+install_check "taskctl" $?
