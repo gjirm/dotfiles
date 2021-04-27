@@ -1,7 +1,8 @@
 
 #Import-Module posh-git
 #Import-Module oh-my-posh
-Import-Module Get-ChildItemColor
+#Import-Module Get-ChildItemColor
+Import-Module Terminal-Icons
 Import-Module PSReadline
 Import-Module PSFzf
 

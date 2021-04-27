@@ -53,18 +53,21 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 # PowerShell Modules
 # this will run under powershell 5
 
-if (!(Get-Module Get-ChildItemColor)) {
-  Write-Host "--> Installing Get-ChildItemColor in PowerShell 5 ..." -ForegroundColor Green
-  Install-Module -Name Get-ChildItemColor -Force -AllowClobber
-}
+# if (!(Get-Module Get-ChildItemColor)) {
+#   Write-Host "--> Installing Get-ChildItemColor in PowerShell 5 ..." -ForegroundColor Green
+#   Install-Module -Name Get-ChildItemColor -Force -AllowClobber
+# }
 
 $pwshExe = (Get-Childitem -Path "C:\Program Files\PowerShell\*\pwsh.exe" -Recurse).FullName
 
 & "$pwshExe" -nologo -noprofile -command "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted"
 #& "$pwshExe" -nologo -noprofile -command "Install-Module windows-screenfetch -Force"
 
-Write-Host "--> Installing Get-ChildItemColor in PowerShell Core ..." -ForegroundColor Green
-& "$pwshExe" -nologo -noprofile -command "Install-Module Get-ChildItemColor -Force -AllowClobber"
+# Write-Host "--> Installing Get-ChildItemColor in PowerShell Core ..." -ForegroundColor Green
+# & "$pwshExe" -nologo -noprofile -command "Install-Module Get-ChildItemColor -Force -AllowClobber"
+
+Write-Host "--> Installing Terminal-Icons in PowerShell Core ..." -ForegroundColor Green
+& "$pwshExe" -nologo -noprofile -command "Install-Module -Name Terminal-Icons"
 
 Write-Host "--> Installing PSReadLine in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name PSReadLine -AllowPrerelease -Force -SkipPublisherCheck"

@@ -44,9 +44,10 @@ function gitpush {
   git push
 }
 
-Set-Alias l Get-ChildItemColor -Option AllScope
-Set-Alias ll Get-ChildItemColor -Option AllScope
-Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
+Set-Alias l Get-ChildItem -Option AllScope
+Set-Alias ll Get-ChildItem -Option AllScope
+Set-Alias ls Get-ChildItem -Option AllScope
+#Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
 # Directory
 function .. { cd .. }
