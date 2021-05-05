@@ -24,6 +24,7 @@ $character"""
 add_newline = true
 
 scan_timeout = 100
+command_timeout = 1500
 
 [hostname]
 ssh_only = true
