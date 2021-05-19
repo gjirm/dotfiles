@@ -54,6 +54,10 @@ scoop install wget
 # https://github.com/facebook/zstd
 scoop install zstd
 
+# https://github.com/goreleaser/goreleaser/
+scoop bucket add goreleaser https://github.com/goreleaser/scoop-bucket.git
+scoop install goreleaser
+
 # https://github.com/taskctl/taskctl
 # scoop bucket add taskctl https://github.com/taskctl/scoop-taskctl.git
 # scoop install taskctl

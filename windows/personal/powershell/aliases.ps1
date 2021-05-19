@@ -165,3 +165,7 @@ function Set-Hosts {
   sudo notepad "$($env:SystemRoot)\system32\drivers\etc\hosts"
 }
 Set-Alias -Name hosts -Value Set-Hosts
+
+function psake { 
+  .\Makefile.ps1 $args[0]
+}
