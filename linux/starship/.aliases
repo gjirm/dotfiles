@@ -17,6 +17,11 @@ function update_dotfiles() {
     git -C $HOME/.dotfiles pull  
 }
 
+function update_starship() {
+    echo -e "\e[1;32m--> Updating Starship prompt ...\e[0m"
+    sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+}
+
 function fcd() {
     cd $(fd -HI -t d $@ . | fzf)
 }

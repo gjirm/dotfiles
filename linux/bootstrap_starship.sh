@@ -80,7 +80,7 @@ sudo apt install curl wget git file build-essential zsh autojump -y
 
 echo -e "${LGREEN}--> Installing starshiip ...${WHITE}"
 # Install oh-my-zsh
-sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -yes
 
 # plugin zsh-syntax-highlighting
 echo -e "${LGREEN}--> Installing zsh-syntax-highlighting ...${WHITE}"
