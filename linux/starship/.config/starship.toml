@@ -1,6 +1,6 @@
 format = """
 $shlvl\
-[者](fg:#00a2ed)\
+[](fg:#00a2ed)\
 $username\
 $hostname\
 $directory\
@@ -41,6 +41,7 @@ ssh_only = true
 [shell]
 style = "green"
 fish_indicator = ""
+zsh_indicator = ""
 powershell_indicator = "者"
 disabled = false
 
