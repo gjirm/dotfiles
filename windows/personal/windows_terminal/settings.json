@@ -36,7 +36,7 @@
                 "hidden": false,
                 "name": "PowerShell",
                 "colorScheme": "Tango Dark",
-                "fontFace" : "Delugia Nerd Font",
+                "fontFace" : "Delugia",
                 "source": "Windows.Terminal.PowershellCore"
             },
             {

@@ -187,6 +187,19 @@ chown root:root /usr/local/bin/age-keygen
 /usr/local/bin/age -version
 install_check "Age" $?
 
+# Minisign
+echo -e "${LGREEN}--> Installing minisign (go)...${WHITE}"
+app_exists "/usr/local/bin/minisign"
+durl=$(curl -s https://api.github.com/repos/aead/minisign/releases | grep "browser_download_url.*linux-amd64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+minisignVersion=$(echo $durl | awk -F'/' '{print $8}')
+echo -e "${LGREEN}--> Downloading Minisign $minisignVersion...${WHITE}"
+echo $durl | wget -q -O - -i - | tar -xzf - -C /usr/local/bin
+cmd_check "Minisign download" $?
+chmod +x /usr/local/bin/minisign
+chown root:root /usr/local/bin/minisign
+/usr/local/bin/minisign -version
+install_check "Minisign" $?
+
 # Rage
 echo -e "${LGREEN}--> Installing rage encryption...${WHITE}"
 app_exists "/usr/local/bin/rage"

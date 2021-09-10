@@ -57,6 +57,12 @@ renamed = "»${count}"
 deleted = "✘${count}"
 style = "bold fg:#ffa500"
 
+[git_metrics]
+added_style = "bold green"
+deleted_style = "bold red"
+format = '[+$added]($added_style) [-$deleted]($deleted_style) '
+disabled = false
+
 # [[battery.display]]
 # threshold = 99
 # style = "bold red"
