@@ -1,6 +1,6 @@
 format = """
 $shlvl\
-[ ](fg:#00a2ed)\
+[ ](fg:39)\
 $username\
 $hostname\
 $directory\
