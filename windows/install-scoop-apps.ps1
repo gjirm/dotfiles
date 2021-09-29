@@ -40,19 +40,22 @@ scoop install gopass
 scoop install obsidian
 
 # https://github.com/OpenVPN/easy-rsa
-scoop install easyrsa
+#scoop install easyrsa
+
+# https://github.com/gokcehan/lf
+scoop install lf
 
 # https://github.com/hashicorp/terraform
 scoop install terraform
 
 # https://github.com/hashicorp/vagrant
-scoop install vagrant
+#scoop install vagrant
 
 # https://eternallybored.org/misc/wget/
-scoop install wget
+#scoop install wget
 
 # https://github.com/facebook/zstd
-scoop install zstd
+#scoop install zstd
 
 # https://github.com/goreleaser/goreleaser/
 scoop bucket add goreleaser https://github.com/goreleaser/scoop-bucket.git
