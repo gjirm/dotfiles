@@ -36,7 +36,9 @@
                 "hidden": false,
                 "name": "PowerShell",
                 "colorScheme": "Tango Dark",
-                "fontFace" : "Delugia",
+                "font": {
+                    "face": "Delugia Nerd Font",
+                },
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
@@ -45,7 +47,9 @@
                 "name": "Ubuntu",
                 "closeOnExit" : true,
                 "colorScheme" : "One Half Dark",
-                "fontFace" : "Delugia Nerd Font",
+                "font": {
+                    "face": "Delugia Nerd Font",
+                },
                 "source": "Windows.Terminal.Wsl"
             },
             {
@@ -54,7 +58,9 @@
                 "name": "Ubuntu-20.04",
                 "closeOnExit" : true,
                 "colorScheme" : "One Half Dark",
-                "fontFace" : "Delugia Nerd Font",
+                "font": {
+                    "face": "Delugia Nerd Font",
+                },
                 "source": "Windows.Terminal.Wsl"
             },
             {
@@ -70,7 +76,9 @@
                 "name": "Ubuntu-18.04",
                 "closeOnExit" : true,
                 "colorScheme" : "Tango Dark",
-                "fontFace" : "Delugia Nerd Font",
+                "font": {
+                    "face": "Delugia Nerd Font",
+                },
                 "source": "Windows.Terminal.Wsl"
             },
             {
