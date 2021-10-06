@@ -12,35 +12,7 @@ then
    exit 1
 fi
 
-if [[ -z "$SYSTEM_PROFILE" ]]
-then
-    echo -e "${LBLUE}Enter the system profile - personal / server / starship / wsl ${WHITE}"
-    read SYSTEM_CASE
-
-    case $SYSTEM_CASE in
-
-    personal)
-        SYSTEM_PROFILE=$HOME/.dotfiles/linux/personal
-        ;;
-
-    server)
-        SYSTEM_PROFILE=$HOME/.dotfiles/linux/server
-        ;;
-
-    starship)
-        SYSTEM_PROFILE=$HOME/.dotfiles/linux/starship
-        ;;
-
-    wsl)
-        SYSTEM_PROFILE=$HOME/.dotfiles/linux/wsl
-        ;;
-
-    *)
-        echo -e "${LYELLOW}--! Unknown system type. Exiting...${WHITE}" 
-        exit 1
-        ;;
-    esac
-fi
+SYSTEM_PROFILE=$HOME/.dotfiles/linux/starship
 
 echo -e "${LGREEN}--> Backup original dot files to ${HOME}/.backup/ ${WHITE}"
 
@@ -71,6 +43,7 @@ ln -s $SYSTEM_PROFILE/.env $HOME/.env
 ln -s $SYSTEM_PROFILE/.gitconfig $HOME/.gitconfig
 ln -s $SYSTEM_PROFILE/.tmux.conf $HOME/.tmux.conf
 ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zshrc
+ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zsh/.zshrc
 ln -s $SYSTEM_PROFILE/.fzf.zsh $HOME/.fzf.zsh
 
 echo -e "${LGREEN}--> Setting symlinks finished <--${WHITE}"

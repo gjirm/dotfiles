@@ -21,7 +21,7 @@ source $HOME/.zshrc_local
 autoload -U compinit
 compinit
 zstyle ':completion:*' menu select
-setopt COMPLETE_ALIASES
+#setopt COMPLETE_ALIASES
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
