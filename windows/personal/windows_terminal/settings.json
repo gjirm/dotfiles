@@ -45,7 +45,7 @@
                 "name": "Ubuntu",
                 "closeOnExit" : true,
                 "colorScheme" : "One Half Dark",
-                "fontFace" : "Delugia Nerd Font",
+                "fontFace" : "Delugia",
                 "source": "Windows.Terminal.Wsl"
             },
             {
@@ -54,7 +54,7 @@
                 "name": "Ubuntu-20.04",
                 "closeOnExit" : true,
                 "colorScheme" : "One Half Dark",
-                "fontFace" : "Delugia Nerd Font",
+                "fontFace" : "Delugia",
                 "source": "Windows.Terminal.Wsl"
             },
             {
@@ -70,7 +70,7 @@
                 "name": "Ubuntu-18.04",
                 "closeOnExit" : true,
                 "colorScheme" : "Tango Dark",
-                "fontFace" : "Delugia Nerd Font",
+                "fontFace" : "Delugia",
                 "source": "Windows.Terminal.Wsl"
             },
             {
