@@ -1,6 +1,6 @@
 alias cls='clear'
 
-alias ls"ls --color=auto"
+alias ls="ls --color=auto"
 alias l="ls -lF"
 alias ll="ls -laF"
 alias ld="ls -ld */"
