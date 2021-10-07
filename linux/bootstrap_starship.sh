@@ -84,10 +84,18 @@ fi
 
 echo -e "${LGREEN}--> Installing Micro editor...${WHITE}"
 app_exists "/usr/local/bin/micro"
-microfile=$(basename $(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*linux64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
+arch=$(uname -m)
+if [[ "$arch" == "aarch64" ]]
+then
+  arch="arm64"
+elif [[ "$arch" == "x86_64" ]]
+then
+  arch="linux64"
+fi
+microfile=$(basename $(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$arch.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
 echo -e "${LGREEN}--> Downloading $microfile...${WHITE}"
 mkdir micro-tmp
-curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*linux64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C ./micro-tmp
+curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$arch.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C ./micro-tmp
 cmd_check "Micro download" $?
 sudo mv "micro-tmp/micro" /usr/local/bin/micro
 rm -rf "micro-tmp/"
