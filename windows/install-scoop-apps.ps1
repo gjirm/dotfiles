@@ -33,8 +33,29 @@ scoop install micro
 # https://github.com/jedisct1/minisign
 scoop install minisign
 
+# https://github.com/Byron/dua-cli
+scoop install dua
+
+# https://github.com/stedolan/jq
+scoop install jq
+
+# https://github.com/microsoft/ethr
+scoop install ethr
+
+# https://github.com/ducaale/xh
+scoop install xh
+
+# https://github.com/sharkdp/bat
+scoop install bat
+
+# https://github.com/muesli/duf
+scoop install duf
+
+# https://github.com/ogham/dog
+scoop install dog
+
 # https://github.com/gopasspw/gopass
-scoop install gopass
+#scoop install gopass
 
 # https://obsidian.md/
 scoop install obsidian
@@ -66,8 +87,8 @@ scoop install goreleaser
 # scoop install taskctl
 
 # https://key.pub
-scoop bucket add keys.pub https://github.com/keys-pub/scoop-bucket
-scoop install libfido2
-scoop install keys
+# scoop bucket add keys.pub https://github.com/keys-pub/scoop-bucket
+# scoop install libfido2
+# scoop install keys
 
 Write-Host "--> Done <--" -ForegroundColor Green

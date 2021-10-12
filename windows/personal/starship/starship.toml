@@ -16,10 +16,10 @@ $memory_usage\
 $env_var\
 $custom\
 $cmd_duration\
+$time\
 $line_break\
 $jobs\
 $battery\
-$time\
 $status\
 $character"""
 
@@ -27,6 +27,16 @@ add_newline = true
 
 scan_timeout = 100
 command_timeout = 1500
+
+[fill]
+symbol = " "
+
+[time]
+disabled = true
+# format = '🕙[\[ $time \]]($style) '
+# time_format = "%T"
+# utc_time_offset = "-5"
+# time_range = "10:00:00-14:00:00"
 
 [username]
 format = "[$user]($style)[@]($style)"
@@ -70,8 +80,7 @@ style = "bold fg:yellow"
 [git_metrics]
 added_style = "bold green"
 deleted_style = "bold red"
-format = '[+$added]($added_style) [-$deleted]($deleted_style) '
-disabled = true
+disabled = false
 
 # [[battery.display]]
 # threshold = 99
