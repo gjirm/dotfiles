@@ -1,9 +1,10 @@
 alias cls='clear'
 
-alias ls="ls --color=auto"
-alias l="ls -lF"
-alias ll="ls -laF"
-alias ld="ls -ld */"
+alias ls="ls --color=auto --group-directories-first"
+alias l="ls -lhF"
+alias ll="ls -lahF"
+alias ld="ls -lhd */"
+alias lld="ls --color=always -lahF | grep --color=never '/$'"
 
 alias ..="cd .."
 alias ...="cd ../.."
