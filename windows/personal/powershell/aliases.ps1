@@ -167,5 +167,7 @@ function Set-Hosts {
 Set-Alias -Name hosts -Value Set-Hosts
 
 function psake { 
-  .\Makefile.ps1 $args[0]
+  .\Makefile.ps1 
 }
+
+Set-Alias -Name cde -Value Set-LocationFuzzyEverything
