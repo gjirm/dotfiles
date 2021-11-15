@@ -16,10 +16,11 @@ $memory_usage\
 $env_var\
 $custom\
 $cmd_duration\
+$fill\
 $time\
+$battery\
 $line_break\
 $jobs\
-$battery\
 $status\
 $character"""
 
@@ -32,11 +33,16 @@ command_timeout = 1500
 symbol = " "
 
 [time]
-disabled = true
-# format = '🕙[\[ $time \]]($style) '
-# time_format = "%T"
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+style = "bold grey"
 # utc_time_offset = "-5"
 # time_range = "10:00:00-14:00:00"
+
+[[battery.display]]
+threshold = 100
+#style = "bold red"
 
 [username]
 format = "[$user]($style)[@]($style)"
