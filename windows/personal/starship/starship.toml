@@ -41,7 +41,7 @@ style = "bold grey"
 # time_range = "10:00:00-14:00:00"
 
 [[battery.display]]
-threshold = 100
+threshold = 20
 #style = "bold red"
 
 [username]
