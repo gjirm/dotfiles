@@ -75,6 +75,9 @@ Write-Host "--> Installing PSReadLine in PowerShell Core ..." -ForegroundColor G
 Write-Host "--> Installing PSFzf in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name PSFzf -Force"
 
+Write-Host "--> Installing PSEverything in PowerShell Core ..." -ForegroundColor Green
+& "$pwshExe" -nologo -noprofile -command "Install-Module -Name PSEverything -Force"
+
 Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name WslInterop -Force"
 
@@ -85,7 +88,9 @@ scoop install git
 scoop bucket add nerd-fonts
 #scoop install sudo
 scoop install Delugia-Nerd-Font-Complete
-scoop uninstall git
+scoop bucket add extras
+scoop install everything
+#scoop uninstall git
 
 # Create my symlinks
 . ".\create-symlinks.ps1"
