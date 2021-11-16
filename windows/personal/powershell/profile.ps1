@@ -5,6 +5,7 @@
 Import-Module Terminal-Icons
 Import-Module PSReadline
 Import-Module PSFzf
+Import-Module PSEverything 
 
 # Aliases
 Import-Module "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1"
