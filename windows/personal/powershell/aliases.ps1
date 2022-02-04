@@ -155,6 +155,14 @@ function fex {
   }
 }
 
+function rnd {
+  if ($args) {
+    -join ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-$%&*#'.ToCharArray() | Get-Random -Count $args[0])
+  } else {
+    -join ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-$%&*#'.ToCharArray() | Get-Random -Count 12)
+  }
+}
+
 # Sudo - replaced by https://github.com/lukesampson/psutils
 # function elevateProcess {
 #   & Start-Process pwsh.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command ""${args}""" -Verb RunAs
