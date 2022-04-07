@@ -59,6 +59,8 @@ if ($terminalFolder) {
 Write-Host "--> Starship prompt symlinks ..." -ForegroundColor Green
 if (Test-Path "${env:USERPROFILE}\.config\starship.toml") {
   Rename-Item -Path "${env:USERPROFILE}\.config\starship.toml" -NewName "starship_backup_${timeStamp}.toml" -Force
+} else {
+  New-Item -Path "${env:USERPROFILE}\.config\starship.toml" -ItemType "file" -Value ""
 }
 New-Item -Path "${env:USERPROFILE}\.config\starship.toml" -ItemType SymbolicLink -Value "${profilePath}\starship\starship.toml"
 
