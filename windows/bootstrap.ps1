@@ -37,15 +37,6 @@ ChocoInstall fd
 ChocoInstall fzf
 ChocoInstall micro
 
-Write-Host "--> Installing scoop package manager (https://scoop.sh)..." -ForegroundColor Green
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-
-Write-Host "--> Installing starship shell-prompt (https://starship.rs)..." -ForegroundColor Green
-scoop install starship
-
-Write-Host "--> Installing psutils (https://github.com/lukesampson/psutils)..." -ForegroundColor Green
-scoop install psutils
-
 Write-Host "--> Installing PowerShell modules ..." -ForegroundColor Green
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
@@ -81,19 +72,10 @@ Write-Host "--> Installing PSEverything in PowerShell Core ..." -ForegroundColor
 Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name WslInterop -Force"
 
-# Delugia Nerd Font (Cascadia Code + Nerd Fonts)
-# https://github.com/adam7/delugia-code
-Write-Host "--> Delugia Nerd Font (Cascadia Code + Nerd Fonts - https://github.com/adam7/delugia-code) ..." -ForegroundColor Green
-scoop install git
-scoop bucket add nerd-fonts
-#scoop install sudo
-scoop install Delugia-Nerd-Font-Complete
-scoop bucket add extras
-scoop install everything
-#scoop uninstall git
-
 # Create my symlinks
 . ".\create-symlinks.ps1"
+
+Write-Host "--> To finish bootstrap run .\bootstrap-scoop-apps.ps1 as non-admin user." -ForegroundColor Yellow
 
 #. ".\install-apps.ps1"
 
