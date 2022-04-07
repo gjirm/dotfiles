@@ -33,9 +33,6 @@ scoop install micro
 # https://github.com/jedisct1/minisign
 scoop install minisign
 
-# https://github.com/Byron/dua-cli
-scoop install dua
-
 # https://github.com/stedolan/jq
 scoop install jq
 
@@ -51,17 +48,14 @@ scoop install bat
 # https://github.com/muesli/duf
 scoop install duf
 
-# https://github.com/ogham/dog
-scoop install dog
-
-# https://github.com/gopasspw/gopass
-#scoop install gopass
+# https://github.com/dundee/gdu
+scoop install gdu
 
 # https://obsidian.md/
 scoop install obsidian
 
-# https://github.com/OpenVPN/easy-rsa
-#scoop install easyrsa
+# https://diskanalyzer.com/
+scoop install wiztree
 
 # https://github.com/gokcehan/lf
 scoop install lf
@@ -69,14 +63,14 @@ scoop install lf
 # https://github.com/hashicorp/terraform
 scoop install terraform
 
-# https://github.com/hashicorp/vagrant
-#scoop install vagrant
+# https://keepassxc.org/
+scoop install keepassxc
 
-# https://eternallybored.org/misc/wget/
-#scoop install wget
+# https://restic.net/
+scoop install restic
 
-# https://github.com/facebook/zstd
-#scoop install zstd
+# https://slproweb.com/products/Win32OpenSSL.html
+scoop install openssl
 
 # https://github.com/goreleaser/goreleaser/
 scoop bucket add goreleaser https://github.com/goreleaser/scoop-bucket.git
@@ -90,5 +84,23 @@ scoop install goreleaser
 # scoop bucket add keys.pub https://github.com/keys-pub/scoop-bucket
 # scoop install libfido2
 # scoop install keys
+
+# https://github.com/hashicorp/vagrant
+#scoop install vagrant
+
+# https://eternallybored.org/misc/wget/
+#scoop install wget
+
+# https://github.com/facebook/zstd
+#scoop install zstd
+
+# https://github.com/gopasspw/gopass
+#scoop install gopass
+
+# https://github.com/ogham/dog
+#scoop install dog
+
+# https://github.com/OpenVPN/easy-rsa
+#scoop install easyrsa
 
 Write-Host "--> Done <--" -ForegroundColor Green

@@ -45,6 +45,8 @@ ChocoInstall keybase
 ChocoInstall powershell-core
 ChocoInstall microsoft-windows-terminal
 
+ChocoInstall docker-desktop
+
 # Make Dev Cert https://github.com/FiloSottile/mkcert
 #ChocoInstall mkcert
 
@@ -55,7 +57,7 @@ ChocoInstall microsoft-windows-terminal
 # ChocoInstall vcbuildtools
 # choco upgrade -y magic-wormhole --source=python
 #ChocoInstall mousewithoutborders
-ChocoInstall keepass
+#ChocoInstall keepass
 #ChocoInstall keepass-plugin-otpkeyprov
 #ChocoInstall keepass-plugin-keeagent
 #ChocoInstall keepass-plugin-keecloud

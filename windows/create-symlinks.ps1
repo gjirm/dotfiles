@@ -49,11 +49,11 @@ if ($terminalFolder) {
 }
 
 # Gitconfig
-Write-Host "--> Git symlinks ..." -ForegroundColor Green
-if (Test-Path "${env:USERPROFILE}\.gitconfig") {
-  Rename-Item -Path "${env:USERPROFILE}\.gitconfig" -NewName ".gitconfig_backup_${timeStamp}" -Force
-}
-New-Item -Path "${env:USERPROFILE}\.gitconfig" -ItemType SymbolicLink -Value "${profilePath}\git\.gitconfig"
+#Write-Host "--> Git symlinks ..." -ForegroundColor Green
+#if (Test-Path "${env:USERPROFILE}\.gitconfig") {
+#  Rename-Item -Path "${env:USERPROFILE}\.gitconfig" -NewName ".gitconfig_backup_${timeStamp}" -Force
+#}
+#New-Item -Path "${env:USERPROFILE}\.gitconfig" -ItemType SymbolicLink -Value "${profilePath}\git\.gitconfig"
 
 # Starship prompt config
 Write-Host "--> Starship prompt symlinks ..." -ForegroundColor Green

@@ -29,7 +29,7 @@ if( -not (test-path "C:\ProgramData\chocolatey\choco.exe") ) {
 }
 
 Write-Host "--> Installing apps..." -ForegroundColor Green
-ChocoInstall git
+ChocoInstall git --params "/WindowsTerminal /NoAutoCrlf /NoOpenSSH"
 ChocoInstall powershell-core
 ChocoInstall microsoft-windows-terminal
 ChocoInstall cascadiafonts
