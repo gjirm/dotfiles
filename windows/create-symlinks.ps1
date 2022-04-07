@@ -4,19 +4,21 @@ $timeStamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
 
 Write-Host "--> Creating profile symlinks <--" -ForegroundColor Green
 
-if ( -not $systemProfile) {
-  $systemProfile = Read-Host -Prompt "--> Enter the system profile type - personal"
-}
+# if ( -not $systemProfile) {
+#   $systemProfile = Read-Host -Prompt "--> Enter the system profile type - personal"
+# }
 
-switch ($systemProfile) {
-    "personal" {
-        $profilePath = "$PSScriptRoot\personal"
-    }
-    default {
-        Write-Host "--! Profile not recognized! Exiting..." -ForegroundColor Yellow
-        exit 1
-    }
-}
+# switch ($systemProfile) {
+#     "personal" {
+#         $profilePath = "$PSScriptRoot\personal"
+#     }
+#     default {
+#         Write-Host "--! Profile not recognized! Exiting..." -ForegroundColor Yellow
+#         exit 1
+#     }
+# }
+
+$profilePath = "$PSScriptRoot\personal"
 
 Write-Host "--> PowerShell symlinks ..." -ForegroundColor Green
 
