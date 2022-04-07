@@ -39,10 +39,10 @@ scoop install smallstep/step
 scoop install age
 
 # https://github.com/junegunn/fzf
-scoop install fzf
+#scoop install fzf
 
 # https://github.com/sharkdp/fd
-scoop install fd
+#scoop install fd
 
 # https://github.com/minio/mc
 scoop install minio-client
@@ -88,6 +88,9 @@ scoop install keepassxc
 
 # https://restic.net/
 scoop install restic
+
+# https://github.com/schollz/croc
+scoop install croc
 
 # https://slproweb.com/products/Win32OpenSSL.html
 scoop install openssl
