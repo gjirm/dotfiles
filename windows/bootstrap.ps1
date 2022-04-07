@@ -31,7 +31,7 @@ if( -not (test-path "C:\ProgramData\chocolatey\choco.exe") ) {
 Write-Host "--> Installing apps..." -ForegroundColor Green
 ChocoInstall git --params "/WindowsTerminal /NoAutoCrlf /NoOpenSSH"
 ChocoInstall powershell-core
-ChocoInstall microsoft-windows-terminal
+#ChocoInstall microsoft-windows-terminal
 ChocoInstall cascadiafonts
 ChocoInstall fd
 ChocoInstall fzf
@@ -75,9 +75,7 @@ Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor G
 # Create my symlinks
 . ".\create-symlinks.ps1"
 
+Write-Host "--> Install manually Windows Terminal if not installed: https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701" -ForegroundColor Yellow
 Write-Host "--> To finish bootstrap run .\bootstrap-scoop-apps.ps1 as non-admin user." -ForegroundColor Yellow
 
 #. ".\install-apps.ps1"
-
-
-
