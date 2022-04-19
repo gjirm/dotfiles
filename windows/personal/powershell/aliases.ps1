@@ -131,6 +131,16 @@ function fss {
   }
 }
 
+function stss {
+  if ($args) {
+    wt -w 0 sp pwsh -Command fss $args[0]
+    fss $args[0]
+  } else {
+    wt -w 0 sp pwsh -Command fss
+    fss
+  }
+}
+
 function fdc { 
   if ($args) {
     & "C:\Program Files\Double Commander\doublecmd.exe" -c -t $(fd -HI -t d $args . | fzf) 
