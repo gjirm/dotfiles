@@ -189,3 +189,4 @@ function psake {
 }
 
 Set-Alias -Name cde -Value Set-LocationFuzzyEverything
+Set-Alias -Name send -Value ffsend
