@@ -106,7 +106,7 @@ install_check "Micro" $?
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 sudo chsh -s /usr/bin/zsh $USER
 
-source ./create-symlinks-starship.sh
+source ./create-symlinks.sh
 source ./create-my-env-vars.sh
 
 #echo -e "${LGREEN}--> Installing basic apps/tools ...${WHITE}"
