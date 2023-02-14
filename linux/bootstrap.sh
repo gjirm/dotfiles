@@ -47,103 +47,66 @@ cmd_check () {
 
 UBUNTU_VERSION=$(lsb_release -sr)
 
-echo -e "${LBLUE}Enter the system profile - personal / server / wsl ${WHITE}"
-read SYSTEM_CASE
+echo -e "${LGREEN}--> Bootstraping Starship prompt with ZSH shell ${WHITE}"
 
-case $SYSTEM_CASE in
-
-  personal)
-    SYSTEM_PROFILE=$HOME/.dotfiles/linux/personal
-    ;;
-
-  server)
-    SYSTEM_PROFILE=$HOME/.dotfiles/linux/server
-    ;;
-
-  wsl)
-    SYSTEM_PROFILE=$HOME/.dotfiles/linux/wsl
-    ;;
-
-  *)
-    echo -e "${LYELLOW}--! Unknown system type. Exiting...${WHITE}" 
-    exit 1
-    ;;
-esac
+SYSTEM_PROFILE=$HOME/.dotfiles/linux/starship
 
 sudo apt update
 sudo apt install curl wget git file build-essential zsh autojump -y
 #sudo apt instal fd-find
 
-echo -e "${LGREEN}--> Installing oh-my-zsh ...${WHITE}"
+echo -e "${LGREEN}--> Installing Starship ...${WHITE}"
 # Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://starship.rs/install.sh)" --
 
 # plugin zsh-syntax-highlighting
 echo -e "${LGREEN}--> Installing zsh-syntax-highlighting ...${WHITE}"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
 
 echo -e "${LGREEN}--> Installing zsh-autosuggestions ...${WHITE}"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
 
-# Install powerlevel10K prompt
-echo -e "${LGREEN}--> Installing powerlevel10K prompt ...${WHITE}"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-#sed -i 's/ZSH_THEME=.*/ZSH_THEME="powerlevel10k/powerlevel10k"/g' ~/.zshrc
+echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all --no-fish
 
-if [[ "$SYSTEM_CASE" != "server" ]]
+echo -e "${LGREEN}--> Installing Fd search...${WHITE}"
+if [[ "$UBUNTU_VERSION" == "16.04" || "$UBUNTU_VERSION" == "16.10" || "$UBUNTU_VERSION" == "17.04" || "$UBUNTU_VERSION" == "17.10" || "$UBUNTU_VERSION" == "18.04" || "$UBUNTU_VERSION" == "18.10" ]]
 then
-  # Personal, WSL profiles
-
-  echo -e "${LGREEN}--> Installing Linuxbrew ...${WHITE}"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-  
-  echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
-  brew install fzf
-  echo -e "${LGREEN}--> Installing Fd ...${WHITE}"
-  brew install fd
-  echo -e "${LGREEN}--> Installing Micro editor ...${WHITE}"
-  brew install micro
-
+  fddeb=$(basename $(curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb" | cut -d : -f 2,3 | tr -d \" | head -n 1))
+  curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb"  | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O $fddeb -i -
+  sudo dpkg -i $fddeb
 else
-  # Server profile
-
-  echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install --all --no-fish
-  
-  echo -e "${LGREEN}--> Installing Fd search...${WHITE}"
-  if [[ "$UBUNTU_VERSION" == "16.04" || "$UBUNTU_VERSION" == "16.10" || "$UBUNTU_VERSION" == "17.04" || "$UBUNTU_VERSION" == "17.10" || "$UBUNTU_VERSION" == "18.04" || "$UBUNTU_VERSION" == "18.10" ]]
-  then
-    fddeb=$(basename $(curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb" | cut -d : -f 2,3 | tr -d \" | head -n 1))
-    curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb"  | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O $fddeb -i -
-    sudo dpkg -i $fddeb
-  else
-    sudo apt install fd-find
-    [[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local 
-    echo "alias fd=fdfind" >> $HOME/.zshrc_local
-  fi
-
-  echo -e "${LGREEN}--> Installing Micro editor...${WHITE}"
-  app_exists "/usr/local/bin/micro"
-  microfile=$(basename $(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*linux64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
-  echo -e "${LGREEN}--> Downloading $microfile...${WHITE}"
-  mkdir micro-tmp
-  curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*linux64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C ./micro-tmp
-  cmd_check "Micro download" $?
-  sudo mv "micro-tmp/micro" /usr/local/bin/micro
-  rm -rf "micro-tmp/"
-  sudo chmod +x /usr/local/bin/micro
-  /usr/local/bin/micro --version
-  install_check "Micro" $?
-
+  sudo apt install fd-find
+  [[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local 
+  echo "alias fd=fdfind" >> $HOME/.zshrc_local
 fi
+
+echo -e "${LGREEN}--> Installing Micro editor...${WHITE}"
+app_exists "/usr/local/bin/micro"
+arch=$(uname -m)
+if [[ "$arch" == "aarch64" ]]
+then
+  arch="arm64"
+elif [[ "$arch" == "x86_64" ]]
+then
+  arch="linux64"
+fi
+microfile=$(basename $(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$arch.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
+echo -e "${LGREEN}--> Downloading $microfile...${WHITE}"
+mkdir micro-tmp
+curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$arch.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C ./micro-tmp
+cmd_check "Micro download" $?
+sudo mv "micro-tmp/micro" /usr/local/bin/micro
+rm -rf "micro-tmp/"
+sudo chmod +x /usr/local/bin/micro
+/usr/local/bin/micro --version
+install_check "Micro" $?
 
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 sudo chsh -s /usr/bin/zsh $USER
 
-source ./create-symlinks.sh
+source ./create-symlinks-starship.sh
 source ./create-my-env-vars.sh
 
 #echo -e "${LGREEN}--> Installing basic apps/tools ...${WHITE}"
