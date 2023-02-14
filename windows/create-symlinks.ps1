@@ -40,15 +40,15 @@ New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1" -ItemType S
 
 # Windows Terminal profile
 # Install microsoft-windows-terminal, Always delete and place a new one
-Write-Host "--> Windows Terminal symlinks ..." -ForegroundColor Green
-$terminalFolder = Get-ChildItem "${env:USERPROFILE}\AppData\Local\Packages" -filter "Microsoft.WindowsTerminal_*" -Directory | ForEach-Object { $_.fullname }
-if ($terminalFolder) {
-  if (Test-Path "$terminalFolder\LocalState\settings.json") {
-    #Remove-Item "$terminalFolder\LocalState\settings.json" -Force
-    Rename-Item -Path "$terminalFolder\LocalState\settings.json" -NewName "settings.json_backup_${timeStamp}" -Force
-  }
-  New-Item -Path "$terminalFolder\LocalState\settings.json" -ItemType SymbolicLink -Value "${profilePath}\windows_terminal\settings.json"
-}
+# Write-Host "--> Windows Terminal symlinks ..." -ForegroundColor Green
+# $terminalFolder = Get-ChildItem "${env:USERPROFILE}\AppData\Local\Packages" -filter "Microsoft.WindowsTerminal_*" -Directory | ForEach-Object { $_.fullname }
+# if ($terminalFolder) {
+#   if (Test-Path "$terminalFolder\LocalState\settings.json") {
+#     #Remove-Item "$terminalFolder\LocalState\settings.json" -Force
+#     Rename-Item -Path "$terminalFolder\LocalState\settings.json" -NewName "settings.json_backup_${timeStamp}" -Force
+#   }
+#   New-Item -Path "$terminalFolder\LocalState\settings.json" -ItemType SymbolicLink -Value "${profilePath}\windows_terminal\settings.json"
+# }
 
 # Gitconfig
 #Write-Host "--> Git symlinks ..." -ForegroundColor Green
