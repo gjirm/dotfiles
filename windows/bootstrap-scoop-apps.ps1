@@ -38,6 +38,9 @@ scoop install smallstep/step
 # https://github.com/FiloSottile/age
 scoop install age
 
+# https://cli.github.com/
+scoop install gh
+
 # https://github.com/junegunn/fzf
 #scoop install fzf
 
@@ -84,7 +87,7 @@ scoop install lf
 scoop install terraform
 
 # https://keepassxc.org/
-scoop install keepassxc
+#scoop install keepassxc
 
 # https://restic.net/
 scoop install restic
