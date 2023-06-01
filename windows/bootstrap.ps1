@@ -7,6 +7,7 @@ Write-Host "--> Bootstraping Windows using winget <--" -ForegroundColor Green
 
 Write-Host "--> Installing apps..." -ForegroundColor Green
 WingetInstall Git.Git
+WingetInstall GitHub.cli
 WingetInstall Microsoft.PowerShell
 WingetInstall sharkdp.fd
 WingetInstall junegunn.fzf
@@ -20,10 +21,6 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 $pwshExe = (Get-Childitem -Path "C:\Program Files\PowerShell\*\pwsh.exe" -Recurse).FullName
 
 & "$pwshExe" -nologo -noprofile -command "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted"
-#& "$pwshExe" -nologo -noprofile -command "Install-Module windows-screenfetch -Force"
-
-# Write-Host "--> Installing Get-ChildItemColor in PowerShell Core ..." -ForegroundColor Green
-# & "$pwshExe" -nologo -noprofile -command "Install-Module Get-ChildItemColor -Force -AllowClobber"
 
 Write-Host "--> Installing Terminal-Icons in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name Terminal-Icons"

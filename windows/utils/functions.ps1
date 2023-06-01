@@ -122,8 +122,13 @@ function InstallFromGithub {
 
 }
 
+# Example
 #InstallFromGithub -repo "adam7/delugia-code" -filenamePattern "Delugia.Nerd.Font.Complete.ttf" -installPath "$PSScriptRoot"
 
+# Winget install wrapper
 function WingetInstall {
     winget install $args --accept-source-agreements --accept-package-agreements 
 }
+
+# Get PowerShell executable
+$pwshExe = (Get-Childitem -Path "C:\Program Files\PowerShell\*\pwsh.exe" -Recurse).FullName
