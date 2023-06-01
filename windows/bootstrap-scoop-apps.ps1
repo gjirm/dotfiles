@@ -9,8 +9,8 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 Write-Host "--> Installing scoop package manager (https://scoop.sh)..." -ForegroundColor Green
 Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 
-Write-Host "--> Installing starship shell-prompt (https://starship.rs)..." -ForegroundColor Green
-scoop install starship
+#Write-Host "--> Installing starship shell-prompt (https://starship.rs)..." -ForegroundColor Green
+#scoop install starship
 
 Write-Host "--> Installing psutils (https://github.com/lukesampson/psutils)..." -ForegroundColor Green
 scoop install psutils
@@ -29,7 +29,7 @@ scoop bucket add extras
 Write-Host "--> Installing apps..." -ForegroundColor Green
 
 # https://www.voidtools.com/
-scoop install everything
+#scoop install everything
 
 # https://smallstep.com/cli/
 scoop bucket add smallstep https://github.com/smallstep/scoop-bucket.git
@@ -75,7 +75,7 @@ scoop install duf
 scoop install gdu
 
 # https://obsidian.md/
-scoop install obsidian
+#scoop install obsidian
 
 # https://diskanalyzer.com/
 scoop install wiztree

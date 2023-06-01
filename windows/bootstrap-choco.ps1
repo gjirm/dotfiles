@@ -3,18 +3,51 @@
 # Imports
 . ".\utils\functions.ps1"
 
-Write-Host "--> Bootstraping Windows using winget <--" -ForegroundColor Green
+function ChocoInstall {
+  choco upgrade -y --not-broken --approved-only $args
+}
+
+Write-Host "--> Bootstraping Windows profile <--" -ForegroundColor Green
+
+# $systemProfile = Read-Host -Prompt "--> Enter the system profile type - personal"
+# $systemProfile = $systemProfile.ToLower()
+
+# switch ($systemProfile) {
+#     "personal" {
+#         $profilePath = "$PSScriptRoot\personal"
+#     }
+#     default {
+#         Write-Host "--! Profile not recognized! Exiting..." -ForegroundColor Yellow
+#         exit 1
+#     }
+# }
+
+if( -not (test-path "C:\ProgramData\chocolatey\choco.exe") ) {
+    Write-Host "--> Installing chocolatey..." -ForegroundColor Green
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+}
 
 Write-Host "--> Installing apps..." -ForegroundColor Green
-winget install Git.Git
-winget install Microsoft.PowerShell
-winget install sharkdp.fd
-winget install junegunn.fzf
-winget install zyedidia.micro
+ChocoInstall git --params "/WindowsTerminal /NoAutoCrlf /NoOpenSSH"
+ChocoInstall powershell-core
+#ChocoInstall microsoft-windows-terminal
+ChocoInstall cascadiafonts
+ChocoInstall fd
+ChocoInstall fzf
+ChocoInstall micro
 
 Write-Host "--> Installing PowerShell modules ..." -ForegroundColor Green
-#Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+
+# PowerShell Modules
+# this will run under powershell 5
+
+# if (!(Get-Module Get-ChildItemColor)) {
+#   Write-Host "--> Installing Get-ChildItemColor in PowerShell 5 ..." -ForegroundColor Green
+#   Install-Module -Name Get-ChildItemColor -Force -AllowClobber
+# }
 
 $pwshExe = (Get-Childitem -Path "C:\Program Files\PowerShell\*\pwsh.exe" -Recurse).FullName
 

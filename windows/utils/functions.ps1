@@ -123,3 +123,7 @@ function InstallFromGithub {
 }
 
 #InstallFromGithub -repo "adam7/delugia-code" -filenamePattern "Delugia.Nerd.Font.Complete.ttf" -installPath "$PSScriptRoot"
+
+function WingetInstall {
+    winget install $args --accept-source-agreements --accept-package-agreements 
+}
