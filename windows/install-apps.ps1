@@ -38,6 +38,7 @@ WingetInstall Microsoft.MouseWithoutBorders
 WingetInstall XP8K2L36VP0QMB # KeePassXC
 WingetInstall XP89DCGQ3K6VLD # PowerToys
 WingetInstall Greenshot.Greenshot
+WingetInstall NickeManarin.ScreenToGif
 
 # Cloud clients
 #WingetInstall Microsoft.Azure.AZCopy.10
