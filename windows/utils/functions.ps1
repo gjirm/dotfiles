@@ -129,6 +129,3 @@ function InstallFromGithub {
 function WingetInstall {
     winget install $args --accept-source-agreements --accept-package-agreements 
 }
-
-# Get PowerShell executable
-$pwshExe = (Get-Childitem -Path "C:\Program Files\PowerShell\*\pwsh.exe" -Recurse).FullName

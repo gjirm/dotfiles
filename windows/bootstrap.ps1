@@ -6,7 +6,7 @@
 Write-Host "--> Bootstraping Windows using winget <--" -ForegroundColor Green
 
 Write-Host "--> Installing apps..." -ForegroundColor Green
-WingetInstall Git.Git
+#WingetInstall Git.Git
 WingetInstall GitHub.cli
 WingetInstall Microsoft.PowerShell
 WingetInstall sharkdp.fd
