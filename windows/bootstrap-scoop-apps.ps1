@@ -2,7 +2,7 @@
 
 Write-Host "--> Installing scoop..." -ForegroundColor Green
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+#Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 # or shorter
 # iwr -useb get.scoop.sh | iex
 
@@ -51,7 +51,7 @@ scoop install gh
 scoop install minio-client
 
 # https://github.com/zyedidia/micro
-scoop install micro
+#scoop install micro
 
 # https://github.com/jedisct1/minisign
 scoop install minisign
