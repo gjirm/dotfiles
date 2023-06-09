@@ -1,6 +1,6 @@
 format = """
 $shlvl\
-[ ](fg:39)\
+$os\
 $username\
 $hostname\
 $directory\
@@ -9,6 +9,9 @@ $git_commit\
 $git_state\
 $git_status\
 $git_metrics\
+$aws\
+$azure\
+$terraform\
 $docker_context\
 $package\
 $nix_shell\
@@ -22,6 +25,7 @@ $battery\
 $time\
 $status\
 $character"""
+#[ ](fg:39)\
 
 add_newline = true
 
@@ -72,6 +76,30 @@ added_style = "bold green"
 deleted_style = "bold red"
 format = '[+$added]($added_style) [-$deleted]($deleted_style) '
 disabled = true
+
+[aws]
+format = '[AWS: ($profile )(\($region\) )]($style)'
+style = 'bold fg:#ff9900'
+
+[azure]
+disabled = false
+format = '[$symbol($subscription)]($style) '
+symbol = '󰠅 '
+style = 'blue bold'
+
+[terraform]
+format = '[💠Terraform: $version $workspace]($style) '
+
+[os]
+format = "[$symbol]($style)"
+style = "bold fg:208"
+disabled = false
+
+[os.symbols]
+Ubuntu = " "
+#Ubuntu = "🎯 "
+Windows = " "
+#Windows = "🪟 "
 
 # [[battery.display]]
 # threshold = 99
