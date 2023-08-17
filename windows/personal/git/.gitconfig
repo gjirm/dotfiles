@@ -6,9 +6,12 @@
 [user]
 	name = Jiri Matejicek
 	email = jirm@jirm.cz
+	signingkey = C:\\path\\to\\signing\\key.pub
 [core]
 	autocrlf = false
 	longpaths = true
 [credential]
 	helper = 
 	helper = C:/Users/jiri.matejicek/AppData/Local/Programs/Git\\ Credential\\ Manager\\ Core/git-credential-manager-core.exe
+[gpg]
+	format = ssh 
