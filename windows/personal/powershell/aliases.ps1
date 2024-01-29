@@ -173,6 +173,17 @@ function rnd {
   }
 }
 
+function bwp {
+  # Using Bitwarden CIL
+  if ($args) {
+    bw generate --passphrase --words $args[0] --separator - --includeNumber --capitalize
+  } else {
+    bw generate --passphrase --words 3 --separator - --includeNumber --capitalize
+  }
+}
+
+
+
 # Sudo - replaced by https://github.com/lukesampson/psutils
 # function elevateProcess {
 #   & Start-Process pwsh.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command ""${args}""" -Verb RunAs
