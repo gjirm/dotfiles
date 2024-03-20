@@ -97,7 +97,7 @@ style = 'bold fg:#ff9900'
 
 [azure]
 disabled = false
-format = '[Azure: $username -- $subscription]($style) '
+format = '[Az: $username -- $subscription]($style) '
 symbol = '󰠅 '
 style = 'blue bold'
 
