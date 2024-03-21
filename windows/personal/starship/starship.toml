@@ -92,17 +92,17 @@ deleted_style = "bold red"
 disabled = false
 
 [aws]
-format = '[AWS: ($profile )(\($region\) )]($style)'
+format = '[\(Aws: $profile\)]($style) '
 style = 'bold fg:#ff9900'
 
 [azure]
 disabled = false
-format = '[Az: $username -- $subscription]($style) '
+format = '[\(Az: $username | $subscription\)]($style) '
 symbol = '󰠅 '
 style = 'blue bold'
 
 [terraform]
-format = '[💠Terraform: $version $workspace]($style) '
+format = '[\(Tf: $version | $workspace\)]($style) '
 
 [os]
 format = "[$symbol]($style)"
