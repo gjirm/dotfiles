@@ -42,6 +42,16 @@ command_timeout = 1500
 [fill]
 symbol = " "
 
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+style = "bold grey"
+
+[[battery.display]]
+threshold = 20
+#style = "bold red"
+
 [username]
 format = "[$user]($style)[@]($style)"
 style_user = "bold fg:84"
