@@ -80,9 +80,6 @@ scoop install gdu
 # https://diskanalyzer.com/
 scoop install wiztree
 
-# https://github.com/gokcehan/lf
-scoop install lf
-
 # https://github.com/hashicorp/terraform
 scoop install terraform
 
@@ -128,5 +125,17 @@ scoop install goreleaser
 
 # https://github.com/OpenVPN/easy-rsa
 #scoop install easyrsa
+
+
+# https://github.com/gokcehan/lf
+#scoop install lf
+
+## Install Yazi ##
+# https://github.com/sxyazi/yazi
+scoop install yazi
+# Install the optional dependencies (recommended):
+scoop install unar jq poppler ripgrep zoxide
+[Environment]::SetEnvironmentVariable("YAZI_FILE_ONE ", "C:\Program Files\Git\usr\bin\file.exe","user")
+Copy-Item -Path "$PSScriptRoot\personal\yazi\*" -Destination "${env:USERPROFILE}\AppData\Roaming\yazi" -Recurse
 
 Write-Host "--> Done <--" -ForegroundColor Green
