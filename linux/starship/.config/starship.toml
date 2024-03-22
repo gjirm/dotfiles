@@ -19,10 +19,17 @@ $memory_usage\
 $env_var\
 $custom\
 $cmd_duration\
+$fill\
+$aws\
+$azure\
+$terraform\
+$docker_context\
+$package\
+$nix_shell\
+$time\
+$battery\
 $line_break\
 $jobs\
-$battery\
-$time\
 $status\
 $character"""
 #[ ](fg:39)\
@@ -31,6 +38,9 @@ add_newline = true
 
 scan_timeout = 100
 command_timeout = 1500
+
+[fill]
+symbol = " "
 
 [username]
 format = "[$user]($style)[@]($style)"
@@ -78,17 +88,17 @@ format = '[+$added]($added_style) [-$deleted]($deleted_style) '
 disabled = true
 
 [aws]
-format = '[AWS: ($profile )(\($region\) )]($style)'
+format = '[\(Aws: $profile\)]($style) '
 style = 'bold fg:#ff9900'
 
 [azure]
 disabled = false
-format = '[$symbol($subscription)]($style) '
+format = '[\(Az: $username | $subscription\)]($style) '
 symbol = '󰠅 '
 style = 'blue bold'
 
 [terraform]
-format = '[💠Terraform: $version $workspace]($style) '
+format = '[\(Tf: $version | $workspace\)]($style) '
 
 [os]
 format = "[$symbol]($style)"
