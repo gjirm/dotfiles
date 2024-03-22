@@ -26,7 +26,6 @@ $terraform\
 $docker_context\
 $package\
 $nix_shell\
-$time\
 $battery\
 $line_break\
 $jobs\
