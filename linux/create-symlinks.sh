@@ -37,6 +37,7 @@ echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 [[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local 
 
 ln -s $SYSTEM_PROFILE/.config/micro/settings.json $HOME/.config/micro/settings.json
+ln -s $SYSTEM_PROFILE/.config/yazi/keymap.toml $HOME/.config/yazi/keymap.toml
 ln -s $SYSTEM_PROFILE/.config/starship.toml $HOME/.config/starship.toml
 ln -s $SYSTEM_PROFILE/.aliases $HOME/.aliases
 ln -s $SYSTEM_PROFILE/.env $HOME/.env

@@ -47,12 +47,14 @@ cmd_check () {
 
 UBUNTU_VERSION=$(lsb_release -sr)
 
+arch=$(uname -m)
+
 echo -e "${LGREEN}--> Bootstraping Starship prompt with ZSH shell ${WHITE}"
 
 SYSTEM_PROFILE=$HOME/.dotfiles/linux/starship
 
 sudo apt update
-sudo apt install curl wget git file build-essential zsh autojump -y
+sudo apt install curl wget git file build-essential zsh autojump zip unzip -y
 #sudo apt instal fd-find
 
 echo -e "${LGREEN}--> Installing Starship ...${WHITE}"
@@ -84,24 +86,34 @@ fi
 
 echo -e "${LGREEN}--> Installing Micro editor...${WHITE}"
 app_exists "/usr/local/bin/micro"
-arch=$(uname -m)
 if [[ "$arch" == "aarch64" ]]
 then
-  arch="arm64"
+  march="arm64"
 elif [[ "$arch" == "x86_64" ]]
 then
-  arch="linux64"
+  march="linux64"
 fi
-microfile=$(basename $(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$arch.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
+microfile=$(basename $(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$march.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
 echo -e "${LGREEN}--> Downloading $microfile...${WHITE}"
 mkdir micro-tmp
-curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$arch.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C ./micro-tmp
+curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$march.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C ./micro-tmp
 cmd_check "Micro download" $?
 sudo mv "micro-tmp/micro" /usr/local/bin/micro
 rm -rf "micro-tmp/"
 sudo chmod +x /usr/local/bin/micro
 /usr/local/bin/micro --version
 install_check "Micro" $?
+
+echo -e "${LGREEN}--> Installing Yazi ...${WHITE}"
+app_exists "/usr/local/bin/yazi"
+yazifile=$(basename $(curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep "browser_download_url.*yazi-$arch-unknown-linux-musl.zip" | cut -d : -f 2,3 | tr -d \" | head -n 1))
+echo -e "${LGREEN}--> Downloading $yazifile...${WHITE}"
+curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep "browser_download_url.*yazi-$arch-unknown-linux-musl.zip"| cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O tmp.zip -i -
+unzip -p tmp.zip yazi-x86_64-unknown-linux-musl/yazi > /usr/local/bin/yazi
+cmd_check "Yazi download" $?
+rm tmp.zip 
+chmod +x /usr/local/bin/yazi
+/usr/local/bin/yazi --version
 
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 sudo chsh -s /usr/bin/zsh $USER
