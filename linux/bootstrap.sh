@@ -73,16 +73,10 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all --no-fish
 
 echo -e "${LGREEN}--> Installing Fd search...${WHITE}"
-if [[ "$UBUNTU_VERSION" == "16.04" || "$UBUNTU_VERSION" == "16.10" || "$UBUNTU_VERSION" == "17.04" || "$UBUNTU_VERSION" == "17.10" || "$UBUNTU_VERSION" == "18.04" || "$UBUNTU_VERSION" == "18.10" ]]
-then
-  fddeb=$(basename $(curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb" | cut -d : -f 2,3 | tr -d \" | head -n 1))
-  curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb"  | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O $fddeb -i -
-  sudo dpkg -i $fddeb
-else
-  sudo apt install fd-find
-  [[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local 
-  echo "alias fd=fdfind" >> $HOME/.zshrc_local
-fi
+fddeb=$(basename $(curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb" | cut -d : -f 2,3 | tr -d \" | head -n 1))
+curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb"  | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O $fddeb -i -
+sudo dpkg -i $fddeb
+
 
 echo -e "${LGREEN}--> Installing Micro editor...${WHITE}"
 app_exists "/usr/local/bin/micro"
