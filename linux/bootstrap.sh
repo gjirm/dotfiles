@@ -103,12 +103,11 @@ app_exists "/usr/local/bin/yazi"
 yazifile=$(basename $(curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep "browser_download_url.*yazi-$arch-unknown-linux-musl.zip" | cut -d : -f 2,3 | tr -d \" | head -n 1))
 echo -e "${LGREEN}--> Downloading $yazifile...${WHITE}"
 curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep "browser_download_url.*yazi-$arch-unknown-linux-musl.zip"| cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O tmp.zip -i -
-unzip -p tmp.zip yazi-x86_64-unknown-linux-musl/yazi > /usr/local/bin/yazi
 cmd_check "Yazi download" $?
-rm tmp.zip 
-chmod +x /usr/local/bin/yazi
-/usr/local/bin/yazi --version
-
+unzip -p tmp.zip yazi-x86_64-unknown-linux-musl/yazi > ./yazi
+rm tmp.zip
+sudo cp ./yazi /usr/local/bin/yazi
+sudo chmod +x /usr/local/bin/yazi
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 sudo chsh -s /usr/bin/zsh $USER
 
