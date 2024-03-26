@@ -17,6 +17,7 @@ source $HOME/.zshrc_local
 
 # Add fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd -HI -t f -t l'
 
 # Completition
 autoload -U compinit
