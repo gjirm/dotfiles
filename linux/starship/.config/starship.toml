@@ -9,9 +9,6 @@ $git_commit\
 $git_state\
 $git_status\
 $git_metrics\
-$aws\
-$azure\
-$terraform\
 $docker_context\
 $package\
 $nix_shell\
