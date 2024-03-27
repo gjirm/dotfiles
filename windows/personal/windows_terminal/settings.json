@@ -35,11 +35,12 @@
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
-                "colorScheme": "Tango Dark",
+                "colorScheme" : "One Half Dark",
                 "font": {
                     "face": "Delugia"
                 },
-                "source": "Windows.Terminal.PowershellCore"
+                "source": "Windows.Terminal.PowershellCore",
+                "tabColor": "#4682b4"
             },
             {
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
@@ -50,7 +51,8 @@
                 "font": {
                     "face": "Delugia"
                 },
-                "source": "Windows.Terminal.Wsl"
+                "source": "Windows.Terminal.Wsl",
+                "tabColor": "#6a5acd"
             },
             {
                 "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
@@ -126,7 +128,7 @@
         // - "splitMode": "duplicate" makes the new pane use the focused pane's profile.
         // To learn more about panes, visit https://aka.ms/terminal-panes
         //{ "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+d" }
-        { "command": { "action": "splitPane", "split": "horizontal"}, "keys": [ "alt+shift+h" ] },
-        { "command": { "action": "splitPane", "split": "vertical"}, "keys": [ "alt+shift+v" ] }
+        { "command": { "action": "splitPane", "split": "right"}, "keys": [ "alt+shift+right" ] },
+        { "command": { "action": "splitPane", "split": "down"}, "keys": [ "alt+shift+down" ] }
     ]
 }
