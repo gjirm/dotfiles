@@ -94,17 +94,17 @@ format = '[+$added]($added_style) [-$deleted]($deleted_style) '
 disabled = true
 
 [aws]
-format = '[\(Aws: $profile\)]($style) '
+format = '[Aws\[ $profile \]]($style) '
 style = 'bold fg:#ff9900'
 
 [azure]
 disabled = false
-format = '[\(Az: $username | $subscription\)]($style) '
+format = '[Az\[ $username / $subscription \]]($style) '
 symbol = '󰠅 '
 style = 'blue bold'
 
 [terraform]
-format = '[\(Tf: $version | $workspace\)]($style) '
+format = '[Tf\[ $version / $workspace \]]($style) '
 
 [os]
 format = "[$symbol]($style)"
