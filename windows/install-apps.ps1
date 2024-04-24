@@ -52,5 +52,6 @@ WingetInstall ProtonTechnologies.ProtonVPN
 #WingetInstall Microsoft.OpenSSH.Beta
 #WingetInstall MarkText.MarkText
 WingetInstall Obsidian.Obsidian
+WingetInstall Smallstep.step
 
 Write-Host "--> Done <--" -ForegroundColor Green
