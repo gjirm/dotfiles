@@ -32,8 +32,8 @@ Write-Host "--> Installing apps..." -ForegroundColor Green
 #scoop install everything
 
 # https://smallstep.com/cli/
-scoop bucket add smallstep https://github.com/smallstep/scoop-bucket.git
-scoop install smallstep/step
+# scoop bucket add smallstep https://github.com/smallstep/scoop-bucket.git
+# scoop install smallstep/step
 
 # https://github.com/FiloSottile/age
 scoop install age
