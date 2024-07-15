@@ -88,3 +88,10 @@ alias tf='terraform'
 ###########
 alias sc='sudo systemctl'
 alias scst='sudo systemctl status'
+
+# docker
+###########
+alias dcpull='docker compose pull'
+alias dcup='docker compose up -d'
+alias dccup='docker compose --compatibility up -d'
+alias dcdown='docker compose down'
