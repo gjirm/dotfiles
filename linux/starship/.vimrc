@@ -20,9 +20,13 @@ Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
-let g:airline#extensions#tabline#enabled = 1
-
 let g:airline_powerline_fonts = 1
+
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#hunks#enabled=0
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
