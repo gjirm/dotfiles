@@ -30,3 +30,5 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
+
+command W silent execute 'write !sudo tee ' . shellescape(@%, 1) . ' >/dev/null'
