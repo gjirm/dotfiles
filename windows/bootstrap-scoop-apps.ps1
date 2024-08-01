@@ -134,8 +134,9 @@ scoop install goreleaser
 # https://github.com/sxyazi/yazi
 scoop install yazi
 # Install the optional dependencies (recommended):
-scoop install unar jq poppler ripgrep zoxide
+scoop install unar jq poppler ripgrep zoxide imagemagick
 [Environment]::SetEnvironmentVariable("YAZI_FILE_ONE ", "C:\Program Files\Git\usr\bin\file.exe","user")
 Copy-Item -Path "$PSScriptRoot\personal\yazi\*" -Destination "${env:USERPROFILE}\AppData\Roaming\yazi" -Recurse
+ya pack -a yazi-rs/plugins#full-border
 
 Write-Host "--> Done <--" -ForegroundColor Green
