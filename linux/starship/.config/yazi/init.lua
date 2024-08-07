@@ -4,7 +4,7 @@ require("session"):setup {
 --- Install by running: ya pack -a yazi-rs/plugins#full-border
 require("full-border"):setup()
 
-function Status:owner()
+Status:children_add(function()
 	local h = cx.active.current.hovered
 	if h == nil or ya.target_family() ~= "unix" then
 		return ui.Line {}
@@ -16,34 +16,11 @@ function Status:owner()
 		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
 		ui.Span(" "),
 	}
-end
+end, 500, Status.RIGHT)
 
-function Status:render(area)
-	self.area = area
-
-	local left = ui.Line { self:mode(), self:size(), self:name() }
-	local right = ui.Line { self:owner(), self:permissions(), self:percentage(), self:position() }
-	return {
-		ui.Paragraph(area, { left }),
-		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
-		table.unpack(Progress:render(area, right:width())),
-	}
-end
-
-function Header:host()
+Header:children_add(function()
 	if ya.target_family() ~= "unix" then
 		return ui.Line {}
 	end
 	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
-end
-
-function Header:render(area)
-	self.area = area
-
-	local right = ui.Line { self:count(), self:tabs() }
-	local left = ui.Line { self:host(), self:cwd(math.max(0, area.w - right:width())) }
-	return {
-		ui.Paragraph(area, { left }),
-		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
-	}
-end
+end, 500, Header.LEFT)

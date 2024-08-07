@@ -104,8 +104,8 @@ yazifile=$(basename $(curl -s https://api.github.com/repos/sxyazi/yazi/releases 
 echo -e "${LGREEN}--> Downloading $yazifile...${WHITE}"
 curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep "browser_download_url.*yazi-$arch-unknown-linux-musl.zip"| cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O tmp.zip -i -
 cmd_check "Yazi download" $?
-unzip -p tmp.zip yazi-x86_64-unknown-linux-musl/yazi > ./yazi
-unzip -p tmp.zip yazi-x86_64-unknown-linux-musl/ya > ./ya
+unzip -p tmp.zip yazi-$arch-unknown-linux-musl/yazi > ./yazi
+unzip -p tmp.zip yazi-$arch-unknown-linux-musl/ya > ./ya
 rm tmp.zip
 sudo cp ./yazi /usr/local/bin/yazi
 sudo chmod +x /usr/local/bin/yazi
