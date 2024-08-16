@@ -99,3 +99,7 @@ alias sdcpull='sudo docker compose pull'
 alias sdcup='sudo docker compose up -d'
 alias sdccup='sudo docker compose --compatibility up -d'
 alias sdcdown='sudo docker compose down'
+
+# ctop - tmux fix
+##################
+alias ctop='TERM="${TERM/#tmux/screen}" ctop'
