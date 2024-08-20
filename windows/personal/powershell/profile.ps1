@@ -35,4 +35,5 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 #Set-PsFzfOption -TabExpansion
 
 Invoke-Expression ( &starship init powershell )
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 Clear-Host
