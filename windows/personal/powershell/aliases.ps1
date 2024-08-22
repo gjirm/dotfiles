@@ -50,11 +50,11 @@ Set-Alias ls Get-ChildItem -Option AllScope
 #Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
 # Directory
-function .. { cd .. }
-function ... { cd .. ; cd .. }
-function .... { cd .. ; cd .. ; cd .. }
-function ..... { cd .. ; cd .. ; cd .. ; cd .. }
-function home { cd $env:USERPROFILE }
+function .. { Set-Location .. }
+function ... { Set-Location .. ; Set-Location .. }
+function .... { Set-Location .. ; Set-Location .. ; Set-Location .. }
+function ..... { Set-Location .. ; Set-Location .. ; Set-Location .. ; Set-Location .. }
+function home { Set-Location $env:USERPROFILE }
 Function cdssh {Set-Location -Path "$env:MY_SSH_PATH"}
 Function cdgit {Set-Location -Path "$env:MY_GIT_PATH"}
 Function cdwork {Set-Location -Path "$env:MY_WORK_PATH"}
@@ -208,3 +208,4 @@ function psake {
 }
 
 Set-Alias -Name cde -Value Set-LocationFuzzyEverything
+Set-Alias -Name lzd -Value lazydocker

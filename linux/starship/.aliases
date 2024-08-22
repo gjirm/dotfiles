@@ -103,3 +103,7 @@ alias sdcdown='sudo docker compose down'
 # ctop - tmux fix
 ##################
 alias ctop='TERM="${TERM/#tmux/screen}" ctop'
+
+# lazydocker
+############
+alias lzd='lazydocker'
