@@ -48,12 +48,22 @@ function gitpush() {
 
 # Yazi
 function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
+# Interactively start ssh sessions
+function fs() {
+    if [ $# -eq 0 ]
+    then
+        ssh $(cat ~/.ssh/config | grep -E "Host [^*]+" | awk '{ print $2 }' | fzf)
+    else
+        ssh $(cat ~/.ssh/config | grep -E "Host .*${1}.*" | awk '{ print $2 }' | fzf)
+    fi
 }
 
 alias g='git'

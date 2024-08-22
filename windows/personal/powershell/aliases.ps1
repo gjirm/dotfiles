@@ -131,6 +131,14 @@ function fss {
   }
 }
 
+function fs {
+  if ($args) {
+    ssh $(Get-Content "$env:USERPROFILE\.ssh\config" | Select-String -pattern "Host .*$args.*" | ForEach-Object { $_.Matches.Value.Split()[1]} | Invoke-Fzf)
+  } else {
+    ssh $(Get-Content "$env:USERPROFILE\.ssh\config" | Select-String -pattern "Host [^*]+$" | ForEach-Object { $_.Matches.Value.Split()[1]} | Invoke-Fzf)
+  }
+}
+
 function stss {
   if ($args) {
     wt -w 0 sp pwsh -Command fss $args[0]
