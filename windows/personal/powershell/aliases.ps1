@@ -87,6 +87,8 @@ function rdns { Resolve-DnsName $args[0] }
 # Terraform
 function tf { terraform $args }
 
+function tfp { terraform plan --out "$(Get-Date -Format "yyyy-MM-dd_HHmm").tfplan" }
+
 #Others
 function which($name) {
   Get-Command $name -ErrorAction SilentlyContinue | Select-Object Definition
