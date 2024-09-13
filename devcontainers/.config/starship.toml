@@ -1,0 +1,117 @@
+format = """
+$shlvl\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+$memory_usage\
+$env_var\
+$custom\
+$cmd_duration\
+$fill\
+$aws\
+$azure\
+$terraform\
+$docker_context\
+$package\
+$nix_shell\
+$time\
+$battery\
+$line_break\
+$jobs\
+$status\
+$container\
+$os\
+$shell\
+$character"""
+
+add_newline = true
+
+scan_timeout = 100
+command_timeout = 1500
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+style = "bold grey"
+# utc_time_offset = "-5"
+# time_range = "10:00:00-14:00:00"
+
+[aws]
+format = '[Aws\[ $profile \]]($style) '
+style = 'bold fg:#ff9900'
+
+[azure]
+disabled = false
+format = '[Az\[ $username / $subscription \]]($style) '
+symbol = '󰠅 '
+style = 'blue bold'
+
+[terraform]
+format = '[Tf\[ $version / $workspace \]]($style) '
+
+[container]
+format = '[$symbol \[Ansible\]]($style) '
+style = 'bold fg:#1d63ed'
+
+[os]
+format = "$symbol"
+disabled = false
+
+[os.symbols]
+Alpaquita = "🔔 "
+Alpine = "🏔️ "
+Amazon = "🙂 "
+Android = "🤖 "
+Arch = "🎗️ "
+Artix = "🎗️ "
+CentOS = "💠 "
+Debian = "🌀 "
+DragonFly = "🐉 "
+Emscripten = "🔗 "
+EndeavourOS = "🚀 "
+Fedora = "🎩 "
+FreeBSD = "😈 "
+Garuda = "🦅 "
+Gentoo = "🗜️ "
+HardenedBSD = "🛡️ "
+Illumos = "🐦 "
+Linux = "🐧 "
+Mabox = "📦 "
+Macos = "🍎 "
+Manjaro = "🥭 "
+Mariner = "🌊 "
+MidnightBSD = "🌘 "
+Mint = "🌿 "
+NetBSD = "🚩 "
+NixOS = "❄️ "
+OpenBSD = "🐡 "
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
+openSUSE = "🦎 "
+OracleLinux = "🦴 "
+Pop = "🍭 "
+Raspbian = "🍓 "
+Redhat = "🎩 "
+RedHatEnterprise = "🎩 "
+Redox = "🧪 "
+Solus = "⛵ "
+SUSE = "🦎 "
+Ubuntu = "🎯 "
+Unknown = "❓ "
+Windows = "🪟 "
+
+[shell]
+bash_indicator = '\[bsh\]'
+powershell_indicator = '\[pwsh\]'
+zsh_indicator = '\[zsh\]'
+style = 'green bold'
+disabled = false
