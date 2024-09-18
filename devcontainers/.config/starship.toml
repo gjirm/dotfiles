@@ -59,7 +59,7 @@ style = 'blue bold'
 format = '[Tf\[ $version / $workspace \]]($style) '
 
 [container]
-format = '[$symbol \[Ansible\]]($style) '
+format = '[$symbol \[-->PROJECT<--\]]($style) '
 style = 'bold fg:#1d63ed'
 
 [os]
