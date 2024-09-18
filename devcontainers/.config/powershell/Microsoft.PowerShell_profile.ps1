@@ -93,6 +93,8 @@ function psake {
 Set-Alias -Name cde -Value Set-LocationFuzzyEverything
 Set-Alias -Name lzd -Value lazydocker
   
+Set-PSReadLineOption -MaximumHistoryCount 10000
+Set-PSReadLineOption -HistorySavePath "/workspaces/_data/pwsh_history.txt"
 
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
