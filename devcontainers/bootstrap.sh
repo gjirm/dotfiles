@@ -23,7 +23,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosu
 curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/devcontainers/.config/micro/settings.json -o $HOME/.config/micro/settings.json
 
 # starship config
-curl -sSL https://github.com/gjirm/dotfiles/blob/master/devcontainers/.config/starship.toml -o $HOME/.config/starship.toml
+curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/devcontainers/.config/starship.toml -o $HOME/.config/starship.toml
 sed -i "s/-->PROJECT<--/$PRJ/g" "$HOME/.config/starship.toml"
 
 # yazi config
