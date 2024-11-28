@@ -176,10 +176,11 @@ function fex {
 }
 
 function rnd {
+  $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-$%&*#@?<>'
   if ($args) {
-    -join ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-$%&*#'.ToCharArray() | Get-Random -Count $args[0])
+    -join (Get-Random -Minimum 0 -Maximum $chars.Length -Count $args[0] | ForEach-Object {$chars[$_]})
   } else {
-    -join ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-$%&*#'.ToCharArray() | Get-Random -Count 12)
+    -join (Get-Random -Minimum 0 -Maximum $chars.Length -Count $args[0] | ForEach-Object {$chars[$_]})
   }
 }
 

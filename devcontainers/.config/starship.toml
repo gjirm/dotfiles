@@ -115,3 +115,6 @@ powershell_indicator = '\[pwsh\]'
 zsh_indicator = '\[zsh\]'
 style = 'green bold'
 disabled = false
+
+[username]
+disabled = true
