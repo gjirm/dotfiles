@@ -180,7 +180,7 @@ function rnd {
   if ($args) {
     -join (Get-Random -Minimum 0 -Maximum $chars.Length -Count $args[0] | ForEach-Object {$chars[$_]})
   } else {
-    -join (Get-Random -Minimum 0 -Maximum $chars.Length -Count $args[0] | ForEach-Object {$chars[$_]})
+    -join (Get-Random -Minimum 0 -Maximum $chars.Length -Count 16 | ForEach-Object {$chars[$_]})
   }
 }
 
