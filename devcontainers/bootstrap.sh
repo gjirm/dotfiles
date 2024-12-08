@@ -21,7 +21,7 @@ apps=(
 
 for app in ${apps[@]}
 do
-    curl -sSL https://go.jirm.cz/u/$app | bash
+    curl -sSL https://go.jirm.cz/u/$app | sudo bash
 done
 
 echo -e "${LGREEN}--> Configure environments ${WHITE}"
