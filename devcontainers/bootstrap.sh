@@ -17,6 +17,7 @@ apps=(
     "fzf"
     "fd"
     "micro"
+    "zoxide"
 )
 
 for app in ${apps[@]}

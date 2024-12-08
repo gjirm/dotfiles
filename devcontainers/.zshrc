@@ -124,6 +124,7 @@ zstyle ':completion:*' menu select
 #setopt COMPLETE_ALIASES
 
 # Set up fzf key bindings and fuzzy completion
+source ~/.fzf.zsh
 source <(fzf --zsh)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
