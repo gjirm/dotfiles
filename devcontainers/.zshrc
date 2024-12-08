@@ -5,6 +5,8 @@ export HISTFILE="/workspaces/_data/.zhistory"
 export HISTSIZE=10000     
 export SAVEHIST=10000
 
+#export FZF_DEFAULT_COMMAND='fd -HI -t f -t l'
+
 fpath=(~/.zsh_completions $fpath)
 
 # Aliases
