@@ -46,9 +46,9 @@ curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/dev
 sed -i "s/-->PROJECT<--/$PRJ/g" "$HOME/.config/starship.toml"
 
 # yazi config
-# [[ -d $HOME/.config/yazi ]] || mkdir -p $HOME/.config/yazi
-# curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/devcontainers/.config/yazi/init.lua -o $HOME/.config/yazi/init.lua
-# curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/devcontainers/.config/yazi/keymap.toml -o $HOME/.config/yazi/keymap.toml
-# curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/devcontainers/.config/yazi/yazi.toml -o $HOME/.config/yazi/yazi.toml
+[[ -d $HOME/.config/yazi ]] || mkdir -p $HOME/.config/yazi
+curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/devcontainers/.config/yazi/init.lua -o $HOME/.config/yazi/init.lua
+curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/devcontainers/.config/yazi/keymap.toml -o $HOME/.config/yazi/keymap.toml
+curl -sSL https://raw.githubusercontent.com/gjirm/dotfiles/refs/heads/master/devcontainers/.config/yazi/yazi.toml -o $HOME/.config/yazi/yazi.toml
 
-# /usr/local/bin/ya pack -a yazi-rs/plugins:full-border
+/usr/local/bin/ya pack -a yazi-rs/plugins:full-border
