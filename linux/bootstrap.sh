@@ -63,9 +63,12 @@ sudo apt update
 sudo apt install curl wget git file build-essential zsh autojump zip unzip -y
 #sudo apt instal fd-find
 
+mkdir $HOME/.zsh_completions
+
 echo -e "${LGREEN}--> Installing Starship ...${WHITE}"
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://starship.rs/install.sh)" --
+
+# Install starship
+sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
 # plugin zsh-syntax-highlighting
 echo -e "${LGREEN}--> Installing zsh-syntax-highlighting ...${WHITE}"
@@ -75,8 +78,8 @@ echo -e "${LGREEN}--> Installing zsh-autosuggestions ...${WHITE}"
 git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
 
 echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --all --no-fish
+git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+$HOME/.fzf/install --all --no-fish
 
 echo -e "${LGREEN}--> Installing Fd search...${WHITE}"
 fddeb=$(basename $(curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb" | cut -d : -f 2,3 | tr -d \" | head -n 1))

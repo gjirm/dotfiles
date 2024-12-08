@@ -5,6 +5,8 @@ export HISTFILE="/workspaces/_data/.zhistory"
 export HISTSIZE=10000     
 export SAVEHIST=10000
 
+fpath=(~/.zsh_completions $fpath)
+
 # Aliases
 alias cls='clear'
 

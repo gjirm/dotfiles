@@ -7,6 +7,8 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 export EDITOR=micro
 
+fpath=(~/.zsh_completions $fpath)
+
 source $HOME/.env
 source $HOME/.aliases
 source $HOME/.zshrc_local 
