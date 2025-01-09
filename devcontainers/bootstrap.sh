@@ -26,7 +26,7 @@ do
     curl -sSL https://jirm.cz/i/x/$app | sudo bash
 done
 
-chown -R $(whoami):$(whoami) $HOME/.local
+sudo chown -R $(whoami):$(whoami) $HOME/.local
 
 echo -e "${LGREEN}--> Configure environments ${WHITE}"
 
