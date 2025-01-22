@@ -1,7 +1,7 @@
 require("session"):setup {
 	sync_yanked = true,
 }
---- Install by running: ya pack -a yazi-rs/plugins#full-border
+--- Install by running: ya pack -a yazi-rs/plugins:full-border
 require("full-border"):setup()
 
 Status:children_add(function()
