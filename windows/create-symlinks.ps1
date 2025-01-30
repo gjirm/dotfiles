@@ -38,6 +38,12 @@ if (Test-Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1") {
 }
 New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\aliases.ps1" -ItemType SymbolicLink -Value "${profilePath}\powershell\aliases.ps1"
 
+# Create profile file for local override of powershell settings 
+Write-Host "--> Create PowerShell Core local profile override file ${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1 ..." -ForegroundColor Green
+if ( -not (Test-Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1")) {
+  New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1" -ItemType "file" -Value ""
+}
+
 # Windows Terminal profile
 # Install microsoft-windows-terminal, Always delete and place a new one
 # Write-Host "--> Windows Terminal symlinks ..." -ForegroundColor Green
@@ -69,31 +75,26 @@ if (Test-Path "${env:USERPROFILE}\.config\starship.toml") {
 } 
 New-Item -Path "${env:USERPROFILE}\.config\starship.toml" -ItemType SymbolicLink -Value "${profilePath}\starship\starship.toml"
 
-# Create profile file for local override of powershell settings 
-Write-Host "--> Create PowerShell Core local profile override file ${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1 ..." -ForegroundColor Green
-if ( -not (Test-Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1")) {
-  New-Item -Path "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1" -ItemType "file" -Value ""
+
+Write-Host "--> Yazi prompt symlinks ..." -ForegroundColor Green
+
+if (!(Test-Path "${env:USERPROFILE}\AppData\Roaming\yazi\config")) {
+  New-Item -ItemType Directory -Force -Path "${env:USERPROFILE}\AppData\Roaming\yazi\config"
 }
 
-$setGitEnv = Read-Host -Prompt "--> Set ENV variable with path to the GIT root folder (MY_GIT_PATH)"
-if ($setGitEnv) {
-  [Environment]::SetEnvironmentVariable("MY_GIT_PATH", "$setGitEnv","user")
-}
+if (Test-Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\init.lua") {
+  Rename-Item -Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\init.lua" -NewName "init_${timeStamp}.lua" -Force
+} 
+New-Item -Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\init.lua" -ItemType SymbolicLink -Value "${profilePath}\yazi\config\init.lua"
 
-# Set ENV variables for MY common paths
-$setSshEnv = Read-Host -Prompt "--> Set ENV variable with path to folder with SSH profiles (MY_SSH_PATH)"
-if ($setSshEnv) {
-  [Environment]::SetEnvironmentVariable("MY_SSH_PATH", "$setSshEnv","user")
-}
+if (Test-Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\keymap.toml") {
+  Rename-Item -Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\keymap.toml" -NewName "keymap_${timeStamp}.toml" -Force
+} 
+New-Item -Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\keymap.toml" -ItemType SymbolicLink -Value "${profilePath}\yazi\config\keymap.toml"
 
-$setWorkEnv = Read-Host -Prompt "--> Set ENV variable with path to folder with WORK files (MY_WORK_PATH)"
-if ($setWorkEnv) {
-  [Environment]::SetEnvironmentVariable("MY_WORK_PATH", "$setWorkEnv","user")
-}
-
-$setAppsEnv = Read-Host -Prompt "--> Set ENV variable with path to the my portable APPS folder (MY_GIT_PATH)"
-if ($setAppsEnv) {
-  [Environment]::SetEnvironmentVariable("MY_APPS_PATH", "$setAppsEnv","user")
-}
+if (Test-Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\yazi.toml") {
+  Rename-Item -Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\yazi.toml" -NewName "yazi_${timeStamp}.toml" -Force
+} 
+New-Item -Path "${env:USERPROFILE}\AppData\Roaming\yazi\config\yazi.toml" -ItemType SymbolicLink -Value "${profilePath}\yazi\config\yazi.toml"
 
 Read-Host -Prompt "Press Enter to exit" 

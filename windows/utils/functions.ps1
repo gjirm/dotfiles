@@ -127,5 +127,5 @@ function InstallFromGithub {
 
 # Winget install wrapper
 function WingetInstall {
-    winget install $args --accept-source-agreements --accept-package-agreements 
+    winget install --exact $args --accept-source-agreements --accept-package-agreements 
 }

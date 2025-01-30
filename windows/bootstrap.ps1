@@ -38,11 +38,12 @@ Write-Host "--> Installing PSEverything in PowerShell Core ..." -ForegroundColor
 Write-Host "--> Installing WslInterop in PowerShell Core ..." -ForegroundColor Green
 & "$pwshExe" -nologo -noprofile -command "Install-Module -Name WslInterop -Force"
 
-Write-Host "--> Install manually Windows Terminal if not installed: https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701" -ForegroundColor Yellow
-Write-Host "--> To finish bootstrap run .\bootstrap-scoop-apps.ps1 as non-admin user." -ForegroundColor Yellow
-
 # Create my symlinks
 . ".\create-symlinks.ps1"
 
+# Create local envars
+. ".\create-my-env-vars.ps1"
 
-#. ".\install-apps.ps1"
+Write-Host "--> Install manually Windows Terminal if not installed: https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701" -ForegroundColor Yellow
+Write-Host "--> To finish bootstrap run .\install-apps.ps1 as admin user." -ForegroundColor Yellow
+Write-Host "--> To finish bootstrap run .\bootstrap-scoop-apps.ps1 as non-admin user." -ForegroundColor Yellow

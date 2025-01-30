@@ -18,7 +18,7 @@ if ($setWorkGirEnv) {
   Write-Host "--> Variable MY_GITWORK_PATH set" -ForegroundColor Green
 }
 
-$setAppsEnv = Read-Host -Prompt "--> Set ENV variable with path to the my portable APPS folder (MY_GIT_PATH)"
+$setAppsEnv = Read-Host -Prompt "--> Set ENV variable with path to the my portable APPS folder (MY_APPS_PATH)"
 if ($setAppsEnv) {
   [Environment]::SetEnvironmentVariable("MY_APPS_PATH", "$setAppsEnv","user")
   Write-Host "--> Variable MY_APPS_PATH set" -ForegroundColor Green
