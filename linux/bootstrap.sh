@@ -113,9 +113,10 @@ install_check "Micro" $?
 
 echo -e "${LGREEN}--> Installing Yazi ...${WHITE}"
 app_exists "/usr/local/bin/yazi"
-yazifile=$(basename $(curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep "browser_download_url.*yazi-$ARCH-unknown-linux-musl.zip" | cut -d : -f 2,3 | tr -d \" | head -n 1))
-echo -e "${LGREEN}--> Downloading $yazifile...${WHITE}"
-curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep -v "nightly" | grep "browser_download_url.*yazi-$ARCH-unknown-linux-musl.zip"| cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O tmp.zip -i -
+durl=$(curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep -v "nightly" | grep "browser_download_url.*yazi-$ARCH-unknown-linux-musl.zip" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+file=$(basename $durl)
+echo -e "${LGREEN}--> Downloading $file...${WHITE}"
+curl -sL $durl -o tmp.zip
 cmd_check "Yazi download" $?
 unzip -p tmp.zip yazi-$ARCH-unknown-linux-musl/yazi > ./yazi
 unzip -p tmp.zip yazi-$ARCH-unknown-linux-musl/ya > ./ya
