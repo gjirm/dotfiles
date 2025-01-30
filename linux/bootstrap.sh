@@ -83,7 +83,7 @@ app_exists "/usr/local/bin/fzf"
 durl=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | grep "browser_download_url.*linux_$AMD64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
 file=$(basename $durl)
 echo -e "${LGREEN}--> Downloading $file...${WHITE}"
-curl -sL $durl | tar -xzf - -C /usr/local/bin
+curl -sL $durl | sudo tar -xzf - -C /usr/local/bin
 cmd_check "fzf download" $?
 chmod +x /usr/local/bin/fzf
 /usr/local/bin/fzf --version
@@ -94,7 +94,7 @@ app_exists "/usr/local/bin/fd"
 durl=$(curl -sL https://api.github.com/repos/sharkdp/fd/releases/latest | grep "browser_download_url.*$ARCH-unknown-linux-musl.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
 file=$(basename $durl)
 echo -e "${LGREEN}--> Downloading $file...${WHITE}"
-curl -sL $durl | tar -xzf - --strip-components=1 -C /usr/local/bin --wildcards "*/fd"
+curl -sL $durl | sudo tar -xzf - --strip-components=1 -C /usr/local/bin --wildcards "*/fd"
 cmd_check "Fd download" $?
 chmod +x /usr/local/bin/fd
 /usr/local/bin/fd --version
@@ -105,7 +105,7 @@ app_exists "/usr/local/bin/micro"
 durl=$(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep -v "nightly" | grep "browser_download_url.*$ARCH-static.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
 file=$(basename $durl)
 echo -e "${LGREEN}--> Downloading $file...${WHITE}"
-curl -sL $durl | tar -xzf - --strip-components=1 -C /usr/local/bin/ --wildcards "*/micro"
+curl -sL $durl | sudo tar -xzf - --strip-components=1 -C /usr/local/bin/ --wildcards "*/micro"
 cmd_check "Micro download" $?
 sudo chmod +x /usr/local/bin/micro
 /usr/local/bin/micro --version
