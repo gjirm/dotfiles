@@ -69,7 +69,7 @@ mkdir $HOME/.zsh_completions
 echo -e "${LGREEN}--> Installing Starship ...${WHITE}"
 
 # Install starship
-sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
+sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 
 # plugin zsh-syntax-highlighting
 echo -e "${LGREEN}--> Installing zsh-syntax-highlighting ...${WHITE}"
