@@ -53,6 +53,7 @@ then
 elif [[ "$ARCH" == "x86_64" ]]
 then
   MARCH="linux64"
+  AMD64="amd64"
 fi
 
 echo -e "${LGREEN}--> Bootstraping Starship prompt with ZSH shell ${WHITE}"
@@ -79,7 +80,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosu
 
 echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
 app_exists "/usr/local/bin/fzf"
-durl=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | grep "browser_download_url.*linux_$ARCH.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+durl=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | grep "browser_download_url.*linux_$AMD64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
 file=$(basename $durl)
 echo -e "${LGREEN}--> Downloading $file...${WHITE}"
 curl -sL $durl | tar -xzf - -C /usr/local/bin
