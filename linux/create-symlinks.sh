@@ -52,6 +52,5 @@ ln -s $SYSTEM_PROFILE/.tmux.conf $HOME/.tmux.conf
 ln -s $SYSTEM_PROFILE/.vimrc $HOME/.vimrc
 ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zshrc
 ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zsh/.zshrc
-ln -s $SYSTEM_PROFILE/.fzf.zsh $HOME/.fzf.zsh
 
 echo -e "${LGREEN}--> Setting symlinks finished <--${WHITE}"

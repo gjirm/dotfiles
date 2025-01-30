@@ -18,8 +18,12 @@ source $HOME/.zshrc_local
 #export SSH_AUTH_SOCK=/mnt/d/git/keybase/work/apps/wsl-ssh-agent/ssh-agent.sock
 
 # Add fzf config
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#export FZF_DEFAULT_COMMAND='fd -HI -t f -t l'
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# export FZF_DEFAULT_COMMAND='fd -HI -t f -t l'
 
 # Completition
 autoload -U compinit

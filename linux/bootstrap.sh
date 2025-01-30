@@ -78,24 +78,34 @@ echo -e "${LGREEN}--> Installing zsh-autosuggestions ...${WHITE}"
 git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
 
 echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-$HOME/.fzf/install --all --no-fish
+app_exists "/usr/local/bin/fzf"
+durl=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | grep "browser_download_url.*linux_$arch.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+file=$(basename $durl)
+echo -e "${LGREEN}--> Downloading $file...${WHITE}"
+curl -sL $durl | tar -xzf - -C /usr/local/bin
+cmd_check "fzf download" $?
+chmod +x /usr/local/bin/fzf
+/usr/local/bin/fzf --version
+install_check "fzf" $?
 
 echo -e "${LGREEN}--> Installing Fd search...${WHITE}"
-fddeb=$(basename $(curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb" | cut -d : -f 2,3 | tr -d \" | head -n 1))
-curl -s https://api.github.com/repos/sharkdp/fd/releases | grep "browser_download_url.*fd_.*amd64.deb"  | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O $fddeb -i -
-sudo dpkg -i $fddeb
-
+app_exists "/usr/local/bin/fd"
+durl=$(curl -sL https://api.github.com/repos/sharkdp/fd/releases/latest | grep "browser_download_url.*$ARCH-unknown-linux-musl.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+file=$(basename $durl)
+echo -e "${LGREEN}--> Downloading $file...${WHITE}"
+curl -sL $durl | tar -xzf - --strip-components=1 -C /usr/local/bin --wildcards "*/fd"
+cmd_check "Fd download" $?
+chmod +x /usr/local/bin/fd
+/usr/local/bin/fd --version
+install_check "Fd" $?
 
 echo -e "${LGREEN}--> Installing Micro editor...${WHITE}"
 app_exists "/usr/local/bin/micro"
-microfile=$(basename $(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$MARCH.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1))
-echo -e "${LGREEN}--> Downloading $microfile...${WHITE}"
-mkdir micro-tmp
-curl -s https://api.github.com/repos/zyedidia/micro/releases | grep "browser_download_url.*$MARCH.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1 | wget -q -O - -i - | tar -xzf - --strip-components=1 -C ./micro-tmp
+durl=$(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep -v "nightly" | grep "browser_download_url.*$ARCH-static.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+file=$(basename $durl)
+echo -e "${LGREEN}--> Downloading $file...${WHITE}"
+curl -sL $durl | tar -xzf - --strip-components=1 -C /usr/local/bin/ --wildcards "*/micro"
 cmd_check "Micro download" $?
-sudo mv "micro-tmp/micro" /usr/local/bin/micro
-rm -rf "micro-tmp/"
 sudo chmod +x /usr/local/bin/micro
 /usr/local/bin/micro --version
 install_check "Micro" $?
@@ -115,6 +125,7 @@ sudo cp ./ya /usr/local/bin/ya
 sudo chmod +x /usr/local/bin/ya
 rm yazi
 rm ya
+/usr/local/bin/ya pack -a yazi-rs/plugins:full-border
 
 echo -e "${LGREEN}--> Installing Zoxide ...${WHITE}"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sudo bash -s -- --bin-dir /usr/local/bin

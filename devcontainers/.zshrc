@@ -128,6 +128,9 @@ zstyle ':completion:*' menu select
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
+# Set up yq  fuzzy completion
+source <(yq shell-completion zsh)
+
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
