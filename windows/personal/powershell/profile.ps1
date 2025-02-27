@@ -32,6 +32,7 @@ Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PSFzfOption -EnableAliasFuzzySetEverything -EnableAliasFuzzyGitStatus -EnableAliasFuzzyEdit -EnableAliasFuzzySetLocation -EnableAliasFuzzyHistory
 #Set-PsFzfOption -TabExpansion
 
 Invoke-Expression ( &starship init powershell )
