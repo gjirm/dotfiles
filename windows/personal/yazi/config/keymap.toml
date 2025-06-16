@@ -2,7 +2,7 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[manager]
+[mgr]
 
 keymap = [
 	{ on = "<Esc>", run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
@@ -154,6 +154,8 @@ keymap = [
 	# Help
 	{ on = "~",    run = "help", desc = "Open help" },
 	{ on = "<F1>", run = "help", desc = "Open help" },
+	{ on = "<F3>", run = "shell 'micro %*' --block" , desc = "Open by micro" },
+	{ on = "<F4>", run = "shell 'C:\\PROGRA~1\\Notepad++\\notepad++.exe %*'", desc = "Open by Npp" },
 ]
 
 [tasks]

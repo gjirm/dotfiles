@@ -1,7 +1,4 @@
 
-#Import-Module posh-git
-#Import-Module oh-my-posh
-#Import-Module Get-ChildItemColor
 Import-Module Terminal-Icons
 Import-Module PSReadline
 Import-Module PSFzf
@@ -22,10 +19,10 @@ if (-not $env:HOME) {
     $env:HOME = "$($env:HOMEDRIVE)$($env:HOMEPATH)"
 }
 
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+#Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # Fzf tab:
-#Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # Autocompletion for arrow keys
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
@@ -33,7 +30,7 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSFzfOption -EnableAliasFuzzySetEverything -EnableAliasFuzzyGitStatus -EnableAliasFuzzyEdit -EnableAliasFuzzySetLocation -EnableAliasFuzzyHistory
-#Set-PsFzfOption -TabExpansion
+Set-PsFzfOption -TabExpansion
 
 Invoke-Expression ( &starship init powershell )
 Invoke-Expression (& { (zoxide init powershell | Out-String) })

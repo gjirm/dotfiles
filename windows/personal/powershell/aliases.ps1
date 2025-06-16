@@ -60,8 +60,6 @@ Function cdgit {Set-Location -Path "$env:MY_GIT_PATH"}
 Function cdwork {Set-Location -Path "$env:MY_WORK_PATH"}
 Function cdgitwork {Set-Location -Path "$env:MY_GITWORK_PATH"}
 
-function fcd { Set-Location -Path $(fd -HI -t d $args . | fzf) }
-
 function mcd { New-Item $args[0] -ItemType Directory; Set-Location -Path $args[0] }
 
 # Text editor
@@ -160,19 +158,11 @@ function fdc {
 }
 
 function dc { 
-  if ($args) {
-    & "C:\Program Files\Double Commander\doublecmd.exe" -c -t $args
-  } else {
     & "C:\Program Files\Double Commander\doublecmd.exe" -c -t .
-  }
 }
 
 function fex { 
-  if ($args) {
-    & explorer $(fd -HI -t d $args . | fzf) 
-  } else {
     & explorer .
-  }
 }
 
 function rnd {
@@ -218,5 +208,4 @@ function psake {
   .\Makefile.ps1 $args
 }
 
-Set-Alias -Name cde -Value Set-LocationFuzzyEverything
 Set-Alias -Name lzd -Value lazydocker
