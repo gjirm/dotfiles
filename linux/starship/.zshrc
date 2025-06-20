@@ -37,5 +37,5 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
 . "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
