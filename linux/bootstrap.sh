@@ -132,6 +132,9 @@ rm ya
 echo -e "${LGREEN}--> Installing Zoxide ...${WHITE}"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sudo bash -s -- --bin-dir /usr/local/bin
 
+echo -e "${LGREEN}--> Installing Atuin ...${WHITE}"
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
 echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 sudo chsh -s /usr/bin/zsh $USER
 
