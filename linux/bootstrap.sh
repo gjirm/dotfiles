@@ -49,11 +49,12 @@ LINUX_ID=$(cat /etc/os-release | grep "^ID=" | cut -d = -f 2 | tr -d '"')
 ARCH=$(uname -m)
 if [[ "$ARCH" == "aarch64" ]]
 then
-  MARCH="arm64"
+  MARCH="-arm64"
+  A64="arm64"
 elif [[ "$ARCH" == "x86_64" ]]
 then
-  MARCH="linux64"
-  AMD64="amd64"
+  MARCH="64"
+  A64="amd64"
 fi
 
 echo -e "${LGREEN}--> Bootstraping Starship prompt with ZSH shell ${WHITE}"
@@ -80,12 +81,12 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosu
 
 echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
 app_exists "/usr/local/bin/fzf"
-durl=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | grep "browser_download_url.*linux_$MARCH.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+durl=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | grep "browser_download_url.*linux_$A64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
 file=$(basename $durl)
 echo -e "${LGREEN}--> Downloading $file...${WHITE}"
 curl -sL $durl | sudo tar -xzf - -C /usr/local/bin
 cmd_check "fzf download" $?
-chmod +x /usr/local/bin/fzf
+sudo chmod +x /usr/local/bin/fzf
 /usr/local/bin/fzf --version
 install_check "fzf" $?
 
@@ -96,13 +97,13 @@ file=$(basename $durl)
 echo -e "${LGREEN}--> Downloading $file...${WHITE}"
 curl -sL $durl | sudo tar -xzf - --strip-components=1 -C /usr/local/bin --wildcards "*/fd"
 cmd_check "Fd download" $?
-chmod +x /usr/local/bin/fd
+sudo chmod +x /usr/local/bin/fd
 /usr/local/bin/fd --version
 install_check "Fd" $?
 
 echo -e "${LGREEN}--> Installing Micro editor...${WHITE}"
 app_exists "/usr/local/bin/micro"
-durl=$(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep -v "nightly" | grep "browser_download_url.*$MARCH-static.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+durl=$(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep -v "nightly" | grep "browser_download_url.*linux$MARCH.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
 file=$(basename $durl)
 echo -e "${LGREEN}--> Downloading $file...${WHITE}"
 curl -sL $durl | sudo tar -xzf - --strip-components=1 -C /usr/local/bin/ --wildcards "*/micro"
