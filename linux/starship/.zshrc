@@ -10,6 +10,8 @@ export ATUIN_SYNC_ADDRESS=https://atuin.jirm.cz
 
 fpath=(~/.zsh_completions $fpath)
 
+setopt HIST_IGNORE_SPACE
+
 source $HOME/.env
 source $HOME/.aliases
 source $HOME/.zshrc_local 
