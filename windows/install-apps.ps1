@@ -92,6 +92,6 @@ WingetInstall jqlang.jq
 WingetInstall ImageMagick.ImageMagick
 WingetInstall BurntSushi.ripgrep.MSVC
 [Environment]::SetEnvironmentVariable("YAZI_FILE_ONE ", "C:\Program Files\Git\usr\bin\file.exe","user")
-ya pkg -a yazi-rs/plugins:full-border
+ya pkg add yazi-rs/plugins:full-border
 
 Write-Host "--> Done <--" -ForegroundColor Green

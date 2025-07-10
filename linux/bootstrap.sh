@@ -136,7 +136,7 @@ sudo cp ./ya /usr/local/bin/ya
 sudo chmod +x /usr/local/bin/ya
 rm yazi
 rm ya
-/usr/local/bin/ya pkg -a yazi-rs/plugins:full-border
+/usr/local/bin/ya pkg add yazi-rs/plugins:full-border
 
 echo -e "${LGREEN}--> Installing Zoxide ...${WHITE}"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sudo bash -s -- --bin-dir /usr/local/bin
