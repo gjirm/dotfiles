@@ -3,7 +3,7 @@ $shlvl\
 $os\
 $username\
 $hostname\
-$directory\
+[ ]()$directory\
 $git_branch\
 $git_commit\
 $git_state\
@@ -48,12 +48,12 @@ threshold = 20
 #style = "bold red"
 
 [username]
-format = "[$user]($style)[@]($style)"
+format = " [$user]($style)"
 style_user = "bold fg:84"
 show_always	= false
 
 [hostname]
-format = "[$hostname]($style) "
+format = "[@]($style)[$hostname]($style)"
 style = "bold fg:84"
 ssh_only = true
 
@@ -112,7 +112,7 @@ disabled = false
 [os.symbols]
 Ubuntu = " "
 #Ubuntu = "🎯 "
-Windows = " "
+Windows = ""
 #Windows = "🪟 "
 
 # [[battery.display]]
