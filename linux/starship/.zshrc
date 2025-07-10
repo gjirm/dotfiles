@@ -16,18 +16,6 @@ source $HOME/.env
 source $HOME/.aliases
 source $HOME/.zshrc_local 
 
-#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-#eval $(/mnt/d/git/keybase/work/apps/weasel-pageant-1.4/weasel-pageant -r)
-#export SSH_AUTH_SOCK=/mnt/d/git/keybase/work/apps/wsl-ssh-agent/ssh-agent.sock
-
-# Add fzf config
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
-# export FZF_DEFAULT_COMMAND='fd -HI -t f -t l'
-
 # Completition
 autoload -U compinit
 compinit
@@ -36,6 +24,10 @@ zstyle ':completion:*' menu select
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+# export FZF_DEFAULT_COMMAND='fd -HI -t f -t l'
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
