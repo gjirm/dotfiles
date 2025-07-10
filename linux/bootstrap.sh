@@ -111,6 +111,14 @@ sudo chmod +x /usr/local/bin/micro
 /usr/local/bin/micro --version
 install_check "Micro" $?
 
+echo -e "${LGREEN}--> Installing Eza ...${WHITE}"
+wget -c https://github.com/eza-community/eza/releases/latest/download/eza_$ARCH-unknown-linux-gnu.tar.gz -O - | tar xz
+sudo chmod +x eza
+sudo chown root:root eza
+sudo mv eza /usr/local/bin/eza
+/usr/local/bin/eza --version
+install_check "Eza" $?
+
 echo -e "${LGREEN}--> Installing Yazi ...${WHITE}"
 app_exists "/usr/local/bin/yazi"
 durl=$(curl -s https://api.github.com/repos/sxyazi/yazi/releases | grep -v "nightly" | grep "browser_download_url.*yazi-$ARCH-unknown-linux-musl.zip" | cut -d : -f 2,3 | tr -d \" | head -n 1)
@@ -127,7 +135,7 @@ sudo cp ./ya /usr/local/bin/ya
 sudo chmod +x /usr/local/bin/ya
 rm yazi
 rm ya
-/usr/local/bin/ya pack -a yazi-rs/plugins:full-border
+/usr/local/bin/ya pkg -a yazi-rs/plugins:full-border
 
 echo -e "${LGREEN}--> Installing Zoxide ...${WHITE}"
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sudo bash -s -- --bin-dir /usr/local/bin

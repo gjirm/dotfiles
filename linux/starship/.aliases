@@ -1,6 +1,7 @@
 alias cls='clear'
 
 alias ls="ls --color=auto --group-directories-first"
+alias lz="eza -l --icons=auto --group-directories-first"
 alias l="ls -lhF"
 alias ll="ls -lahF"
 alias ld="ls -lhd */"

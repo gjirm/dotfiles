@@ -44,9 +44,14 @@ function gitpush {
   git push
 }
 
-Set-Alias l Get-ChildItem -Option AllScope
-Set-Alias ll Get-ChildItem -Option AllScope
-Set-Alias ls Get-ChildItem -Option AllScope
+function ezadir {
+  eza -l --icons=auto --group-directories-first
+}
+
+Set-Alias -Name ll -Value ezadir
+Set-Alias -Name ls -Value ezadir
+Set-Alias -Name l -Value ezadir
+# Set-Alias ll Get-ChildItem -Option AllScope
 #Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
 
 # Directory

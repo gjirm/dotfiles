@@ -14,6 +14,7 @@ WingetInstall junegunn.fzf
 WingetInstall zyedidia.micro
 WingetInstall Starship.Starship
 WingetInstall ajeetdsouza.zoxide
+WingetInstall eza-community.eza
 
 Write-Host "--> Installing PowerShell modules ..." -ForegroundColor Green
 #Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
