@@ -62,7 +62,7 @@ echo -e "${LGREEN}--> Bootstraping Starship prompt with ZSH shell ${WHITE}"
 SYSTEM_PROFILE=$HOME/.dotfiles/linux/starship
 
 sudo apt update
-sudo apt install curl wget git file build-essential zsh autojump zip unzip -y
+sudo apt install curl wget git file build-essential bat tree zsh autojump zip unzip -y
 #sudo apt instal fd-find
 
 mkdir $HOME/.zsh_completions
