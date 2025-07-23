@@ -1,7 +1,5 @@
 format = """
 $shlvl\
-[](fg:92)\
-[ -->PROJECT<-- ](bg:92)\
 $os\
 $shell\
 ($username\
@@ -41,7 +39,7 @@ command_timeout = 1500
 symbol = " "
 
 [os]
-format = "[](fg:#0089D0 bg:92)[$symbol ]($style)"
+format = "[](fg:#0089D0)[$symbol ]($style)"
 style = "bold fg:white bg:#0089D0"
 disabled = false
 

@@ -5,6 +5,10 @@ function update_dotfiles {
   git -C "$env:userprofile\.dotfiles" pull  
 }
 
+function starship_prompt {
+  $ENV:STARSHIP_CONFIG = $(Get-ChildItem -Path "$env:userprofile\.dotfiles\windows\personal\starship\" | Invoke-Fzf)
+}
+
 # work git
 function push_work {
   Write-Host "--> Pushing $env:MY_GITWORK_PATH..." -ForegroundColor Green
@@ -214,3 +218,5 @@ function psake {
 }
 
 Set-Alias -Name lzd -Value lazydocker
+
+function npp { & "C:\Program Files\Notepad++\notepad++.exe" $args }

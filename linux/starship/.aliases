@@ -25,6 +25,10 @@ function update_starship() {
     sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 }
 
+function starship_prompt() {
+    export STARSHIP_CONFIG=$(fd -d 1 --extension toml . "$HOME/.dotfiles/linux/starship/.config" | fzf)
+}
+
 function fcd() {
     cd $(fd -HI -t d $@ . | fzf)
 }
