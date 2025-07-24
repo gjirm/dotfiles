@@ -6,7 +6,46 @@ function update_dotfiles {
 }
 
 function starship_prompt {
-  $ENV:STARSHIP_CONFIG = $(Get-ChildItem -Path "$env:userprofile\.dotfiles\windows\personal\starship\" | Invoke-Fzf)
+  param (
+    [switch] $Save
+  )
+
+  $newStarshipPrompt = $(Get-ChildItem -Path "$env:userprofile\.dotfiles\windows\personal\starship\" | Invoke-Fzf)
+
+  $ENV:STARSHIP_CONFIG = $newStarshipPrompt
+
+  if ($Save) {
+    Write-Host "--> Saving new Sratship prompt $newStarshipPrompt to local_profile.ps1.." -ForegroundColor Green
+    $localProfile = "$env:userprofile\Documents\PowerShell\local_profile.ps1"
+
+    # Define the search string and the replacement line
+    $searchString = '$env:STARSHIP_CONFIG'
+
+    $newStarshipPrompt = $searchString +' = "' + $newStarshipPrompt + '"'
+
+    # Read all lines from the file
+    $content = Get-Content $localProfile
+
+    # Replace the line containing the search string
+    
+    $found = $false
+    $updatedContent = $content | ForEach-Object {
+        if ($_ -like "*$searchString*") {
+            $found = $true
+            $newStarshipPrompt
+        } else {
+            $_
+        }
+    }
+
+    if (-not $found) {
+        $updatedContent += $newStarshipPrompt
+    }
+
+    # Write the updated content back to the file
+    $updatedContent | Set-Content $localProfile
+
+  }
 }
 
 # work git
