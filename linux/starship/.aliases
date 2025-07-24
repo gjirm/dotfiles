@@ -26,7 +26,10 @@ function update_starship() {
 }
 
 function starship_prompt() {
-    export STARSHIP_CONFIG=$(fd -d 1 --extension toml . "$HOME/.dotfiles/linux/starship/.config" | fzf)
+    local starshipPromptFile=$(fd -d 1 --extension toml . "$HOME/.dotfiles/linux/starship/.config" | fzf)
+    export STARSHIP_CONFIG="$starshipPromptFile"
+    sed -ie '/export STARSHIP_CONFIG.*/d' "$HOME/.zshrc_local"
+    echo "export STARSHIP_CONFIG=\"$starshipPromptFile\"" >> "$HOME/.zshrc_local"
 }
 
 function fcd() {
