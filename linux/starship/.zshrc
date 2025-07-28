@@ -2,18 +2,14 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
 export ZDOTDIR="$HOME/.zsh"
-export HISTFILE="$ZDOTDIR/.zhistory"    
-export HISTSIZE=10000     
+export HISTFILE="$ZDOTDIR/.zhistory"
+export HISTSIZE=10000
 export SAVEHIST=10000
 export EDITOR=micro
 
 fpath=(~/.zsh_completions $fpath)
 
 setopt HIST_IGNORE_SPACE
-
-source $HOME/.env
-source $HOME/.aliases
-source $HOME/.zshrc_local 
 
 # Completition
 autoload -U compinit
@@ -49,3 +45,7 @@ export FZF_ALT_C_OPTS="
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+source $HOME/.env
+source $HOME/.aliases
+source $HOME/.zshrc_local 
