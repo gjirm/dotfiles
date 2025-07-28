@@ -100,7 +100,7 @@ style = "fg:white bg:#0089D0"
 disabled = false
 
 [username]
-format = "[$user]($style)"
+format = "[$user ]($style)"
 style_user = "bold fg:#23d18b"
 style_root = "bold fg:red"
 show_always	= false
