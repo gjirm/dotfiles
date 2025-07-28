@@ -25,8 +25,10 @@ $terraform\
 $docker_context\
 $package\
 $nix_shell\
-$time\
 $battery\
+
+$fill\
+
 $line_break\
 $jobs\
 $status\
@@ -98,7 +100,7 @@ style = "fg:white bg:#0089D0"
 disabled = false
 
 [username]
-format = "[$user]($style)"
+format = "[$user ]($style)"
 style_user = "bold fg:#23d18b"
 style_root = "bold fg:red"
 show_always	= false
@@ -113,9 +115,9 @@ truncation_length = 8
 truncation_symbol = "../"
 
 [git_branch]
-symbol = " "
+format = " [$symbol $branch]($style) "
+symbol = ""
 style = "bold fg:99"
-format = " [$symbol$branch]($style) "
 
 [git_status]
 format = '[($all_status$ahead_behind)]($style) '
@@ -137,23 +139,24 @@ deleted_style = "bold red"
 disabled = false
 
 [aws]
-format = '[](fg:#ff9900)[$symbol$profile]($style)[ ](fg:#ff9900)'
-style = 'fg:white bg:#ff9900'
-symbol = '☁️ '
+format = "[](fg:#ff9900)[$symbol $profile]($style)[ ](fg:#ff9900)"
+style = "fg:white bg:#ff9900"
+symbol = "☁️"
 
 [azure]
 disabled = false
-format = '[](fg:#008AD7)[$symbol$username/$subscription]($style)[ ](fg:#008AD7)'
-symbol = '󰠅 '
-style = 'fg:white bg:#008AD7'
+format = "[](fg:#008AD7)[$symbol $username/$subscription]($style)[ ](fg:#008AD7)"
+symbol = "󰠅"
+style = "fg:white bg:#008AD7"
 
 [terraform]
-format = "[](fg:#7B42BC)[󱁢 $version/$workspace]($style)[ ](fg:#7B42BC)"
+format = "[](fg:#7B42BC)[$symbol $version/$workspace]($style)[ ](fg:#7B42BC)"
+symbol = "󱁢"
 style = "fg:white bg:#7B42BC"
 
 [time]
 disabled = false
-format = '[](fg:7)[🕙$time]($style)[ ](fg:7)'
+format = "[](fg:7)[🕙$time]($style)[ ](fg:7)"
 time_format = "%T"
 style = "fg:black bg:7"
 # utc_time_offset = "-5"
