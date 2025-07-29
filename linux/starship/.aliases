@@ -125,3 +125,5 @@ alias ctop='TERM="${TERM/#tmux/screen}" ctop'
 # lazydocker
 ############
 alias lzd='lazydocker'
+
+alias bat='batcat'
