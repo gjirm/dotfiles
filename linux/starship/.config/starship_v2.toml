@@ -3,7 +3,7 @@ $shlvl\
 $os\
 $shell\
 ($username\
-$hostname)\
+$hostname) \
 $directory\
 $git_branch\
 $git_commit\
@@ -90,13 +90,13 @@ Unknown = "❓"
 Windows = "󰖳"
 
 [shell]
-format = "[$indicator]($style)[ ](fg:#0089D0)"
+format = "[$indicator]($style)[](fg:#0089D0)"
 style = "fg:white bg:#0089D0"
 # powershell_indicator = "_"
 disabled = false
 
 [username]
-format = "[$user]($style)"
+format = "[ $user]($style)"
 style_user = "bold fg:#23d18b"
 style_root = "bold fg:red"
 show_always	= false
@@ -135,18 +135,19 @@ deleted_style = "bold red"
 disabled = false
 
 [aws]
-format = '[](fg:#ff9900)[$symbol$profile]($style)[ ](fg:#ff9900)'
+format = '[](fg:#ff9900)[$symbol $profile]($style)[ ](fg:#ff9900)'
 style = 'fg:white bg:#ff9900'
-symbol = '☁️ '
+symbol = "󰖐"
 
 [azure]
 disabled = false
-format = '[](fg:#008AD7)[$symbol$username/$subscription]($style)[ ](fg:#008AD7)'
-symbol = '󰠅 '
+format = '[](fg:#008AD7)[$symbol $username/$subscription]($style)[ ](fg:#008AD7)'
+symbol = '󰠅'
 style = 'fg:white bg:#008AD7'
 
 [terraform]
-format = "[](fg:#7B42BC)[󱁢 $version/$workspace]($style)[ ](fg:#7B42BC)"
+format = "[](fg:#7B42BC)[$symbol $version/$workspace]($style)[ ](fg:#7B42BC)"
+symbol = '󱁢'
 style = "fg:white bg:#7B42BC"
 
 [time]

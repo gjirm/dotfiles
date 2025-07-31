@@ -141,7 +141,7 @@ disabled = false
 [aws]
 format = "[](fg:#ff9900)[$symbol $profile]($style)[ ](fg:#ff9900)"
 style = "fg:white bg:#ff9900"
-symbol = "☁️"
+symbol = "󰖐"
 
 [azure]
 disabled = false

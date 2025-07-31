@@ -135,18 +135,19 @@ deleted_style = "bold red"
 disabled = false
 
 [aws]
-format = '[](fg:#ff9900)[$symbol$profile]($style)[ ](fg:#ff9900)'
-style = 'fg:white bg:#ff9900'
-symbol = '☁️ '
+format = "[](fg:#ff9900)[$symbol $profile]($style)[ ](fg:#ff9900)"
+style = "fg:white bg:#ff9900"
+symbol = "󰖐"
 
 [azure]
 disabled = false
-format = '[](fg:#008AD7)[$symbol$username/$subscription]($style)[ ](fg:#008AD7)'
-symbol = '󰠅 '
-style = 'fg:white bg:#008AD7'
+format = "[](fg:#008AD7)[$symbol $username/$subscription]($style)[ ](fg:#008AD7)"
+symbol = "󰠅"
+style = "fg:white bg:#008AD7"
 
 [terraform]
-format = "[](fg:#7B42BC)[󱁢 $version/$workspace]($style)[ ](fg:#7B42BC)"
+format = "[](fg:#7B42BC)[$symbol $version/$workspace]($style)[ ](fg:#7B42BC)"
+symbol = '󱁢'
 style = "fg:white bg:#7B42BC"
 
 [time]
