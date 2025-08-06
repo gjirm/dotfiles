@@ -222,6 +222,15 @@ function rnd {
   }
 }
 
+function rnda {
+  $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  if ($args) {
+    -join (Get-Random -Minimum 0 -Maximum $chars.Length -Count $args[0] | ForEach-Object {$chars[$_]})
+  } else {
+    -join (Get-Random -Minimum 0 -Maximum $chars.Length -Count 16 | ForEach-Object {$chars[$_]})
+  }
+}
+
 function bwp {
   # Using Bitwarden CIL
   if ($args) {

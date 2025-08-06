@@ -26,9 +26,6 @@ $docker_context\
 $package\
 $nix_shell\
 $battery\
-
-$fill\
-
 $line_break\
 $jobs\
 $status\
@@ -49,13 +46,13 @@ disabled = false
 
 [os.symbols]
 Alpaquita = "🔔"
-Alpine = "🏔️"
+Alpine = ""
 Amazon = "🙂"
 Android = "🤖"
 Arch = "🎗️"
 Artix = "🎗️"
 CentOS = "💠"
-Debian = "🌀"
+Debian = ""
 DragonFly = "🐉"
 Emscripten = "🔗"
 EndeavourOS = "🚀"
