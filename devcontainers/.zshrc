@@ -4,7 +4,7 @@ export LC_CTYPE=en_US.UTF-8
 export HISTFILE="/workspaces/_data/.zhistory"    
 export HISTSIZE=10000     
 export SAVEHIST=10000
-
+setopt HIST_IGNORE_SPACE
 #export FZF_DEFAULT_COMMAND='fd -HI -t f -t l'
 
 fpath=(~/.zsh_completions $fpath)
@@ -65,6 +65,18 @@ function fs() {
     else
         ssh $(cat ~/.ssh/config | grep -E "Host .*${1}.*" | awk '{ print $2 }' | fzf)
     fi
+}
+
+
+function fa () {
+    PREFIX="${PASSAGE_DIR:-$HOME/.passage/store}"
+    FZF_DEFAULT_OPTS=""
+    name="$(cd "$PREFIX"; find . -type f -name '*.age' -exec sh -c '
+    for f do
+      f=${f#./}; printf "%s\n" "${f%.age}"
+    done
+    ' sh-find {} + | fzf --height 40% --reverse --no-multi)"
+    passage "${@}" "$name"
 }
 
 alias g='git'

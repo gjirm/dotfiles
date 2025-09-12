@@ -74,6 +74,28 @@ function fs() {
     fi
 }
 
+function fa () {
+    PREFIX="${PASSAGE_DIR:-$HOME/.passage/store}"
+    FZF_DEFAULT_OPTS=""
+    name="$(cd "$PREFIX"; find . -type f -name '*.age' -exec sh -c '
+    for f do
+      f=${f#./}; printf "%s\n" "${f%.age}"
+    done
+    ' sh-find {} + | fzf --height 40% --reverse --no-multi)"
+    passage "${@}" "$name"
+}
+
+function fac () {
+    PREFIX="${PASSAGE_DIR:-$HOME/.passage/store}"
+    FZF_DEFAULT_OPTS=""
+    name="$(cd "$PREFIX"; find . -type f -name '*.age' -exec sh -c '
+    for f do
+      f=${f#./}; printf "%s\n" "${f%.age}"
+    done
+    ' sh-find {} + | fzf --height 40% --reverse --no-multi)"
+    passage "${@}" "$name" | clip.exe
+}
+
 alias g='git'
 alias gcl='git clone'
 alias ga='git add'
