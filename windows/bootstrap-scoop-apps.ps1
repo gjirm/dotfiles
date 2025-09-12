@@ -28,6 +28,9 @@ scoop bucket add extras
 
 Write-Host "--> Installing apps..." -ForegroundColor Green
 
+# https://github.com/jdx/mise
+scoop install mise
+
 # https://github.com/FiloSottile/age
 scoop install age
 

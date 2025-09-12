@@ -147,5 +147,7 @@ sudo chsh -s /usr/bin/zsh $USER
 source ./create-symlinks.sh
 source ./create-my-env-vars.sh
 
+echo -e "${LGREEN}--> To install mise run: ...${WHITE}"
+echo -e "${LBLUE}curl https://mise.run | sh ${WHITE}"
 #echo -e "${LGREEN}--> Installing basic apps/tools ...${WHITE}"
 #source install-tools.sh
