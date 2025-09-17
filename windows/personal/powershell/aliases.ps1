@@ -6,46 +6,40 @@ function update_dotfiles {
 }
 
 function starship_prompt {
-  param (
-    [switch] $Save
-  )
+  $starshipPromptFolder = "\.dotfiles\windows\personal\starship\"
 
-  $newStarshipPrompt = $(Get-ChildItem -Path "$env:userprofile\.dotfiles\windows\personal\starship\" | Invoke-Fzf)
+  $newStarshipPrompt = $(Get-ChildItem -Path "$env:userprofile\$starshipPromptFolder" | Invoke-Fzf | ForEach-Object { Split-Path $_ -Leaf })
 
-  $ENV:STARSHIP_CONFIG = $newStarshipPrompt
+  $ENV:STARSHIP_CONFIG = $env:userprofile + $starshipPromptFolder + $newStarshipPrompt
 
-  if ($Save) {
-    Write-Host "--> Saving new Sratship prompt $newStarshipPrompt to local_profile.ps1.." -ForegroundColor Green
-    $localProfile = "$env:userprofile\Documents\PowerShell\local_profile.ps1"
+  Write-Host "--> Saving new Starship prompt $newStarshipPrompt to local_profile.ps1.." -ForegroundColor Green
+  $localProfile = "$env:userprofile\Documents\PowerShell\local_profile.ps1"
 
-    # Define the search string and the replacement line
-    $searchString = '$env:STARSHIP_CONFIG'
+  # Define the search string and the replacement line
+  $searchString = '$env:STARSHIP_CONFIG'
 
-    $newStarshipPrompt = $searchString +' = "' + $newStarshipPrompt + '"'
+  $newStarshipPrompt = $searchString +' = "$env:userprofile' + $starshipPromptFolder + $newStarshipPrompt + '"'
 
-    # Read all lines from the file
-    $content = Get-Content $localProfile
+  # Read all lines from the file
+  $content = Get-Content $localProfile
 
-    # Replace the line containing the search string
-    
-    $found = $false
-    $updatedContent = $content | ForEach-Object {
-        if ($_ -like "*$searchString*") {
-            $found = $true
-            $newStarshipPrompt
-        } else {
-            $_
-        }
-    }
-
-    if (-not $found) {
-        $updatedContent += $newStarshipPrompt
-    }
-
-    # Write the updated content back to the file
-    $updatedContent | Set-Content $localProfile
-
+  # Replace the line containing the search string
+  $found = $false
+  $updatedContent = $content | ForEach-Object {
+      if ($_ -like "*$searchString*") {
+          $found = $true
+          $newStarshipPrompt
+      } else {
+          $_
+      }
   }
+
+  if (-not $found) {
+      $updatedContent += $newStarshipPrompt
+  }
+
+  # Write the updated content back to the file
+  $updatedContent | Set-Content $localProfile
 }
 
 # work git
