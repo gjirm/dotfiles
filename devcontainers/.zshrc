@@ -67,7 +67,6 @@ function fs() {
     fi
 }
 
-
 function fa () {
     PREFIX="${PASSAGE_DIR:-$HOME/.passage/store}"
     FZF_DEFAULT_OPTS=""
@@ -78,6 +77,9 @@ function fa () {
     ' sh-find {} + | fzf --height 40% --reverse --no-multi)"
     passage "${@}" "$name"
 }
+
+# pst: Uploads the provided string to https://paste.jirm.cz using curl.
+alias pst='curl -F "lesma=<-" "https://paste.jirm.cz"'
 
 alias g='git'
 alias gcl='git clone'

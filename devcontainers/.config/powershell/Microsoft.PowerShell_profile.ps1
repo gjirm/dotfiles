@@ -90,6 +90,11 @@ function rnd {
 function psake { 
 .\Makefile.ps1 $args
 }
+
+function pst {
+  curl -F "lesma=$input" "https://paste.jirm.cz"
+}
+
   
 Set-Alias -Name cde -Value Set-LocationFuzzyEverything
 Set-Alias -Name lzd -Value lazydocker

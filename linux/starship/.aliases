@@ -151,3 +151,5 @@ alias lzd='lazydocker'
 alias bat='batcat'
 
 alias pass='passage'
+
+alias pst='curl -F "lesma=<-" "https://paste.jirm.cz"'

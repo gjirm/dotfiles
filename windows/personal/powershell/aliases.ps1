@@ -261,6 +261,8 @@ function Set-Hosts {
 }
 Set-Alias -Name hosts -Value Set-Hosts
 
+Set-Alias -Name pstp -Value "curl -F 'lesma=<-' 'https://paste.jirm.cz'"
+
 function psake { 
   .\Makefile.ps1 $args
 }
@@ -268,3 +270,7 @@ function psake {
 Set-Alias -Name lzd -Value lazydocker
 
 function npp { & "C:\Program Files\Notepad++\notepad++.exe" $args }
+
+function pst {
+  curl -F "lesma=$input" "https://paste.jirm.cz"
+}
