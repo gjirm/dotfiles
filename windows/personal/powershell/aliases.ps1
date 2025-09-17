@@ -244,6 +244,10 @@ function yy {
   Remove-Item -Path $tmp
 }
 
+function gip {
+    Invoke-RestMethod https://ip.jirm.cz/json?ip=$args
+}
+
 # Sudo - replaced by https://github.com/lukesampson/psutils
 # function elevateProcess {
 #   & Start-Process pwsh.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command ""${args}""" -Verb RunAs

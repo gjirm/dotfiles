@@ -96,6 +96,10 @@ function fac () {
     passage "${@}" "$name" | clip.exe
 }
 
+function gip() {
+    curl -fsSL "https://ip.jirm.cz/json?ip=$1"
+}
+
 alias g='git'
 alias gcl='git clone'
 alias ga='git add'

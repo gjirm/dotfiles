@@ -78,6 +78,10 @@ function fa () {
     passage "${@}" "$name"
 }
 
+function gip() {
+    curl -fsSL "https://ip.jirm.cz/json?ip=$1"
+}
+
 # pst: Uploads the provided string to https://paste.jirm.cz using curl.
 alias pst='curl -F "lesma=<-" "https://paste.jirm.cz"'
 
