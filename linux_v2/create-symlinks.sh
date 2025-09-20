@@ -38,7 +38,13 @@ echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 # Yazi file manager settings
 [[ -d $HOME/.config/yazi ]] || mkdir -p $HOME/.config/yazi
 
-[[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local 
+# atuin settings
+[[ -d $HOME/.config/atuin ]] || mkdir -p $HOME/.config/atuin
+
+# tmux settings
+[[ -d $HOME/.config/tmux ]] || mkdir -p $HOME/.config/tmux
+
+[[ -f $HOME/.zsh/.zshrc_local ]] || touch $HOME/.zsh/.zshrc_local 
 
 ln -s $SYSTEM_PROFILE/.config/micro/settings.json $HOME/.config/micro/settings.json
 ln -s $SYSTEM_PROFILE/.config/yazi/keymap.toml $HOME/.config/yazi/keymap.toml
@@ -46,7 +52,7 @@ ln -s $SYSTEM_PROFILE/.config/yazi/init.lua $HOME/.config/yazi/init.lua
 ln -s $SYSTEM_PROFILE/.config/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
 ln -sf $SYSTEM_PROFILE/.config/atuin/config.toml $HOME/.config/atuin/config.toml
 ln -s $SYSTEM_PROFILE/.config/starship.toml $HOME/.config/starship.toml
-ln -s $SYSTEM_PROFILE/tmux.conf $HOME/.config/tmux.conf
+ln -s $SYSTEM_PROFILE/.config/tmux/tmux.conf $HOME/.config/tmux/tmux.conf
 ln -s $SYSTEM_PROFILE/.zshrc $HOME/.zsh/.zshrc
 ln -s $SYSTEM_PROFILE/.aliases $HOME/.zsh/.aliases
 ln -s $SYSTEM_PROFILE/.env $HOME/.zsh/.env

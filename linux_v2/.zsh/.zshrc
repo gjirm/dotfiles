@@ -19,6 +19,8 @@ zstyle ':completion:*' menu select
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/.env
+source $HOME/.zsh/.aliases
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -46,6 +48,4 @@ export FZF_ALT_C_OPTS="
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-source $HOME/.zsh/.env
-source $HOME/.zsh/.aliases
 source $HOME/.zsh/.zshrc_local 

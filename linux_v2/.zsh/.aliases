@@ -1,11 +1,11 @@
 alias cls='clear'
 
-alias ls="ls --color=auto --group-directories-first"
+alias ls="eza -l --icons=auto --group-directories-first"
 alias lz="eza -l --icons=auto --group-directories-first"
-alias l="ls -lhF"
-alias ll="ls -lahF"
-alias ld="ls -lhd */"
-alias lld="ls --color=always -lahF | grep --color=never '/$'"
+alias l="eza -l --icons=auto --group-directories-first"
+alias ll="eza -al --icons=auto --group-directories-first"
+alias ld="eza -lD --icons=auto"
+alias lld="eza -alD --icons=auto"
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -26,10 +26,10 @@ function update_starship() {
 }
 
 function starship_prompt() {
-    local starshipPromptFile=$(fd -d 1 --extension toml . "$HOME/.dotfiles/linux/starship/.config" | fzf)
+    local starshipPromptFile=$(fd -d 1 --extension toml . "$HOME/.dotfiles/linux_v2/.config" | fzf)
     export STARSHIP_CONFIG="$starshipPromptFile"
-    sed -ie '/export STARSHIP_CONFIG.*/d' "$HOME/.zshrc_local"
-    echo "export STARSHIP_CONFIG=\"$starshipPromptFile\"" >> "$HOME/.zshrc_local"
+    sed -ie '/export STARSHIP_CONFIG.*/d' "$HOME/.zsh/.zshrc_local"
+    echo "export STARSHIP_CONFIG=\"$starshipPromptFile\"" >> "$HOME/.zsh/.zshrc_local"
 }
 
 function fcd() {

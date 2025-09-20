@@ -145,7 +145,6 @@ echo -e "${LGREEN}--> Changing shell to zsh...${WHITE}"
 sudo chsh -s /usr/bin/zsh $USER
 
 source ./create-symlinks.sh
-source ./create-my-env-vars.sh
 
 echo -e "${LGREEN}--> To install mise run: ...${WHITE}"
 echo -e "${LBLUE}curl https://mise.run | sh ${WHITE}"
