@@ -7,6 +7,8 @@ alias ll="eza -al --icons=auto --group-directories-first"
 alias ld="eza -lD --icons=auto"
 alias lld="eza -alD --icons=auto"
 
+alias tree="tree -C"
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
