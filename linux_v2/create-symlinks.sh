@@ -44,20 +44,20 @@ echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 # tmux settings
 [[ -d $HOME/.config/tmux ]] || mkdir -p $HOME/.config/tmux
 
-[[ -f $HOME/.zsh/.zshrc_local ]] || touch $HOME/.zsh/.zshrc_local 
+[[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local 
 
-ln -sf $SYSTEM_PROFILE/.config/micro/settings.json $HOME/.config/micro/settings.json
-ln -sf $SYSTEM_PROFILE/.config/yazi/keymap.toml $HOME/.config/yazi/keymap.toml
-ln -sf $SYSTEM_PROFILE/.config/yazi/init.lua $HOME/.config/yazi/init.lua
-ln -sf $SYSTEM_PROFILE/.config/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
-ln -sf $SYSTEM_PROFILE/.config/atuin/config.toml $HOME/.config/atuin/config.toml
-ln -sf $SYSTEM_PROFILE/.config/starship.toml $HOME/.config/starship.toml
-ln -sf $SYSTEM_PROFILE/.config/tmux/tmux.conf $HOME/.config/tmux/tmux.conf
-ln -sf $SYSTEM_PROFILE/.zsh/.zshrc $HOME/.zsh/.zshrc
-ln -sf $SYSTEM_PROFILE/.zsh/.aliases $HOME/.zsh/.aliases
-ln -sf $SYSTEM_PROFILE/.zsh/.env $HOME/.zsh/.env
-ln -sf $SYSTEM_PROFILE/.vimrc $HOME/.vimrc
+ln -sf $SYSTEM_PROFILE/config/micro/settings.json $HOME/.config/micro/settings.json
+ln -sf $SYSTEM_PROFILE/config/yazi/keymap.toml $HOME/.config/yazi/keymap.toml
+ln -sf $SYSTEM_PROFILE/config/yazi/init.lua $HOME/.config/yazi/init.lua
+ln -sf $SYSTEM_PROFILE/config/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
+ln -sf $SYSTEM_PROFILE/config/atuin/config.toml $HOME/.config/atuin/config.toml
+ln -sf $SYSTEM_PROFILE/config/starship.toml $HOME/.config/starship.toml
+ln -sf $SYSTEM_PROFILE/config/tmux/tmux.conf $HOME/.config/tmux/tmux.conf
+ln -sf $SYSTEM_PROFILE/config/zsh/.zshrc $HOME/.zshrc
+ln -sf $SYSTEM_PROFILE/config/zsh/.aliases $HOME/.aliases
+ln -sf $SYSTEM_PROFILE/config/zsh/.env $HOME/.env
+ln -sf $SYSTEM_PROFILE/config/vim/vimrc $HOME/.vimrc
 
-cp $SYSTEM_PROFILE/.gitconfig $HOME/.gitconfig
+cp $SYSTEM_PROFILE/config/git/.gitconfig $HOME/.gitconfig
 
 echo -e "${LGREEN}--> Setting symlinks finished <--${WHITE}"
