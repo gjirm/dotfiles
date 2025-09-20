@@ -57,7 +57,7 @@ ln -sf $SYSTEM_PROFILE/config/zsh/.zshrc $HOME/.zshrc
 ln -sf $SYSTEM_PROFILE/config/zsh/.zshrc $HOME/.zsh/.zshrc
 ln -sf $SYSTEM_PROFILE/config/zsh/.aliases $HOME/.aliases
 ln -sf $SYSTEM_PROFILE/config/zsh/.env $HOME/.env
-ln -sf $SYSTEM_PROFILE/config/vim/vimrc $HOME/.vimrc
+ln -sf $SYSTEM_PROFILE/config/vim/.vimrc $HOME/.vimrc
 
 cp $SYSTEM_PROFILE/config/git/.gitconfig $HOME/.gitconfig
 
