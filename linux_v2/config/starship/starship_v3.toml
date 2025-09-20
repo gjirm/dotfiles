@@ -2,8 +2,6 @@
 palette = "catppuccin_mocha"
 format = """
 $shlvl\
-$os\
-$shell\
 ($username\
 $hostname) \
 $directory\
@@ -23,10 +21,13 @@ $terraform\
 $docker_context\
 $package\
 $mise\
+$time\
 $battery\
 $line_break\
 $jobs\
 $status\
+$os\
+$shell\
 $character"""
 
 add_newline = true
@@ -95,14 +96,14 @@ style = "fg:white bg:jirm-blue"
 disabled = false
 
 [username]
-format = "[ $user]($style)"
-style_user = "bold fg:#23d18b"
-style_root = "bold fg:red"
+format = "[$user]($style)"
+style_user = "bold fg:green"
+style_root = "bold fg:maroon"
 show_always = false
 
 [hostname]
 format = "[@$hostname]($style)"
-style = "bold fg:#23d18b"
+style = "bold fg:green"
 ssh_only = true
 
 [directory]
@@ -128,6 +129,7 @@ staged = "[+${count}](bold fg:green)"
 renamed = "»${count}"
 deleted = "[✘${count}](bold fg:red)"
 style = "bold fg:yellow"
+windows_starship = '/mnt/c/Program Files/starship/bin/starship.exe'
 
 [git_metrics]
 added_style = "bold green"
@@ -135,26 +137,26 @@ deleted_style = "bold red"
 disabled = false
 
 [aws]
-format = '[](fg:#ff9900)[$symbol $profile]($style)[ ](fg:#ff9900)'
-style = 'fg:white bg:#ff9900'
+format = '[$symbol$profile]($style)'
+style = 'fg:peach '
 symbol = "󰖐"
 
 [azure]
 disabled = false
-format = '[](fg:#008AD7)[$symbol $username/$subscription]($style)[ ](fg:#008AD7)'
+format = '[$symbol$username]($style) '
 symbol = '󰠅'
-style = 'fg:white bg:#008AD7'
+style = 'fg:sapphire'
 
 [terraform]
-format = "[](fg:#7B42BC)[$symbol $version/$workspace]($style)[ ](fg:#7B42BC)"
+format = "[$symbol($version/)$workspace]($style) "
 symbol = '󱁢'
-style = "fg:white bg:#7B42BC"
+style = "fg:blue"
 
 [time]
-disabled = false
-format = '[](fg:7)[🕙$time]($style)[ ](fg:7)'
+disabled = true
+format = '[🕙$time]($style)'
 time_format = "%T"
-style = "fg:black bg:7"
+style = "fg:text"
 # utc_time_offset = "-5"
 # time_range = "10:00:00-14:00:00"
 
