@@ -1,0 +1,11 @@
+{
+    "clipboard": "terminal",
+    "paste": true,
+    "smartpaste": false,
+    "autoclose": true,
+    "ftoptions": true,
+    "diffgutter": true,
+    "hltaberrors": true,
+    "hltrailingws": true,
+    "tabstospaces": true
+}

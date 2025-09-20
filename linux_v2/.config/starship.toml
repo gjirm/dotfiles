@@ -1,0 +1,123 @@
+format = """
+$shlvl\
+$os\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+$docker_context\
+$package\
+$nix_shell\
+$memory_usage\
+$env_var\
+$custom\
+$cmd_duration\
+$fill\
+$aws\
+$azure\
+$terraform\
+$docker_context\
+$package\
+$nix_shell\
+$battery\
+$line_break\
+$jobs\
+$status\
+$character"""
+#[ ](fg:39)\
+
+add_newline = true
+
+scan_timeout = 100
+command_timeout = 1500
+
+[fill]
+symbol = " "
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = "%T"
+style = "bold grey"
+
+[[battery.display]]
+threshold = 20
+#style = "bold red"
+
+[username]
+format = "[$user]($style)[@]($style)"
+style_user = "bold fg:84"
+show_always	= false
+
+[hostname]
+format = "[$hostname]($style) "
+style = "bold fg:84"
+ssh_only = true
+
+[shell]
+style = "green"
+fish_indicator = ""
+powershell_indicator = "者"
+disabled = false
+
+[directory]
+truncation_length = 8
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = " "
+style = "bold fg:99"
+format = " [$symbol$branch]($style) "
+
+[git_status]
+format = '[($all_status$ahead_behind)]($style) '
+ahead = "[⇡${count}](bold fg:43)"
+diverged = "[⇕](bold fg:yellow)[⇡${ahead_count}](bold fg:43)[⇣${behind_count}](bold fg:214)"
+behind = "[⇣${count}](bold fg:214)"
+untracked = "[?${count}](bold fg:202)"
+modified = "!${count}"
+conflicted = "[=${count}](bold fg:red)"
+stashed = "$${count}"
+staged = "[+${count}](bold fg:green)"
+renamed = "»${count}"
+deleted = "[✘${count}](bold fg:red)"
+style = "bold fg:yellow"
+
+[git_metrics]
+added_style = "bold green"
+deleted_style = "bold red"
+format = '[+$added]($added_style) [-$deleted]($deleted_style) '
+disabled = true
+
+[aws]
+format = '[Aws\[ $profile \]]($style) '
+style = 'bold fg:#ff9900'
+
+[azure]
+disabled = false
+format = '[Az\[ $username / $subscription \]]($style) '
+symbol = '󰠅 '
+style = 'blue bold'
+
+[terraform]
+format = '[Tf\[ $version / $workspace \]]($style) '
+
+[os]
+format = "[$symbol]($style)"
+style = "bold fg:208"
+disabled = false
+
+[os.symbols]
+Ubuntu = " "
+#Ubuntu = "🎯 "
+Windows = " "
+#Windows = "🪟 "
+
+# [[battery.display]]
+# threshold = 99
+# style = "bold red"
+

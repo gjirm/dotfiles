@@ -1,0 +1,163 @@
+format = """
+$shlvl\
+$os\
+$shell\
+($username\
+$hostname) \
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$git_metrics\
+$memory_usage\
+$env_var\
+$custom\
+$cmd_duration\
+
+$fill\
+
+$aws\
+$azure\
+$terraform\
+$docker_context\
+$package\
+$nix_shell\
+$time\
+$battery\
+$line_break\
+$jobs\
+$status\
+$character"""
+
+add_newline = true
+
+scan_timeout = 100
+command_timeout = 1500
+
+[fill]
+symbol = " "
+
+[os]
+format = "[](fg:#0089D0)[$symbol ]($style)"
+style = "bold fg:white bg:#0089D0"
+disabled = false
+
+[os.symbols]
+Alpaquita = "🔔"
+Alpine = ""
+Amazon = "🙂"
+Android = "🤖"
+Arch = "🎗️"
+Artix = "🎗️"
+CentOS = "💠"
+Debian = ""
+DragonFly = "🐉"
+Emscripten = "🔗"
+EndeavourOS = "🚀"
+Fedora = "🎩"
+FreeBSD = "😈"
+Garuda = "🦅"
+Gentoo = "🗜️"
+HardenedBSD = "🛡️"
+Illumos = "🐦"
+Linux = "🐧"
+Mabox = "📦"
+Macos = "🍎"
+Manjaro = "🥭"
+Mariner = "🌊"
+MidnightBSD = "🌘"
+Mint = "🌿"
+NetBSD = "🚩"
+NixOS = "❄️"
+OpenBSD = "🐡"
+OpenCloudOS = "☁️"
+openEuler = "🦉"
+openSUSE = "🦎"
+OracleLinux = "🦴"
+Pop = "🍭"
+Raspbian = "🍓"
+Redhat = "🎩"
+RedHatEnterprise = "🎩"
+Redox = "🧪"
+Solus = "⛵"
+SUSE = "🦎"
+#Ubuntu = "🎯"
+Ubuntu = ""
+Unknown = "❓"
+#Windows = "🪟 "
+#Windows = ""
+Windows = "󰖳"
+
+[shell]
+format = "[$indicator]($style)[](fg:#0089D0)"
+style = "fg:white bg:#0089D0"
+# powershell_indicator = "_"
+disabled = false
+
+[username]
+format = "[ $user]($style)"
+style_user = "bold fg:#23d18b"
+style_root = "bold fg:red"
+show_always	= false
+
+[hostname]
+format = "[@$hostname]($style)"
+style = "bold fg:#23d18b"
+ssh_only = true
+
+[directory]
+truncation_length = 8
+truncation_symbol = "../"
+
+[git_branch]
+symbol = " "
+style = "bold fg:99"
+format = " [$symbol$branch]($style) "
+
+[git_status]
+format = '[($all_status$ahead_behind)]($style) '
+ahead = "[⇡${count}](bold fg:43)"
+diverged = "[⇕](bold fg:yellow)[⇡${ahead_count}](bold fg:43)[⇣${behind_count}](bold fg:214)"
+behind = "[⇣${count}](bold fg:214)"
+untracked = "[?${count}](bold fg:202)"
+modified = "!${count}"
+conflicted = "[=${count}](bold fg:red)"
+stashed = "$${count}"
+staged = "[+${count}](bold fg:green)"
+renamed = "»${count}"
+deleted = "[✘${count}](bold fg:red)"
+style = "bold fg:yellow"
+
+[git_metrics]
+added_style = "bold green"
+deleted_style = "bold red"
+disabled = false
+
+[aws]
+format = '[](fg:#ff9900)[$symbol $profile]($style)[ ](fg:#ff9900)'
+style = 'fg:white bg:#ff9900'
+symbol = "󰖐"
+
+[azure]
+disabled = false
+format = '[](fg:#008AD7)[$symbol $username/$subscription]($style)[ ](fg:#008AD7)'
+symbol = '󰠅'
+style = 'fg:white bg:#008AD7'
+
+[terraform]
+format = "[](fg:#7B42BC)[$symbol $version/$workspace]($style)[ ](fg:#7B42BC)"
+symbol = '󱁢'
+style = "fg:white bg:#7B42BC"
+
+[time]
+disabled = false
+format = '[](fg:7)[🕙$time]($style)[ ](fg:7)'
+time_format = "%T"
+style = "fg:black bg:7"
+# utc_time_offset = "-5"
+# time_range = "10:00:00-14:00:00"
+
+[[battery.display]]
+threshold = 20
+#style = "bold red"
