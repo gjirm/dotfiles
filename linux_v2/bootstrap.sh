@@ -79,6 +79,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zs
 echo -e "${LGREEN}--> Installing zsh-autosuggestions ...${WHITE}"
 git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
 
+echo -e "${LGREEN}--> Installing Tmux Plugin Manager ...${WHITE}"
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+
 echo -e "${LGREEN}--> Installing Fzf ...${WHITE}"
 app_exists "/usr/local/bin/fzf"
 durl=$(curl -sL https://api.github.com/repos/junegunn/fzf/releases/latest | grep "browser_download_url.*linux_$A64.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
