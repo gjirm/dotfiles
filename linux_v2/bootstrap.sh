@@ -59,8 +59,6 @@ fi
 
 echo -e "${LGREEN}--> Bootstraping Starship prompt with ZSH shell ${WHITE}"
 
-SYSTEM_PROFILE=$HOME/.dotfiles/linux/starship
-
 sudo apt update
 sudo apt install curl wget git file build-essential bat tree zsh autojump zip unzip -y
 #sudo apt instal fd-find
@@ -78,6 +76,12 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zs
 
 echo -e "${LGREEN}--> Installing zsh-autosuggestions ...${WHITE}"
 git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
+
+echo -e "${LGREEN}--> Installing zsh-completions ...${WHITE}"
+git clone https://github.com/zsh-users/zsh-completions.git $HOME/.zsh/zsh-completions
+
+echo -e "${LGREEN}--> Installing Aloxaf/fzf-tab ...${WHITE}"
+git clone https://github.com/Aloxaf/fzf-tab $HOME/.zsh/fzf-tab
 
 echo -e "${LGREEN}--> Installing Tmux Plugin Manager ...${WHITE}"
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
