@@ -137,13 +137,13 @@ deleted_style = "bold red"
 disabled = false
 
 [aws]
-format = '[$symbol$profile]($style)'
+format = '[$symbol$profile]($style) '
 style = 'fg:peach '
 symbol = "󰖐"
 
 [azure]
 disabled = false
-format = '[$symbol$username]($style) '
+format = '[$symbol$username]($style)'
 symbol = '󰠅'
 style = 'fg:sapphire'
 
