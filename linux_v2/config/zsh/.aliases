@@ -1,11 +1,11 @@
 alias cls='clear'
 
-alias ls="eza -l --icons=auto --group-directories-first"
-alias lz="eza -l --icons=auto --group-directories-first"
-alias l="eza -l --icons=auto --group-directories-first"
-alias ll="eza -al --icons=auto --group-directories-first"
-alias ld="eza -lD --icons=auto"
-alias lld="eza -alD --icons=auto"
+alias ls="eza --icons --group-directories-first"
+alias lz="eza --icons --group-directories-first"
+alias l="eza -l --icons --time-style long-iso --group-directories-first"
+alias ll="eza -hal --icons --git --git-repos --time-style long-iso --group-directories-first"
+alias ld="eza -lD --time-style long-iso --icons"
+alias lld="eza -halD  --git-repos --time-style long-iso --icons"
 
 alias tree="tree -C"
 

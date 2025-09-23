@@ -44,7 +44,7 @@ echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 # tmux settings
 [[ -d $HOME/.config/tmux ]] || mkdir -p $HOME/.config/tmux
 
-[[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local 
+[[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local
 
 ln -sf $SYSTEM_PROFILE/config/micro/settings.json $HOME/.config/micro/settings.json
 ln -sf $SYSTEM_PROFILE/config/yazi/keymap.toml $HOME/.config/yazi/keymap.toml
