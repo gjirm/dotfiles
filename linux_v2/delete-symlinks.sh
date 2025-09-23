@@ -12,17 +12,30 @@ then
    exit 1
 fi
 
-echo -e "${LGREEN}--> Deleting symlinks ${WHITE}"
+# Array of symlink paths
+symlinks=(
+    "$HOME/.config/micro/settings.json"
+    "$HOME/.config/yazi/keymap.toml"
+    "$HOME/.config/yazi/init.lua"
+    "$HOME/.config/yazi/yazi.toml"
+    "$HOME/.config/atuin/config.toml"
+    "$HOME/.config/starship.toml"
+    "$HOME/.config/tmux/tmux.conf"
+    "$HOME/.zshrc"
+    "$HOME/.zsh/.zshrc"
+    "$HOME/.aliases"
+    "$HOME/.env"
+    "$HOME/.vimrc"
+)
 
-rm -f $HOME/.config/micro/settings.json
-rm -f $HOME/.config/yazi/keymap.toml
-rm -f $HOME/.config/yazi/init.lua
-rm -f $HOME/.config/yazi/yazi.toml
-rm -f $HOME/.config/atuin/config.toml
-rm -f $HOME/.config/starship.toml
-rm -f $HOME/.config/tmux/tmux.conf
-rm -f $HOME/.zshrc
-rm -f $HOME/.zsh/.zshrc
-rm -f $HOME/.aliases
-rm -f $HOME/.env
-rm -f $HOME/.vimrc
+# Loop through each symlink and remove if it exists
+for symlink in "${symlinks[@]}"; do
+    if [[ -L "$symlink" ]]; then
+        echo -e "${LGREEN}--> Removing symlink: $symlink ${WHITE}"
+        rm -i "$symlink"  # Use -i for confirmation before deletion
+    else
+        echo -e "${LYELLOW}--! $symlink is not a symlink or does not exist.${WHITE}"
+    fi
+done
+
+

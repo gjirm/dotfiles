@@ -1,64 +1,71 @@
 #!/bin/bash
 
 LGREEN="\e[1;32m"
-LYELLOW="\e[1;33m"
-LBLUE="\e[1;34m"
-LRED="\e[1;31m"
 WHITE="\e[0m"
 
-if [[ $EUID -eq 0 ]]
-then
-   echo "This script must NOT be run as root" 
+if [[ $EUID -eq 0 ]]; then
+   echo "This script must NOT be run as root"
    exit 1
 fi
 
-SYSTEM_PROFILE=$HOME/.dotfiles/linux_v2
-
-echo -e "${LGREEN}--> Backup original dot files to ${HOME}/.backup/ ${WHITE}"
-
+SYSTEM_PROFILE="$HOME/.dotfiles/linux_v2"
 TIMEDATE=$(date "+%Y%m%d_%H%M%S")
 BACKUP_DIR="$HOME/.backup_$TIMEDATE"
 
-mkdir $BACKUP_DIR
-[[ -f $HOME/.config/micro/settings.json ]] && mv $HOME/.config/micro/settings.json $BACKUP_DIR/micro_settings.json
-[[ -f $HOME/.config/starship.toml ]] && mv $HOME/.config/starship.toml $BACKUP_DIR/starship.toml
+echo -e "${LGREEN}--> Backup original dot files to ${BACKUP_DIR} ${WHITE}"
+mkdir -p "$BACKUP_DIR"
 
-[[ -f $HOME/.aliases ]] && mv $HOME/.aliases $BACKUP_DIR/.aliases
-[[ -f $HOME/.env ]] && mv $HOME/.env $BACKUP_DIR/.env
-[[ -f $HOME/.gitconfig ]] && mv $HOME/.gitconfig $BACKUP_DIR/.gitconfig
-[[ -f $HOME/.tmux.conf ]] && mv $HOME/.tmux.conf $BACKUP_DIR/.tmux.conf
-[[ -f $HOME/.zshrc ]] && mv $HOME/.zshrc $BACKUP_DIR/.zshrc
-[[ -f $HOME/.fzf.zsh ]] && mv $HOME/.fzf.zsh $BACKUP_DIR/.fzf.zsh
+declare -A FILES_TO_BACKUP=(
+   ["$HOME/.config/micro/settings.json"]="micro_settings.json"
+   ["$HOME/.config/starship.toml"]="starship.toml"
+   ["$HOME/.aliases"]=".aliases"
+   ["$HOME/.env"]=".env"
+   ["$HOME/.gitconfig"]=".gitconfig"
+   ["$HOME/.tmux.conf"]=".tmux.conf"
+   ["$HOME/.zshrc"]=".zshrc"
+   ["$HOME/.fzf.zsh"]=".fzf.zsh"
+)
+
+for file in "${!FILES_TO_BACKUP[@]}"; do
+   [[ -f "$file" ]] && mv "$file" "$BACKUP_DIR/${FILES_TO_BACKUP[$file]}"
+done
 
 echo -e "${LGREEN}--> Setting up dot files ...${WHITE}"
 
-# Micro editor settings
-[[ -d $HOME/.config/micro ]] || mkdir -p $HOME/.config/micro
+declare -a CONFIG_DIRS=(
+   "$HOME/.config/micro"
+   "$HOME/.config/yazi"
+   "$HOME/.config/atuin"
+   "$HOME/.config/tmux"
+   "$HOME/.zsh"
+)
 
-# Yazi file manager settings
-[[ -d $HOME/.config/yazi ]] || mkdir -p $HOME/.config/yazi
+for dir in "${CONFIG_DIRS[@]}"; do
+   mkdir -p "$dir"
+done
 
-# atuin settings
-[[ -d $HOME/.config/atuin ]] || mkdir -p $HOME/.config/atuin
+[[ -f "$HOME/.zshrc_local" ]] || touch "$HOME/.zshrc_local"
 
-# tmux settings
-[[ -d $HOME/.config/tmux ]] || mkdir -p $HOME/.config/tmux
+declare -A SYMLINKS=(
+   ["$SYSTEM_PROFILE/config/micro/settings.json"]="$HOME/.config/micro/settings.json"
+   ["$SYSTEM_PROFILE/config/yazi/keymap.toml"]="$HOME/.config/yazi/keymap.toml"
+   ["$SYSTEM_PROFILE/config/yazi/init.lua"]="$HOME/.config/yazi/init.lua"
+   ["$SYSTEM_PROFILE/config/yazi/yazi.toml"]="$HOME/.config/yazi/yazi.toml"
+   ["$SYSTEM_PROFILE/config/atuin/config.toml"]="$HOME/.config/atuin/config.toml"
+   ["$SYSTEM_PROFILE/config/starship/starship.toml"]="$HOME/.config/starship.toml"
+   ["$SYSTEM_PROFILE/config/tmux/tmux.conf"]="$HOME/.config/tmux/tmux.conf"
+   ["$SYSTEM_PROFILE/config/zsh/.zshrc"]="$HOME/.zshrc"
+   ["$SYSTEM_PROFILE/config/zsh/.aliases"]="$HOME/.aliases"
+   ["$SYSTEM_PROFILE/config/zsh/.env"]="$HOME/.env"
+   ["$SYSTEM_PROFILE/config/vim/.vimrc"]="$HOME/.vimrc"
+)
 
-[[ -f $HOME/.zshrc_local ]] || touch $HOME/.zshrc_local
+for src in "${!SYMLINKS[@]}"; do
+   ln -sf "$src" "${SYMLINKS[$src]}"
+done
 
-ln -sf $SYSTEM_PROFILE/config/micro/settings.json $HOME/.config/micro/settings.json
-ln -sf $SYSTEM_PROFILE/config/yazi/keymap.toml $HOME/.config/yazi/keymap.toml
-ln -sf $SYSTEM_PROFILE/config/yazi/init.lua $HOME/.config/yazi/init.lua
-ln -sf $SYSTEM_PROFILE/config/yazi/yazi.toml $HOME/.config/yazi/yazi.toml
-ln -sf $SYSTEM_PROFILE/config/atuin/config.toml $HOME/.config/atuin/config.toml
-ln -sf $SYSTEM_PROFILE/config/starship.toml $HOME/.config/starship.toml
-ln -sf $SYSTEM_PROFILE/config/tmux/tmux.conf $HOME/.config/tmux/tmux.conf
-ln -sf $SYSTEM_PROFILE/config/zsh/.zshrc $HOME/.zshrc
-ln -sf $SYSTEM_PROFILE/config/zsh/.zshrc $HOME/.zsh/.zshrc
-ln -sf $SYSTEM_PROFILE/config/zsh/.aliases $HOME/.aliases
-ln -sf $SYSTEM_PROFILE/config/zsh/.env $HOME/.env
-ln -sf $SYSTEM_PROFILE/config/vim/.vimrc $HOME/.vimrc
-
-cp $SYSTEM_PROFILE/config/git/.gitconfig $HOME/.gitconfig
+# Create additional symlink for .zshrc to $HOME/.zsh/.zshrc
+ln -sf "$SYSTEM_PROFILE/config/zsh/.zshrc" "$HOME/.zsh/.zshrc"
+cp "$SYSTEM_PROFILE/config/git/.gitconfig" "$HOME/.gitconfig"
 
 echo -e "${LGREEN}--> Setting symlinks finished <--${WHITE}"
