@@ -1,20 +1,16 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+palette = "catppuccin_mocha"
 format = """
 $shlvl\
-$os\
-$shell\
-[](fg:#0089D0 bg:29)\
 ($username\
-$hostname[ ](bg:29))\
-[ ](fg:29)\
+$hostname) \
 $directory\
 $git_branch\
 $git_commit\
 $git_state\
 $git_status\
 $git_metrics\
-$memory_usage\
 $env_var\
-$custom\
 $cmd_duration\
 
 $fill\
@@ -22,14 +18,17 @@ $fill\
 $aws\
 $azure\
 $terraform\
+$golang\
 $docker_context\
 $package\
-$nix_shell\
+$mise\
 $time\
 $battery\
 $line_break\
 $jobs\
 $status\
+$os\
+$shell\
 $character"""
 
 add_newline = true
@@ -41,8 +40,8 @@ command_timeout = 1500
 symbol = " "
 
 [os]
-format = "[](fg:#0089D0)[$symbol ]($style)"
-style = "bold fg:white bg:#0089D0"
+format = "[](fg:jirm-blue)[$symbol ]($style)"
+style = "bold fg:white bg:jirm-blue"
 disabled = false
 
 [os.symbols]
@@ -92,46 +91,30 @@ Unknown = "❓"
 Windows = "󰖳"
 
 [shell]
-format = "[$indicator]($style)"
-style = "fg:white bg:#0089D0"
+format = "[$indicator]($style)[](fg:jirm-blue)"
+style = "fg:white bg:jirm-blue"
 # powershell_indicator = "_"
 disabled = false
 
-# [shell]
-# format = "[$indicator]($style)[ ](fg:#0089D0)"
-# style = "fg:white bg:#0089D0"
-# # powershell_indicator = "_"
-# disabled = false
-
 [username]
-format = "[ $user]($style)"
-style_user = "bg:29"
-style_root = "bold fg:red"
-show_always	= false
+format = "[$user]($style)"
+style_user = "bold fg:green"
+style_root = "bold fg:maroon"
+show_always = false
 
 [hostname]
 format = "[@$hostname]($style)"
-style = "bg:29"
+style = "bold fg:green"
 ssh_only = true
-
-# [username]
-# format = "[$user]($style)"
-# style_user = "bold fg:#23d18b"
-# style_root = "bold fg:red"
-# show_always	= true
-
-# [hostname]
-# format = "[@$hostname]($style)"
-# style = "bold fg:#23d18b"
-# ssh_only = false
 
 [directory]
 truncation_length = 8
 truncation_symbol = "../"
+style = "sky"
 
 [git_branch]
 symbol = " "
-style = "bold fg:99"
+style = "bold fg:mauve"
 format = " [$symbol$branch]($style) "
 
 [git_status]
@@ -147,6 +130,7 @@ staged = "[+${count}](bold fg:green)"
 renamed = "»${count}"
 deleted = "[✘${count}](bold fg:red)"
 style = "bold fg:yellow"
+windows_starship = '/mnt/c/Program Files/starship/bin/starship.exe'
 
 [git_metrics]
 added_style = "bold green"
@@ -154,29 +138,66 @@ deleted_style = "bold red"
 disabled = false
 
 [aws]
-format = "[](fg:#ff9900)[$symbol $profile]($style)[ ](fg:#ff9900)"
-style = "fg:white bg:#ff9900"
+format = '[$symbol$profile]($style) '
+style = 'fg:peach '
 symbol = "󰖐"
 
 [azure]
 disabled = false
-format = "[](fg:#008AD7)[$symbol $username/$subscription]($style)[ ](fg:#008AD7)"
-symbol = "󰠅"
-style = "fg:white bg:#008AD7"
+format = '[$symbol$username]($style) '
+symbol = '󰠅'
+style = 'fg:sapphire'
 
 [terraform]
-format = "[](fg:#7B42BC)[$symbol $version/$workspace]($style)[ ](fg:#7B42BC)"
+format = "[$symbol($version/)$workspace]($style) "
 symbol = '󱁢'
-style = "fg:white bg:#7B42BC"
+style = "fg:blue"
+
+[golang]
+format = '[$symbol$version]($style) '
+symbol = ''
+
+[mise]
+disabled = false
+symbol = ''
 
 [time]
-disabled = false
-format = '[](fg:7)[🕙$time]($style)[ ](fg:7)'
+disabled = true
+format = '[🕙$time]($style)'
 time_format = "%T"
-style = "fg:black bg:7"
+style = "fg:text"
 # utc_time_offset = "-5"
 # time_range = "10:00:00-14:00:00"
 
 [[battery.display]]
 threshold = 20
 #style = "bold red"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+jirm-blue = "#586BE7"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"

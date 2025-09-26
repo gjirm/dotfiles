@@ -82,14 +82,30 @@ function gitpush {
 }
 
 function ezadir {
-  eza -l --icons=auto --group-directories-first
+  eza --icons --group-directories-first
 }
 
-Set-Alias -Name ll -Value ezadir
+function ezadirL {
+  eza -l --icons --time-style long-iso --group-directories-first
+}
+
+function ezadirLL {
+  eza -hal --icons --git --git-repos --time-style long-iso --group-directories-first
+}
+
+function ezadirLD {
+  eza -lD --time-style long-iso --icons
+}
+
+function ezadirLLD {
+  eza -halD  --git-repos --time-style long-iso --icons
+}
+
 Set-Alias -Name ls -Value ezadir
-Set-Alias -Name l -Value ezadir
-# Set-Alias ll Get-ChildItem -Option AllScope
-#Set-Alias ls Get-ChildItemColorFormatWide -Option AllScope
+Set-Alias -Name l -Value ezadirL
+Set-Alias -Name ll -Value ezadirLL
+Set-Alias -Name ld -Value ezadirLD
+Set-Alias -Name lld -Value ezadirLLD
 
 # Directory
 function .. { Set-Location .. }

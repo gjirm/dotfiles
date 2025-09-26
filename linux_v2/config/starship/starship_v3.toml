@@ -18,6 +18,7 @@ $fill\
 $aws\
 $azure\
 $terraform\
+$golang\
 $docker_context\
 $package\
 $mise\
@@ -143,7 +144,7 @@ symbol = "󰖐"
 
 [azure]
 disabled = false
-format = '[$symbol$username]($style)'
+format = '[$symbol$username]($style) '
 symbol = '󰠅'
 style = 'fg:sapphire'
 
@@ -151,6 +152,14 @@ style = 'fg:sapphire'
 format = "[$symbol($version/)$workspace]($style) "
 symbol = '󱁢'
 style = "fg:blue"
+
+[golang]
+format = '[$symbol$version]($style) '
+symbol = ''
+
+[mise]
+disabled = false
+symbol = ''
 
 [time]
 disabled = true
