@@ -90,6 +90,10 @@ function ezadirL {
 }
 
 function ezadirLL {
+  eza -hal --icons --time-style long-iso --group-directories-first
+}
+
+function ezadirLLG {
   eza -hal --icons --git --git-repos --time-style long-iso --group-directories-first
 }
 
@@ -98,14 +102,20 @@ function ezadirLD {
 }
 
 function ezadirLLD {
-  eza -halD  --git-repos --time-style long-iso --icons
+  eza -halD --time-style long-iso --icons
+}
+
+function ezadirLLDG {
+  eza -halD --git-repos --time-style long-iso --icons
 }
 
 Set-Alias -Name ls -Value ezadir
 Set-Alias -Name l -Value ezadirL
 Set-Alias -Name ll -Value ezadirLL
+Set-Alias -Name llg -Value ezadirLLG
 Set-Alias -Name ld -Value ezadirLD
 Set-Alias -Name lld -Value ezadirLLD
+Set-Alias -Name lldg -Value ezadirLLDG
 
 # Directory
 function .. { Set-Location .. }

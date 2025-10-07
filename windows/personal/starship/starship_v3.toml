@@ -108,7 +108,7 @@ style = "bold fg:green"
 ssh_only = true
 
 [directory]
-truncation_length = 8
+truncation_length = 4
 truncation_symbol = "../"
 style = "sky"
 

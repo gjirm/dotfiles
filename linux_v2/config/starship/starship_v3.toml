@@ -21,6 +21,7 @@ $terraform\
 $golang\
 $docker_context\
 $package\
+${custom.tofu}\
 $mise\
 $time\
 $battery\
@@ -108,7 +109,7 @@ style = "bold fg:green"
 ssh_only = true
 
 [directory]
-truncation_length = 8
+truncation_length = 4
 truncation_symbol = "../"
 style = "sky"
 
@@ -160,6 +161,13 @@ symbol = ''
 [mise]
 disabled = false
 symbol = ''
+
+[custom.tofu]
+format = "[$symbol$output]($style) "
+detect_extensions = ['tf','hcl']
+command = "tofu version | grep OpenTofu | awk '{ print $2 }'"
+symbol = ''
+style = "fg:yellow"
 
 [time]
 disabled = true
