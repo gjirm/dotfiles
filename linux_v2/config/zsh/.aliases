@@ -144,11 +144,6 @@ function dyp() {
     gpg --quiet --batch --yes --passphrase "$password" --decrypt
 }
 
-function dcroc() { 
-    [ $# -eq 0 ] && set -- ""
-    docker run --rm -it --user "$(id -u):$(id -g)" -v "$(pwd):/c" -v "$HOME/.config/croc:/.config/croc" -w /c -e CROC_SECRET schollz/croc "$@"
-}
-
 alias g='git'
 alias gcl='git clone'
 alias ga='git add'
