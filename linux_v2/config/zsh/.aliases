@@ -104,6 +104,51 @@ function gip() {
     curl -fsSL "https://ip.jirm.cz/json?ip=$1"
 }
 
+function syp() {
+    
+    message="$1"
+    password=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 22 );
+    # Expiration in seconds
+    expiration=86400
+    server="https://pass.safetica.cloud/"
+
+    echo $password > pass.txt
+
+    # encrypt message with pass.txt and replace newlines with "\n"
+    message=$(echo $message | gpg -a --batch --passphrase-file pass.txt -c  --cipher-algo AES256 | sed ':a;N;$!ba;s/\n/\\n/g' );
+
+    rm pass.txt
+
+    payload=$(cat << EOF
+{
+"message": "${message}",
+"expiration": ${expiration},
+"one_time": true
+}
+EOF
+)
+
+    secret_id=$(curl -s -XPOST ${server}/secret -H 'Content-Type: application/json' -d "${payload}" |  jq -r .message)
+
+    echo "$server/#/s/$secret_id/$password"
+}
+
+function dyp() {
+    url="$1"
+    server="https://pass.safetica.cloud"
+    secret_id=$(echo "$url" | sed -n 's|.*/s/\([^/]*\)/.*|\1|p')
+    password=$(echo "$url" | sed -n 's|.*/s/[^/]*/\([^/]*\).*|\1|p')
+
+    curl -s "$server/secret/$secret_id" | \
+    jq -r '.message' | \
+    gpg --quiet --batch --yes --passphrase "$password" --decrypt
+}
+
+function dcroc() { 
+    [ $# -eq 0 ] && set -- ""
+    docker run --rm -it --user "$(id -u):$(id -g)" -v "$(pwd):/c" -v "$HOME/.config/croc:/.config/croc" -w /c -e CROC_SECRET schollz/croc "$@"
+}
+
 alias g='git'
 alias gcl='git clone'
 alias ga='git add'
