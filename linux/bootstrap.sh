@@ -103,7 +103,7 @@ install_check "Fd" $?
 
 echo -e "${LGREEN}--> Installing Micro editor...${WHITE}"
 app_exists "/usr/local/bin/micro"
-durl=$(curl -s https://api.github.com/repos/zyedidia/micro/releases | grep -v "nightly" | grep "browser_download_url.*linux$MARCH.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
+durl=$(curl -s https://api.github.com/repos/micro-editor/micro/releases | grep -v "nightly" | grep "browser_download_url.*linux$MARCH.tar.gz" | cut -d : -f 2,3 | tr -d \" | head -n 1)
 file=$(basename $durl)
 echo -e "${LGREEN}--> Downloading $file...${WHITE}"
 curl -sL $durl | sudo tar -xzf - --strip-components=1 -C /usr/local/bin/ --wildcards "*/micro"
