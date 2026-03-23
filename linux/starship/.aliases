@@ -124,7 +124,7 @@ function syp() {
 EOF
 )
 
-    secret_id=$(curl -s -XPOST ${server}/secret -H 'Content-Type: application/json' -d "${payload}" |  jq -r .message)
+    secret_id=$(curl -s -XPOST ${server}/create/secret -H 'Content-Type: application/json' -d "${payload}" |  jq -r .message)
 
     echo "$server/#/s/$secret_id/$password"
 }
