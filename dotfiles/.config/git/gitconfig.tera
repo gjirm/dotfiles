@@ -1,0 +1,41 @@
+[user]
+	name = Jiri Matejicek
+	email = {{ vars.email }}
+{% if mise_env is defined and "personal" in mise_env %}
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOThRwAc04LH29sPNlSeIc5BIleanqOUfDuhlEdPdmga
+{% endif %}
+
+[core]
+    editor = micro
+    excludesfile = ~/.gitignore
+    autocrlf = false
+    longpaths = true
+
+[http]
+    postBuffer = 524288000
+    version = HTTP/2
+
+[gpg]
+    format = ssh
+
+[commit]
+    gpgsign = true
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[credential]
+    helper = manager
+{% if mise_env is defined and "work" in mise_env %}
+    azreposCredentialType = oauth
+
+[credential "https://dev.azure.com"]
+    useHttpPath = true
+
+[credential "azrepos:org/safetica-it"]
+    azureAuthority = https://login.microsoftonline.com/d1f7eef9-871a-453d-9996-403b8149d2b1
+    username = jiri.matejicek@safetica.com
+{% endif %}

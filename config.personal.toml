@@ -1,0 +1,53 @@
+# ==============================================================================
+# MISE PERSONAL PROFILE (Fedora Silverblue)
+# Activated via: mise -E personal bootstrap
+# Everything for the personal machine lives here.
+# The assumption is that Linux is used as personal machine.
+# ==============================================================================
+[vars]
+name = "Jiri Matejicek"
+email = "jirm@jirm.cz"
+
+# ==============================================================================
+# SECRETS (mise bootstrap secrets status)
+# Resolved before any other bootstrap phase.
+# ==============================================================================
+#[bootstrap.secrets]
+#ssh_config_personal = "SSH_CONFIG_PERSONAL"
+
+
+# ==============================================================================
+# PERSONAL PACKAGES (mise bootstrap packages apply)
+# ==============================================================================
+[bootstrap.packages]
+"apt:zip" = "latest"
+"apt:unzip" = "latest"
+"apt:fuse" = "latest"
+"apt:build-essential" = "latest"
+
+# ==============================================================================
+# SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
+# ==============================================================================
+
+# Writes ~/.config/mise/miserc.toml, mise's global environment-selection
+# file, so every future `mise` invocation loads config.personal.toml without
+# needing -E personal passed explicitly. Machine-specific, gitignored.
+[bootstrap.files."~/.config/mise/miserc.toml"]
+content = "env = [\"personal\"]\n"
+
+# [bootstrap.files."~/.ssh/config"]
+# content = "{{ secret(name=\"ssh_config_personal\") }}"
+# template = true
+# mode = "0600"
+
+# ==============================================================================
+# PERSONAL TOOLS (mise install)
+# ==============================================================================
+#[tools]
+
+# ==============================================================================
+# HOOK: FINAL
+# Switch git origin from the HTTPS over to SSH
+# ==============================================================================
+[bootstrap.hooks.final]
+run = "git -C \"$HOME/.config/mise\" remote set-url origin git@github.com:gjirm/dotfiles.git"

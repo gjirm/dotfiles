@@ -1,0 +1,121 @@
+# ==============================================================================
+# MISE MASTER CONFIGURATION
+# Shared across both machines (personal/linu and work/macos).
+# Role layers (mise.personal.toml / mise.work.toml) both activate explicitly
+# via bootstrap.sh. Each role file contains everything for that machine.
+# ==============================================================================
+[settings]
+auto_update = true
+
+[vars]
+name = "Jiri Matejicek"
+
+# ==============================================================================
+# SECRETS (mise bootstrap secrets status)
+# Resolved before any other bootstrap phase.
+# ==============================================================================
+##[bootstrap.secrets]
+github_ssh_key = "GITHUB_SSH_KEY"
+
+# ==============================================================================
+# SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
+# ==============================================================================
+
+# [bootstrap.directories."~/.ssh"]
+# mode = "0700"
+# owner = "niko"
+
+# [bootstrap.files."~/.ssh/id_ed25519"]
+# content = "{{ secret(name=\"github_ssh_key\") }}"
+# template = true
+# mode = "0600"
+
+[bootstrap.files."~/.ssh/known_hosts"]
+content = "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl\n"
+mode = "0644"
+
+# ==============================================================================
+# DOTFILES & TEMPLATES (mise bootstrap dotfiles apply)
+# ==============================================================================
+[dotfiles]
+# --- Static Configuration Files ---
+"~/.config/atuin/config.toml"        = { source = "dotfiles/.config/atuin/config.toml", mode = "copy" }
+"~/.config/bat"                      = { source = "dotfiles/.config/bat", mode = "copy" }
+"~/.config/yazi"                     = { source = "dotfiles/.config/yazi", mode = "copy" }
+"~/.config/starship"                 = { source = "dotfiles/.config/starship", mode = "copy" }
+"~/.config/micro/settings.json"      = { source = "dotfiles/.config/micro/settings.json", mode = "copy" }
+"~/.config/tmux/tmux.conf"           = { source = "dotfiles/.config/tmux/tmux.conf", mode = "copy" }
+"~/.vimrc"                           = { source = "dotfiles/.config/vim/.vimrc", mode = "copy" }
+
+# --- Dynamic Templates ---
+"~/.zshrc"                         = { source = "dotfiles/.config/zsh/zshrc.tera", mode = "template" }
+"~/.gitconfig"                     = { source = "dotfiles/.config/git/gitconfig.tera", mode = "template" }
+
+# [dotfiles."vscode/settings.json"]
+# source = "dotfiles/.config/vscode/settings.tera"
+# mode = "template"
+# variants = [
+#   { os = "macos", target = "~/Library/Application Support/Code/User/settings.json" },
+#   { os = "linux", target = "~/.config/Code/User/settings.json" }
+# ]
+
+# [dotfiles."zed/settings.json"]
+# source = "dotfiles/.config/zed/settings.tera"
+# mode = "template"
+# variants = [
+#   { os = "macos", target = "~/.config/zed/settings.json" },
+#   { os = "linux", target = "~/.var/app/dev.zed.Zed/config/zed/settings.json" }
+# ]
+
+# ==============================================================================
+# COMMON TOOLS (mise install)
+# Shared across all machines (Linux and macOS)
+# ==============================================================================
+[tools]
+micro = "latest"
+starship = "latest"
+atuin = "latest"
+jq = "latest"
+yq = "latest"
+gh = "latest"
+fd = "latest"
+eza = "latest"
+croc = "latest"
+bat = "latest"
+fzf = "latest"
+zoxide = "latest"
+yazi = "latest"
+age = "latest"
+age-plugin-yubikey = "latest"
+gocryptfs = "latest"
+step = "latest"
+restic = "latest"
+
+[bootstrap.packages]
+"apt:git" = "latest"
+"apt:curl" = "latest"
+"apt:wget" = "latest"
+"apt:file" = "latest"
+"apt:tree" = "latest"
+"apt:zsh" = "latest"
+"apt:autojump" = "latest"
+
+[bootstrap.mise_shell_activate]
+zprofile = "shims"
+zshrc = "activate"
+
+[bootstrap.repos]
+"~/.zsh/zsh-syntax-highlighting" = { url = "https://github.com/zsh-users/zsh-syntax-highlighting.git" }
+"~/.zsh/zsh-autosuggestions" = { url = "https://github.com/zsh-users/zsh-autosuggestions" }
+"~/.zsh/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
+"~/.zsh/fzf-tab" = { url = "https://github.com/Aloxaf/fzf-tab" }
+"~/.tmux/plugins/tpm" = { url = "https://github.com/tmux-plugins/tpm" }
+
+[bootstrap.user]
+login_shell = "/bin/zsh"
+
+[tasks.bootstrap]
+run = '''
+touch ~/.zshrc_local
+ya pkg add yazi-rs/plugins:full-border
+'''
