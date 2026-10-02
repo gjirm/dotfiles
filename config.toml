@@ -115,7 +115,7 @@ login_shell = "/bin/zsh"
 
 [tasks.bootstrap]
 run = '''
-ln -sf ~/.zsh/.zshrc ~/.zshrc
+ln -sf ~/.zshrc ~/.zsh/.zshrc
 touch ~/.zshrc_local
 ya pkg add yazi-rs/plugins:full-border
 '''
