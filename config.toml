@@ -86,7 +86,6 @@ fzf = "latest"
 zoxide = "latest"
 yazi = "latest"
 age = "latest"
-age-plugin-yubikey = "v0.5.0"
 step = "latest"
 restic = "latest"
 

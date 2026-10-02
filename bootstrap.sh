@@ -29,7 +29,7 @@ echo "Select the configuration profile for this machine:"
 echo "  1) Personal (Linux) [Default]"
 echo "  2) Work (Linux)"
 echo "  3) Server (Linux)"
-read -r -p "Enter choice [1/2, default: 1]: " CHOICE
+read -r -p "Enter choice [1/2/3, default: 1]: " CHOICE
 CHOICE="${CHOICE:-1}"
 
 if [ "$CHOICE" = "2" ] || [ "$CHOICE" = "work" ]; then
