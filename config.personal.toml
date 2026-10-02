@@ -50,4 +50,7 @@ content = "env = [\"personal\"]\n"
 # Switch git origin from the HTTPS over to SSH
 # ==============================================================================
 [bootstrap.hooks.final]
-run = "git -C \"$HOME/.config/mise\" remote set-url origin git@github.com:gjirm/dotfiles.git"
+run = '''
+git -C "$HOME/.config/mise" remote set-url origin git@github.com:gjirm/dotfiles.git
+git -C "$HOME/.config/mise" branch --set-upstream-to=origin/mise mise
+'''

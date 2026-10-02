@@ -21,9 +21,9 @@ github_ssh_key = "GITHUB_SSH_KEY"
 # SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
 # ==============================================================================
 
-# [bootstrap.directories."~/.ssh"]
-# mode = "0700"
-# owner = "niko"
+[bootstrap.directories."~/.ssh"]
+mode = "0700"
+#owner = "niko"
 
 # [bootstrap.files."~/.ssh/id_ed25519"]
 # content = "{{ secret(name=\"github_ssh_key\") }}"
