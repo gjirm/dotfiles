@@ -49,7 +49,6 @@ mode = "0644"
 
 # --- Dynamic Templates ---
 "~/.zshrc"                         = { source = "dotfiles/.config/zsh/zshrc.tera", mode = "template" }
-"~/.zsh/.zshrc"                    = { source = "~/.zshrc", mode = "symlink" }
 "~/.gitconfig"                     = { source = "dotfiles/.config/git/gitconfig.tera", mode = "template" }
 
 # [dotfiles."vscode/settings.json"]
