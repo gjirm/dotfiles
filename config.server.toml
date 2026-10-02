@@ -1,8 +1,8 @@
 # ==============================================================================
-# MISE WORK PROFILE (Linux)
-# Activated via: mise -E work bootstrap
-# Everything for the work machine lives here.
-# The assumption is that Linux is used as work machine.
+# MISE SERVER PROFILE (Linux)
+# Activated via: mise -E server bootstrap
+# Everything for the server machine lives here.
+# The assumption is that Linux is used as server machine.
 # ==============================================================================
 [vars]
 name = "Jiri Matejicek"
@@ -16,7 +16,7 @@ email = "jiri.matejicek@safetica.com"
 # ssh_config_work = "SSH_CONFIG_WORK"
 
 # ==============================================================================
-# WORK PACKAGES (mise bootstrap packages apply)
+# SERVER PACKAGES (mise bootstrap packages apply)
 # Installed via apt on Linux
 # ==============================================================================
 #[bootstrap.packages]
@@ -30,7 +30,7 @@ email = "jiri.matejicek@safetica.com"
 # file, so every future `mise` invocation loads config.personal.toml without
 # needing -E personal passed explicitly. Machine-specific, gitignored.
 [bootstrap.files."~/.config/mise/miserc.toml"]
-content = "env = [\"work\"]\n"
+content = "env = [\"server\"]\n"
 
 # [bootstrap.files."~/.ssh/config"]
 # content = "{{ secret(name=\"ssh_config_work\") }}"

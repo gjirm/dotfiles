@@ -27,13 +27,17 @@ eval "$("$HOME/.local/bin/mise" activate "$CURRENT_SHELL" 2>/dev/null || "$HOME/
 echo ""
 echo "Select the configuration profile for this machine:"
 echo "  1) Personal (Linux) [Default]"
-echo "  2) Work (macOS)"
+echo "  2) Work (Linux)"
+echo "  3) Server (Linux)"
 read -r -p "Enter choice [1/2, default: 1]: " CHOICE
 CHOICE="${CHOICE:-1}"
 
 if [ "$CHOICE" = "2" ] || [ "$CHOICE" = "work" ]; then
     echo "[✓] Selected Work profile (-E work)"
     BOOTSTRAP_ENV_FLAG="-E work"
+elif [ "$CHOICE" = "3" ] || [ "$CHOICE" = "server" ]; then
+    echo "[✓] Selected Server profile (-E server)"
+    BOOTSTRAP_ENV_FLAG="-E server"
 else
     echo "[✓] Selected Personal profile (-E personal)"
     BOOTSTRAP_ENV_FLAG="-E personal"

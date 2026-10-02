@@ -228,7 +228,7 @@ compinit
 source $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#808080'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#808080'
 
 # Completition styling
 # disable sort when completing `git checkout`
@@ -278,3 +278,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 source $HOME/.zshrc_local 
+
+{% if mise_env is defined and mise_env in ["personal", "work"] %}
+export ATUIN_SYNC_ADDRESS=https://atuin.jirm.cz
+{% endif %}
