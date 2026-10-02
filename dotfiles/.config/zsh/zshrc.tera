@@ -42,8 +42,7 @@ alias tmux="tmux -u"
 
 function update_dotfiles() {
     echo -e "\e[1;32m--> Updating $HOME/.dotfiles ...\e[0m"
-    git -C $HOME/.dotfiles checkout .
-    git -C $HOME/.dotfiles pull  
+    git -C $HOME/.config/mise pull  
 }
 
 function update_starship() {
@@ -229,6 +228,7 @@ compinit
 source $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#808080'
 
 # Completition styling
 # disable sort when completing `git checkout`

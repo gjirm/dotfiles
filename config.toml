@@ -98,6 +98,7 @@ restic = "latest"
 "apt:tree" = "latest"
 "apt:zsh" = "latest"
 "apt:autojump" = "latest"
+"apt:tmux" = "latest"
 
 [bootstrap.mise_shell_activate]
 zprofile = "shims"
