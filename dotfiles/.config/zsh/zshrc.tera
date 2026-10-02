@@ -281,4 +281,5 @@ source $HOME/.zshrc_local
 
 {% if mise_env is defined and mise_env in ["personal", "work"] %}
 export ATUIN_SYNC_ADDRESS=https://atuin.jirm.cz
+eval "$(atuin init zsh)"
 {% endif %}
