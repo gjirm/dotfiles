@@ -274,6 +274,7 @@ export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'eza -a --tree --color=always --icons=always -I .git {}'"
 
+export STARSHIP_CONFIG=$HOME/.config/starship/starship_v3.toml
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 

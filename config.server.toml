@@ -19,8 +19,15 @@ email = "jiri.matejicek@safetica.com"
 # SERVER PACKAGES (mise bootstrap packages apply)
 # Installed via apt on Linux
 # ==============================================================================
-#[bootstrap.packages]
-
+[bootstrap.packages]
+"apt:git" = "latest"
+"apt:curl" = "latest"
+"apt:wget" = "latest"
+"apt:file" = "latest"
+"apt:tree" = "latest"
+"apt:zsh" = "latest"
+"apt:autojump" = "latest"
+"apt:tmux" = "latest"
 
 # ==============================================================================
 # SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
@@ -41,4 +48,32 @@ content = "env = [\"server\"]\n"
 # WORK TOOLS (mise install)
 # ==============================================================================
 [tools]
+micro = "latest"
+starship = "latest"
+gh = "latest"
+fd = "latest"
+eza = "latest"
+fzf = "latest"
+zoxide = "latest"
+atuin = "latest"
 
+[bootstrap.mise_shell_activate]
+zprofile = "shims"
+zshrc = "activate"
+
+[bootstrap.repos]
+"~/.zsh/zsh-syntax-highlighting" = { url = "https://github.com/zsh-users/zsh-syntax-highlighting.git" }
+"~/.zsh/zsh-autosuggestions" = { url = "https://github.com/zsh-users/zsh-autosuggestions" }
+"~/.zsh/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
+"~/.zsh/fzf-tab" = { url = "https://github.com/Aloxaf/fzf-tab" }
+"~/.tmux/plugins/tpm" = { url = "https://github.com/tmux-plugins/tpm" }
+
+[bootstrap.user]
+login_shell = "/bin/zsh"
+
+[tasks.bootstrap]
+run = '''
+ln -sf ~/.zshrc ~/.zsh/.zshrc
+touch ~/.zshrc_local
+ya pkg add yazi-rs/plugins:full-border
+'''

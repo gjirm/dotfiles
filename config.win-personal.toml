@@ -20,20 +20,18 @@ email = "jirm@jirm.cz"
 # PERSONAL PACKAGES (mise bootstrap packages apply)
 # ==============================================================================
 [bootstrap.packages]
-"apt:git" = "latest"
-"apt:curl" = "latest"
-"apt:wget" = "latest"
-"apt:file" = "latest"
-"apt:tree" = "latest"
-"apt:zsh" = "latest"
-"apt:autojump" = "latest"
-"apt:tmux" = "latest"
+"winget:Git.Git" = "latest"
+"winget:GitHub.cli" = "latest"
+"winget:Microsoft.PowerShell" = "latest"
+"winget:sharkdp.fd" = "latest"
+"winget:junegunn.fzf" = "latest"
+"winget:zyedidia.micro" = "latest"
+"winget:Starship.Starship" = "latest"
+"winget:ajeetdsouza.zoxide" = "latest"
+"winget:eza-community.eza" = "latest"
+"winget:BaileyBrown.cppcryptfs" = "1.4.4.10"
+"winget:dokan-dev.Dokany" = "2.3.1.1000"
 
-# Personal
-"apt:zip" = "latest"
-"apt:unzip" = "latest"
-"apt:fuse" = "latest"
-"apt:build-essential" = "latest"
 
 # ==============================================================================
 # SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
@@ -43,7 +41,7 @@ email = "jirm@jirm.cz"
 # file, so every future `mise` invocation loads config.personal.toml without
 # needing -E personal passed explicitly. Machine-specific, gitignored.
 [bootstrap.files."~/.config/mise/miserc.toml"]
-content = "env = [\"personal\"]\n"
+content = "env = [\"win-personal\"]\n"
 
 # [bootstrap.files."~/.ssh/config"]
 # content = "{{ secret(name=\"ssh_config_personal\") }}"
@@ -54,37 +52,11 @@ content = "env = [\"personal\"]\n"
 # PERSONAL TOOLS (mise install)
 # ==============================================================================
 [tools]
-micro = "latest"
-starship = "latest"
-gh = "latest"
-fd = "latest"
-eza = "latest"
-fzf = "latest"
-zoxide = "latest"
-atuin = "latest"
-
-# Personal
-gocryptfs = "latest"
-age-plugin-yubikey = "v0.5.0"
-
-[bootstrap.mise_shell_activate]
-zprofile = "shims"
-zshrc = "activate"
-
-[bootstrap.repos]
-"~/.zsh/zsh-syntax-highlighting" = { url = "https://github.com/zsh-users/zsh-syntax-highlighting.git" }
-"~/.zsh/zsh-autosuggestions" = { url = "https://github.com/zsh-users/zsh-autosuggestions" }
-"~/.zsh/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
-"~/.zsh/fzf-tab" = { url = "https://github.com/Aloxaf/fzf-tab" }
-"~/.tmux/plugins/tpm" = { url = "https://github.com/tmux-plugins/tpm" }
-
-[bootstrap.user]
-login_shell = "/bin/zsh"
+age-plugin-yubikey = "latest"
 
 [tasks.bootstrap]
-run = '''
-ln -sf ~/.zshrc ~/.zsh/.zshrc
-touch ~/.zshrc_local
+run_windows  = '''
+type nul > "%USERPROFILE%\Documents\PowerShell\local_profile.ps1"
 ya pkg add yazi-rs/plugins:full-border
 '''
 
@@ -92,8 +64,8 @@ ya pkg add yazi-rs/plugins:full-border
 # HOOK: FINAL
 # Switch git origin from the HTTPS over to SSH
 # ==============================================================================
-[bootstrap.hooks.final]
-run = '''
-git -C "$HOME/.config/mise" remote set-url origin git@github.com:gjirm/dotfiles.git
-git -C "$HOME/.config/mise" branch --set-upstream-to=origin/mise mise
-'''
+# [bootstrap.hooks.final]
+# run = '''
+# git -C "$HOME/.config/mise" remote set-url origin git@github.com:gjirm/dotfiles.git
+# git -C "$HOME/.config/mise" branch --set-upstream-to=origin/mise mise
+# '''
