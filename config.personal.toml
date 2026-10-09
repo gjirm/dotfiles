@@ -45,6 +45,13 @@ email = "jirm@jirm.cz"
 [bootstrap.files."~/.config/mise/miserc.toml"]
 content = "env = [\"personal\"]\n"
 
+[bootstrap.directories."~/.ssh"]
+mode = "0700"
+
+[bootstrap.files."~/.ssh/known_hosts"]
+content = "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl\n"
+mode = "0644"
+
 # [bootstrap.files."~/.ssh/config"]
 # content = "{{ secret(name=\"ssh_config_personal\") }}"
 # template = true

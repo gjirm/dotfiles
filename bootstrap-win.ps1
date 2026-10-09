@@ -111,6 +111,13 @@ if (-not (Test-Path (Join-Path $DotfilesDir '.git'))) {
     Write-Host "[ok] $DotfilesDir is already a git checkout"
 }
 
+# mise's global environment selection, so future `mise` calls load
+# config.<profile>.toml without -E. Gitignored. Written here because
+# [bootstrap.files] is only supported on Unix.
+$miserc = Join-Path $DotfilesDir 'miserc.toml'
+Write-Host "[-] Writing $miserc (env = $ProfileName)..."
+[IO.File]::WriteAllText($miserc, "env = [`"$ProfileName`"]`n")
+
 Push-Location $DotfilesDir
 try {
     Write-Host "[-] Running bootstrap..."

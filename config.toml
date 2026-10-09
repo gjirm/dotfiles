@@ -21,20 +21,10 @@ name = "Jiri Matejicek"
 # SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
 # ==============================================================================
 
-[bootstrap.directories."~/.ssh"]
-os = "linux"
-mode = "0700"
-#owner = "niko"
-
 # [bootstrap.files."~/.ssh/id_ed25519"]
 # content = "{{ secret(name=\"github_ssh_key\") }}"
 # template = true
 # mode = "0600"
-
-[bootstrap.files."~/.ssh/known_hosts"]
-os = "linux"
-content = "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl\n"
-mode = "0644"
 
 # ==============================================================================
 # DOTFILES & TEMPLATES (mise bootstrap dotfiles apply)
