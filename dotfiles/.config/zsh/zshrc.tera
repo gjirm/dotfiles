@@ -2,6 +2,7 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export EDITOR=micro
 export PATH="$HOME/.local/bin:$PATH"
+export GPG_TTY=$(tty)
 
 # History
 export ZDOTDIR="$HOME/.zsh"
@@ -22,6 +23,15 @@ fpath=($HOME/.zsh/zsh-completions/src $fpath)
 fpath=($HOME/.zsh_completions $fpath)
 
 eval "$(mise activate zsh)"
+
+{% if mise_env is defined and "wsl" in mise_env %}
+# WSL: forward SSH agent from Windows OpenSSH agent via npiperelay
+export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
+if ! pgrep -f "UNIX-LISTEN:$SSH_AUTH_SOCK" >/dev/null; then
+    rm -f "$SSH_AUTH_SOCK"
+    ( setsid socat UNIX-LISTEN:"$SSH_AUTH_SOCK",fork EXEC:"$HOME/.wsl/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork & ) >/dev/null 2>&1
+fi
+{% endif %}
 
 # Aliases
 alias cls='clear'
@@ -280,7 +290,8 @@ eval "$(zoxide init zsh)"
 
 source $HOME/.zshrc_local 
 
-{% if mise_env is defined and mise_env in ["personal", "work"] %}
+{% if mise_env is defined and mise_env in ["personal", "work", "wsl"] %}
 export ATUIN_SYNC_ADDRESS=https://atuin.jirm.cz
 eval "$(atuin init zsh)"
 {% endif %}
+

@@ -1,7 +1,7 @@
 [user]
 	name = Jiri Matejicek
 	email = {{ vars.email }}
-{% if mise_env is defined and "personal" in mise_env %}
+{% if mise_env is defined and ("personal" in mise_env or "wsl" in mise_env) %}
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOThRwAc04LH29sPNlSeIc5BIleanqOUfDuhlEdPdmga
 {% endif %}
 

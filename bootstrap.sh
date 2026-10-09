@@ -2,7 +2,8 @@
 set -euo pipefail
 
 # Usage: ./bootstrap.sh [-y|--yes]
-#   curl -fsSL <url>/bootstrap.sh | bash -s -- --yes
+#   bash <(curl -fsSL <url>/bootstrap.sh) --yes
+# (not `curl | bash`: the profile prompt reads stdin, which is the script)
 # -y/--yes (or BOOTSTRAP_YES=1) passes --yes to `mise bootstrap` so it
 # runs without confirmation prompts.
 BOOTSTRAP_YES="${BOOTSTRAP_YES:-0}"
@@ -42,7 +43,8 @@ echo "Select the configuration profile for this machine:"
 echo "  1) Personal (Linux) [Default]"
 echo "  2) Work (Linux)"
 echo "  3) Server (Linux)"
-read -r -p "Enter choice [1/2/3, default: 1]: " CHOICE
+echo "  4) WSL (Windows Subsystem for Linux)"
+read -r -p "Enter choice [1/2/3/4, default: 1]: " CHOICE
 CHOICE="${CHOICE:-1}"
 
 if [ "$CHOICE" = "2" ] || [ "$CHOICE" = "work" ]; then
@@ -51,6 +53,9 @@ if [ "$CHOICE" = "2" ] || [ "$CHOICE" = "work" ]; then
 elif [ "$CHOICE" = "3" ] || [ "$CHOICE" = "server" ]; then
     echo "[✓] Selected Server profile (-E server)"
     BOOTSTRAP_ENV_FLAG="-E server"
+elif [ "$CHOICE" = "4" ] || [ "$CHOICE" = "wsl" ]; then
+    echo "[✓] Selected WSL profile (-E wsl)"
+    BOOTSTRAP_ENV_FLAG="-E wsl"
 else
     echo "[✓] Selected Personal profile (-E personal)"
     BOOTSTRAP_ENV_FLAG="-E personal"

@@ -65,13 +65,6 @@ variants = [
     { os = "linux", target = "~/.config/tmux/tmux.conf" },
 ]
 
-[dotfiles."vim/.vimrc"]
-source = "dotfiles/.config/vim/.vimrc"
-mode = "copy"
-variants = [
-    { os = "linux", target = "~/.vimrc" },
-]
-
 [dotfiles.starship]
 source = "dotfiles/.config/starship"
 mode = "copy"
