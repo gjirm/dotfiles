@@ -98,6 +98,20 @@ variants = [
     { os = "windows", target = "~/.config/micro/settings.json" },
 ]
 
+[dotfiles."powershell/Microsoft.PowerShell_profile.ps1"]
+source = "dotfiles/.config/powershell/Microsoft.PowerShell_profile.ps1"
+mode = "copy"
+variants = [
+    { os = "windows", target = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1" },
+]
+
+[dotfiles."powershell/aliases.ps1"]
+source = "dotfiles/.config/powershell/aliases.ps1"
+mode = "copy"
+variants = [
+    { os = "windows", target = "~/Documents/PowerShell/aliases.ps1" },
+]
+
 [dotfiles.yazi]
 source = "dotfiles/.config/yazi"
 mode = "copy"

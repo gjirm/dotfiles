@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Usage: ./bootstrap.sh [-y|--yes]
+#   curl -fsSL <url>/bootstrap.sh | bash -s -- --yes
+# -y/--yes (or BOOTSTRAP_YES=1) passes --yes to `mise bootstrap` so it
+# runs without confirmation prompts.
+BOOTSTRAP_YES="${BOOTSTRAP_YES:-0}"
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -y|--yes) BOOTSTRAP_YES=1 ;;
+        *) echo "Unknown argument: $1" >&2; exit 1 ;;
+    esac
+    shift
+done
+
 echo "=================================================================="
 echo "🚀 Workstation Bootstrap (Mise)"
 echo "=================================================================="
@@ -56,5 +69,9 @@ fi
 
 cd "$DOTFILES_DIR"
 echo "[-] Running bootstrap..."
-mise $BOOTSTRAP_ENV_FLAG bootstrap --adopt "$DOTFILES_REPO"
+BOOTSTRAP_ARGS=(--adopt "$DOTFILES_REPO")
+if [ "$BOOTSTRAP_YES" = "1" ]; then
+    BOOTSTRAP_ARGS+=(--yes)
+fi
+mise $BOOTSTRAP_ENV_FLAG bootstrap "${BOOTSTRAP_ARGS[@]}"
 

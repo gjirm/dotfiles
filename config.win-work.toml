@@ -56,7 +56,7 @@ age-plugin-yubikey = "latest"
 
 [tasks.bootstrap]
 run_windows  = '''
-type nul > "%USERPROFILE%\Documents\PowerShell\local_profile.ps1"
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\.config\mise\utils\install-pwsh-modules.ps1"
 ya pkg add yazi-rs/plugins:full-border
 '''
 
