@@ -13,11 +13,12 @@ Import-Module "${env:USERPROFILE}\Documents\PowerShell\local_profile.ps1"
 # Viz https://github.com/mikebattista/PowerShell-WSL-Interop
 Import-WslCommand "awk", "emacs", "grep", "head", "less", "man", "sed", "seq", "tail", "vim", "qrencode", "tee";
 
-# Start-SshAgent
 
 if (-not $env:HOME) {
     $env:HOME = "$($env:HOMEDRIVE)$($env:HOMEPATH)"
 }
+
+(&mise activate pwsh) | Out-String | Invoke-Expression
 
 #Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 

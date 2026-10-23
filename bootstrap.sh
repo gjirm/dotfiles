@@ -44,7 +44,8 @@ echo "  1) Personal (Linux) [Default]"
 echo "  2) Work (Linux)"
 echo "  3) Server (Linux)"
 echo "  4) WSL (Windows Subsystem for Linux)"
-read -r -p "Enter choice [1/2/3/4, default: 1]: " CHOICE
+echo "  5) WSL Work (Windows Subsystem for Linux)"
+read -r -p "Enter choice [1/2/3/4/5, default: 1]: " CHOICE
 CHOICE="${CHOICE:-1}"
 
 if [ "$CHOICE" = "2" ] || [ "$CHOICE" = "work" ]; then
@@ -56,8 +57,8 @@ elif [ "$CHOICE" = "3" ] || [ "$CHOICE" = "server" ]; then
 elif [ "$CHOICE" = "4" ] || [ "$CHOICE" = "wsl" ]; then
     echo "[✓] Selected WSL Personal profile (-E wsl)"
     BOOTSTRAP_ENV_FLAG="-E wsl"
-elif [ "$CHOICE" = "4" ] || [ "$CHOICE" = "wsl" ]; then
-    echo "[✓] Selected WSL Work profile (-E wsl)"
+elif [ "$CHOICE" = "5" ] || [ "$CHOICE" = "wsl-work" ]; then
+    echo "[✓] Selected WSL Work profile (-E wsl-work)"
     BOOTSTRAP_ENV_FLAG="-E wsl-work"
 else
     echo "[✓] Selected Personal profile (-E personal)"
