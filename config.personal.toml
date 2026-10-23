@@ -58,6 +58,16 @@ mode = "0644"
 # mode = "0600"
 
 # ==============================================================================
+# DOTFILES & TEMPLATES (mise bootstrap dotfiles apply)
+# ==============================================================================
+[dotfiles.gitconfig]
+source = "dotfiles/.config/git/personal/.gitconfig"
+mode = "copy"
+variants = [
+    { os = "linux", target = "~/.gitconfig" },
+]
+
+# ==============================================================================
 # PERSONAL TOOLS (mise install)
 # ==============================================================================
 [tools]
@@ -92,7 +102,6 @@ login_shell = "/bin/zsh"
 run = '''
 ln -sf ~/.zshrc ~/.zsh/.zshrc
 touch ~/.zshrc_local
-ya pkg add yazi-rs/plugins:full-border
 '''
 
 # ==============================================================================

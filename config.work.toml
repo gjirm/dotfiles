@@ -30,6 +30,16 @@ email = "jiri.matejicek@safetica.com"
 "apt:tmux" = "latest"
 
 # ==============================================================================
+# DOTFILES & TEMPLATES (mise bootstrap dotfiles apply)
+# ==============================================================================
+[dotfiles.gitconfig]
+source = "dotfiles/.config/git/work/.gitconfig"
+mode = "copy"
+variants = [
+    { os = "linux", target = "~/.gitconfig" },
+]
+
+# ==============================================================================
 # SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
 # ==============================================================================
 
@@ -55,13 +65,6 @@ mode = "0644"
 # WORK TOOLS (mise install)
 # ==============================================================================
 [tools]
-micro = "latest"
-starship = "latest"
-gh = "latest"
-fd = "latest"
-eza = "latest"
-fzf = "latest"
-zoxide = "latest"
 atuin = "latest"
 
 # Work
@@ -85,5 +88,4 @@ login_shell = "/bin/zsh"
 run = '''
 ln -sf ~/.zshrc ~/.zsh/.zshrc
 touch ~/.zshrc_local
-ya pkg add yazi-rs/plugins:full-border
 '''

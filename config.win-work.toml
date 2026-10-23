@@ -33,6 +33,23 @@ email = "jiri.matejicek@safetica.com"
 "winget:dokan-dev.Dokany" = "2.3.1.1000"
 
 # ==============================================================================
+# DOTFILES & TEMPLATES (mise bootstrap dotfiles apply)
+# ==============================================================================
+[dotfiles.gitconfig]
+source = "dotfiles/.config/git/win-work/.gitconfig"
+mode = "copy"
+variants = [
+    { os = "windows", target = "~/.gitconfig" },
+]
+
+[dotfiles.npiperelay]
+source = "dotfiles/.wsl/npiperelay.exe"
+mode = "copy"
+variants = [
+    { os = "windows", target = "~/.wsl/npiperelay.exe" },
+]
+
+# ==============================================================================
 # SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
 # ==============================================================================
 
@@ -54,7 +71,6 @@ age-plugin-yubikey = "latest"
 [tasks.bootstrap]
 run_windows  = '''
 powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\.config\mise\utils\install-pwsh-modules.ps1"
-ya pkg add yazi-rs/plugins:full-border
 '''
 
 # ==============================================================================

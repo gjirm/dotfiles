@@ -24,7 +24,7 @@ fpath=($HOME/.zsh_completions $fpath)
 
 eval "$(mise activate zsh)"
 
-{% if mise_env is defined and "wsl" in mise_env %}
+{% if mise_env is defined and mise_env in ["wsl", "wsl-work"] %}
 # WSL: forward SSH agent from Windows OpenSSH agent via npiperelay
 export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
 if ! pgrep -f "UNIX-LISTEN:$SSH_AUTH_SOCK" >/dev/null; then
@@ -87,16 +87,6 @@ function gitpush() {
     git commit -m "$*"
     git pull
     git push
-}
-
-# Yazi
-function yy() {
-    local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-    yazi "$@" --cwd-file="$tmp"
-    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        cd -- "$cwd"
-    fi
-    rm -f -- "$tmp"
 }
 
 # Interactively start ssh sessions
@@ -290,7 +280,7 @@ eval "$(zoxide init zsh)"
 
 source $HOME/.zshrc_local 
 
-{% if mise_env is defined and mise_env in ["personal", "work", "wsl"] %}
+{% if mise_env is defined and mise_env in ["personal", "work", "wsl", "wsl-work"] %}
 export ATUIN_SYNC_ADDRESS=https://atuin.jirm.cz
 eval "$(atuin init zsh)"
 {% endif %}

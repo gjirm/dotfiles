@@ -1,0 +1,29 @@
+[user]
+	name = Jiri Matejicek
+	email = jiri.matejicek@safetica.com
+
+[core]
+	excludesfile = ~/.gitignore
+	autocrlf = false
+	longpaths = true
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[credential]
+	helper = manager
+	azreposCredentialType = oauth
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
+[credential "azrepos:org/safetica-it"]
+	azureAuthority = https://login.microsoftonline.com/d1f7eef9-871a-453d-9996-403b8149d2b1
+	username = jiri.matejicek@safetica.com
+
+[gpg "ssh"]
+	program = C:/Windows/System32/OpenSSH/ssh-keygen.exe

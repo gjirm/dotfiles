@@ -1,0 +1,25 @@
+[user]
+	name = Jiri Matejicek
+	email = jirm@jirm.cz
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOThRwAc04LH29sPNlSeIc5BIleanqOUfDuhlEdPdmga
+
+[core]
+    editor = micro
+    excludesfile = ~/.gitignore
+    autocrlf = false
+    longpaths = true
+
+[gpg]
+    format = ssh
+
+[commit]
+    gpgsign = true
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[credential]
+    helper = manager

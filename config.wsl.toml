@@ -39,6 +39,16 @@ email = "jirm@jirm.cz"
 "apt:socat" = "latest"
 
 # ==============================================================================
+# DOTFILES & TEMPLATES (mise bootstrap dotfiles apply)
+# ==============================================================================
+[dotfiles.gitconfig]
+source = "dotfiles/.config/git/wsl/.gitconfig"
+mode = "copy"
+variants = [
+    { os = "linux", target = "~/.gitconfig" },
+]
+
+# ==============================================================================
 # SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
 # ==============================================================================
 
@@ -95,7 +105,6 @@ login_shell = "/bin/zsh"
 run = '''
 ln -sf ~/.zshrc ~/.zsh/.zshrc
 touch ~/.zshrc_local
-ya pkg add yazi-rs/plugins:full-border
 '''
 
 # ==============================================================================

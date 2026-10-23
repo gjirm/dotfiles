@@ -36,13 +36,13 @@ variants = [
     { os = "linux", target = "~/.zshrc" },
 ]
 
-[dotfiles.gitconfig]
-source = "dotfiles/.config/git/gitconfig.tera"
-mode = "template"
-variants = [
-    { os = "linux", target = "~/.gitconfig" },
-    { os = "windows", target = "~/.gitconfig" },
-]
+# [dotfiles.gitconfig]
+# source = "dotfiles/.config/git/gitconfig.tera"
+# mode = "template"
+# variants = [
+#     { os = "linux", target = "~/.gitconfig" },
+#     { os = "windows", target = "~/.gitconfig" },
+# ]
 
 [dotfiles."atuin/config.toml"]
 source = "dotfiles/.config/atuin/config.toml"
@@ -95,15 +95,13 @@ variants = [
     { os = "windows", target = "~/Documents/PowerShell/aliases.ps1" },
 ]
 
-[dotfiles.yazi]
-source = "dotfiles/.config/yazi"
+[dotfiles.superfile]
+source = "dotfiles/.config/superfile/config.toml"
 mode = "copy"
 variants = [
-    { os = "linux", target = "~/.config/yazi" },
-    { os = "windows", target = "~/AppData/Roaming/yazi" },
+    { os = "linux", target = "~/.config/superfile/config.toml" },
+    { os = "windows", target = "~/AppData/local/superfile/config.toml" },
 ]
-
-
 
 # [dotfiles."vscode/settings.json"]
 # source = "dotfiles/.config/vscode/settings.tera"
@@ -126,7 +124,6 @@ variants = [
 # Shared across all machines (Linux and macOS)
 # ==============================================================================
 [tools]
-yazi = "latest"
 age = "latest"
 step = "latest"
 restic = "latest"
@@ -134,3 +131,4 @@ jq = "latest"
 yq = "latest"
 croc = "latest"
 bat = "latest"
+superfile = "latest"

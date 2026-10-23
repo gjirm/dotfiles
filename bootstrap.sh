@@ -54,8 +54,11 @@ elif [ "$CHOICE" = "3" ] || [ "$CHOICE" = "server" ]; then
     echo "[✓] Selected Server profile (-E server)"
     BOOTSTRAP_ENV_FLAG="-E server"
 elif [ "$CHOICE" = "4" ] || [ "$CHOICE" = "wsl" ]; then
-    echo "[✓] Selected WSL profile (-E wsl)"
+    echo "[✓] Selected WSL Personal profile (-E wsl)"
     BOOTSTRAP_ENV_FLAG="-E wsl"
+elif [ "$CHOICE" = "4" ] || [ "$CHOICE" = "wsl" ]; then
+    echo "[✓] Selected WSL Work profile (-E wsl)"
+    BOOTSTRAP_ENV_FLAG="-E wsl-work"
 else
     echo "[✓] Selected Personal profile (-E personal)"
     BOOTSTRAP_ENV_FLAG="-E personal"

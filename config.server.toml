@@ -81,5 +81,4 @@ login_shell = "/bin/zsh"
 run = '''
 ln -sf ~/.zshrc ~/.zsh/.zshrc
 touch ~/.zshrc_local
-ya pkg add yazi-rs/plugins:full-border
 '''
