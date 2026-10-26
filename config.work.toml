@@ -44,8 +44,8 @@ variants = [
 # ==============================================================================
 
 # Writes ~/.config/mise/miserc.toml, mise's global environment-selection
-# file, so every future `mise` invocation loads config.personal.toml without
-# needing -E personal passed explicitly. Machine-specific, gitignored.
+# file, so every future `mise` invocation loads config.work.toml without
+# needing -E work passed explicitly. Machine-specific, gitignored.
 [bootstrap.files."~/.config/mise/miserc.toml"]
 content = "env = [\"work\"]\n"
 
@@ -65,6 +65,13 @@ mode = "0644"
 # WORK TOOLS (mise install)
 # ==============================================================================
 [tools]
+micro = "latest"
+starship = "latest"
+gh = "latest"
+fd = "latest"
+eza = "latest"
+fzf = "latest"
+zoxide = "latest"
 atuin = "latest"
 
 # Work

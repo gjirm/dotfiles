@@ -1,8 +1,8 @@
 # ==============================================================================
-# MISE WSL PROFILE (Ubuntu on WSL2)
-# Activated via: mise -E wsl bootstrap
-# Same as the personal profile, plus the SSH agent bridge to the Windows
-# OpenSSH agent (socat + npiperelay.exe, see zshrc.tera).
+# MISE WSL WORK PROFILE (Ubuntu on WSL2)
+# Activated via: mise -E wsl-work bootstrap
+# Same as the wsl profile with the work identity, plus the SSH agent bridge
+# to the Windows OpenSSH agent (socat + npiperelay.exe, see zshrc.tera).
 # ==============================================================================
 [vars]
 name = "Jiri Matejicek"
@@ -46,6 +46,16 @@ source = "dotfiles/.config/git/wsl-work/.gitconfig"
 mode = "copy"
 variants = [
     { os = "linux", target = "~/.gitconfig" },
+]
+
+# Windows side of the SSH agent bridge, started by socat from ~/.zshrc.
+# git tracks the .exe as 0644, WSL interop needs the exec bit.
+[dotfiles.npiperelay]
+source = "dotfiles/.wsl/npiperelay.exe"
+mode = "copy"
+permissions = "0755"
+variants = [
+    { os = "linux", target = "~/.wsl/npiperelay.exe" },
 ]
 
 # ==============================================================================

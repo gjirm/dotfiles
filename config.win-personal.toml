@@ -1,8 +1,8 @@
 # ==============================================================================
-# MISE PERSONAL PROFILE (Fedora Silverblue)
-# Activated via: mise -E personal bootstrap
-# Everything for the personal machine lives here.
-# The assumption is that Linux is used as personal machine.
+# MISE WINDOWS PERSONAL PROFILE
+# Activated via: bootstrap-win.ps1 (mise -E win-personal bootstrap)
+# Everything for the personal Windows machine lives here.
+# Packages come from winget, the shell is PowerShell 7.
 # ==============================================================================
 [vars]
 name = "Jiri Matejicek"
@@ -40,13 +40,6 @@ source = "dotfiles/.config/git/win-personal/.gitconfig"
 mode = "copy"
 variants = [
     { os = "windows", target = "~/.gitconfig" },
-]
-
-[dotfiles.npiperelay]
-source = "dotfiles/.wsl/npiperelay.exe"
-mode = "copy"
-variants = [
-    { os = "windows", target = "~/.wsl/npiperelay.exe" },
 ]
 
 # ==============================================================================

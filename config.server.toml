@@ -34,8 +34,8 @@ email = "jiri.matejicek@safetica.com"
 # ==============================================================================
 
 # Writes ~/.config/mise/miserc.toml, mise's global environment-selection
-# file, so every future `mise` invocation loads config.personal.toml without
-# needing -E personal passed explicitly. Machine-specific, gitignored.
+# file, so every future `mise` invocation loads config.server.toml without
+# needing -E server passed explicitly. Machine-specific, gitignored.
 [bootstrap.files."~/.config/mise/miserc.toml"]
 content = "env = [\"server\"]\n"
 

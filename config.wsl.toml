@@ -48,6 +48,16 @@ variants = [
     { os = "linux", target = "~/.gitconfig" },
 ]
 
+# Windows side of the SSH agent bridge, started by socat from ~/.zshrc.
+# git tracks the .exe as 0644, WSL interop needs the exec bit.
+[dotfiles.npiperelay]
+source = "dotfiles/.wsl/npiperelay.exe"
+mode = "copy"
+permissions = "0755"
+variants = [
+    { os = "linux", target = "~/.wsl/npiperelay.exe" },
+]
+
 # ==============================================================================
 # SYSTEM DIRECTORIES AND FILES (mise bootstrap files apply)
 # ==============================================================================
