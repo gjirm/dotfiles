@@ -53,8 +53,8 @@ variants = [
 # ==============================================================================
 
 # Writes ~/.config/mise/miserc.toml, mise's global environment-selection
-# file, so every future `mise` invocation loads config.wsl.toml without
-# needing -E wsl passed explicitly. Machine-specific, gitignored.
+# file, so every future `mise` invocation loads config.wsl-work.toml without
+# needing -E wsl-work passed explicitly. Machine-specific, gitignored.
 [bootstrap.files."~/.config/mise/miserc.toml"]
 content = "env = [\"wsl-work\"]\n"
 

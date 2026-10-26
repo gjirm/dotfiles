@@ -24,7 +24,7 @@ fpath=($HOME/.zsh_completions $fpath)
 
 eval "$(mise activate zsh)"
 
-{% if mise_env == 'wsl'  or mise_env == 'wsl-work' %}
+{% if mise_env is defined and ('wsl' in mise_env or 'wsl-work' in mise_env) %}
 # WSL: forward SSH agent from Windows OpenSSH agent via npiperelay
 export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
 if ! pgrep -f "UNIX-LISTEN:$SSH_AUTH_SOCK" >/dev/null; then
@@ -280,7 +280,7 @@ eval "$(zoxide init zsh)"
 
 source $HOME/.zshrc_local 
 
-{% if mise_env == 'personal' or mise_env == 'work' or mise_env == 'wsl'  or mise_env == 'wsl-work' %}
+{% if mise_env is defined and ('personal' in mise_env or 'work' in mise_env or 'wsl' in mise_env or 'wsl-work' in mise_env) %}
 export ATUIN_SYNC_ADDRESS=https://atuin.jirm.cz
 eval "$(atuin init zsh)"
 {% endif %}
